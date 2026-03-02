@@ -2,8 +2,8 @@
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
+  <Project Path="NoName.App/NoName.App.csproj" Id="ef10069f-89e6-4673-8ddb-5a46c5f17e10" />
   <Project Path="NoName.Application/NoName.Application.csproj" />
   <Project Path="NoName.Data/NoName.Data.csproj" />
-  <Project Path="NoName.WeApp1/NoName.WeApp.csproj" />
   <Project Path="Noname/Noname.csproj" />
 </Solution>

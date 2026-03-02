@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NoName.WeApp1.Models;
+using NoName.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NoName.WeApp1.Controllers
+namespace NoName.App.Controllers
 {
     public class HomeController : Controller
     {

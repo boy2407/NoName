@@ -5,4 +5,7 @@
 - SQL Server
 - JWT Authentication
 - Swagger for API documentation
-- 
+## Install Packages
+- Microsoft.EntityFrameworkCore.sqlserver
+- Microsoft.EntityFrameworkCore.Tools
+- Microsoft.EntityFrameworkCore.Design

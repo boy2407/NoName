@@ -6,6 +6,7 @@ namespace NoName.Data.Entities
 {
     public class OrderDetail
     {
+        public int Id { get; set; }
         public int OrderId { set; get; }
         public int ProductId { set; get; }
         public int Quantity { set; get; }

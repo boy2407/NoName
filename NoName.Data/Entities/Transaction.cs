@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoName.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,7 +19,7 @@ namespace NoName.Data.Entities
 
         public Guid UserId { get; set; }
 
-        public AppUser AppUser { get; set; }
+        //public AppUser AppUser { get; set; }
 
     }
 }

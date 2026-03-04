@@ -14,9 +14,13 @@ namespace NoName.Data.Entities
         public bool ApplyForAll { set; get; }
         public int? DiscountPercent { set; get; }
         public decimal? DiscountAmount { set; get; }
-        public string ProductIds { set; get; }
-        public string ProductCategoryIds { set; get; }
+        //public string ProductIds { set; get; }
+        //public string ProductCategoryIds { set; get; }
         public Status Status { set; get; }
         public string Name { set; get; }
+        public bool IsActive { get; set; } = true;
+        public List<PromotionProduct> PromotionProducts { get; set; }
+
+
     }
 }

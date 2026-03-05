@@ -22,6 +22,7 @@ namespace NoName.Data.Configuration
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.Provider).HasMaxLength(100);
             builder.Property(x => x.UserId).IsRequired();
+            builder.HasOne(x => x.User).WithMany(x => x.Transactions).HasForeignKey(x => x.UserId);
 
          }
     }

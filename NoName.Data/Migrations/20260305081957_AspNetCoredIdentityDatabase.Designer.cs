@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoName.Data.EF;
 
 namespace NoName.Data.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
-    partial class NoNameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260305081957_AspNetCoredIdentityDatabase")]
+    partial class AspNetCoredIdentityDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +94,6 @@ namespace NoName.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("UserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
-                            RoleId = new Guid("4ccf9361-16bc-4224-99c6-b87223226ea5")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -485,7 +480,7 @@ namespace NoName.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2026, 3, 5, 15, 27, 4, 741, DateTimeKind.Local).AddTicks(8014),
+                            DateCreated = new DateTime(2026, 3, 5, 15, 19, 57, 230, DateTimeKind.Local).AddTicks(676),
                             IsActive = true,
                             OriginalPrice = 100000m,
                             Price = 200000m,
@@ -702,16 +697,6 @@ namespace NoName.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("4ccf9361-16bc-4224-99c6-b87223226ea5"),
-                            ConcurrencyStamp = "5bd13c99-931f-4a43-ace5-46c8c50c7b56",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("NoName.Data.Entities.Slide", b =>
@@ -747,68 +732,6 @@ namespace NoName.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Slides");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/1.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 1,
-                            Status = 1,
-                            Url = "#"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/2.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 2,
-                            Status = 1,
-                            Url = "#"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/3.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 3,
-                            Status = 1,
-                            Url = "#"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/4.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 4,
-                            Status = 1,
-                            Url = "#"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/5.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 5,
-                            Status = 1,
-                            Url = "#"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                            Image = "/themes/images/carousel/6.png",
-                            Name = "Second Thumbnail label",
-                            SortOrder = 6,
-                            Status = 1,
-                            Url = "#"
-                        });
                 });
 
             modelBuilder.Entity("NoName.Data.Entities.Transaction", b =>
@@ -916,27 +839,6 @@ namespace NoName.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "d9502186-d883-4b57-88ef-d3cfd3c7a2a4",
-                            Dob = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "nguyentrongnghia7949@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Nghia",
-                            LastName = "Trong",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "nguyentrongnghia7949@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPF00Hue2Lhcdsq97/0vtPsicpdAPPYfmhWwNWelvaj3+tZTwiQpGUvJbu+62MxYEg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("NoName.Data.Entities.Cart", b =>

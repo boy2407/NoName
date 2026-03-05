@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NoName.Data.Entities;
-using NoName.Data.Enums;
-namespace NoName.Data.Configuration
+using NoName.Domain.Entities;
+using NoName.Domain.Enums;
+namespace NoName.Infrastructure.Configuration
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {

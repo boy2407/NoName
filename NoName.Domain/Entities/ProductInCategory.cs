@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Entities
+namespace NoName.Domain.Entities
 {
-    public class PromotionProduct
+    public class ProductInCategory
     {
-        public int PromotionId { get; set; }
-        public Promotion Promotion { get; set; }
-
         public int ProductId { get; set; }
+
         public Product Product { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }

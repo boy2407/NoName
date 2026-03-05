@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace NoName.Data.EF
+namespace NoName.Infrastructure.EF
 {
     public class NoNameDbContextFactory
         : IDesignTimeDbContextFactory<NoNameDbContext>

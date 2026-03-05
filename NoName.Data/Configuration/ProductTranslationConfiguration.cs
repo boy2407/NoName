@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NoName.Data.Entities;
+using NoName.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Configuration
+namespace NoName.Infrastructure.Configuration
 {
     public class ProductTranslationConfiguration: IEntityTypeConfiguration<ProductTranslation>
     {

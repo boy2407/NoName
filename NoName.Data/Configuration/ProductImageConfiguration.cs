@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NoName.Data.Entities;
+using NoName.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Configuration
+namespace NoName.Infrastructure.Configuration
 {
     public class ProductImageConfiguration:IEntityTypeConfiguration<ProductImage>
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Enums
+namespace NoName.Domain.Enums
 {
     public enum Status
     {

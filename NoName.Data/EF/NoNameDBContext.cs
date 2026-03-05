@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using NoName.Data.Configuration;
-using NoName.Data.Entities;
-using NoName.Data.Extensions;
+using NoName.Infrastructure.Configuration;
+using NoName.Domain.Entities;
+using NoName.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace NoName.Data.EF
+namespace NoName.Infrastructure.EF
 {
     public class NoNameDbContext : IdentityDbContext <User, Role, Guid>
     {

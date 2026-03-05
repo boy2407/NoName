@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using NoName.Data.Entities;
+using NoName.Domain.Entities;
 
-namespace NoName.Data.Configuration
+namespace NoName.Infrastructure.Configuration
 {
     public class TransactionConfiguartion : IEntityTypeConfiguration<Transaction>
     {

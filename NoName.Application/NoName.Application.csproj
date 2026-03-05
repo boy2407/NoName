@@ -4,4 +4,18 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NoName.Domain\NoName.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Features\Order\Commands\" />
+    <Folder Include="Features\Order\DTO\" />
+    <Folder Include="Features\Order\Queries\" />
+    <Folder Include="Features\Product\DTO\" />
+    <Folder Include="Features\Product\Commands\" />
+    <Folder Include="Features\Product\Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NoName.Data.Migrations
+namespace NoName.Infrastructure.Migrations
 {
     public partial class SeedIdentity : Migration
     {

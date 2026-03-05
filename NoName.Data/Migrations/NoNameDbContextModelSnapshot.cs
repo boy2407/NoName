@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NoName.Data.EF;
+using NoName.Infrastructure.EF;
 
-namespace NoName.Data.Migrations
+namespace NoName.Infrastructure.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
     partial class NoNameDbContextModelSnapshot : ModelSnapshot

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using NoName.Data.Entities;
-using NoName.Data.Enums;
+using NoName.Domain.Entities;
+using NoName.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Extensions
+namespace NoName.Infrastructure.Extensions
 {
     public static class ModelBuilderExtension
     {
@@ -30,7 +30,7 @@ namespace NoName.Data.Extensions
                     IsShowOnHome = true,
                     ParentId = null,
                     SortOrder = 1,
-                    Status = Enums.Status.Active,
+                    Status = Status.Active,
 
                 },
                  new Category()
@@ -39,7 +39,7 @@ namespace NoName.Data.Extensions
                      IsShowOnHome = true,
                      ParentId = null,
                      SortOrder = 2,
-                     Status = Enums.Status.Active,
+                     Status = Status.Active,
 
                  }
             );

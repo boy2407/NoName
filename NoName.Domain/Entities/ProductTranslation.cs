@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Data.Entities
+namespace NoName.Domain.Entities
 {
-    public class CategoryTranslation
+    public class ProductTranslation
     {
         public int Id { set; get; }
-        public int CategoryId { set; get; }
+        public int ProductId { set; get; }
         public string Name { set; get; }
+        public string Description { set; get; }
+        public string Details { set; get; }
         public string SeoDescription { set; get; }
         public string SeoTitle { set; get; }
+        public string SeoAlias { get; set; }
         public string LanguageId { set; get; }
-        public string SeoAlias { set; get; }
 
-        public Category Category { get; set; }
+        public Product Product { get; set; }
 
         public Language Language { get; set; }
 

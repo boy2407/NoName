@@ -1,10 +1,10 @@
-﻿using NoName.Data.Enums;
+﻿using NoName.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Text;
 
-namespace NoName.Data.Entities
+namespace NoName.Domain.Entities
 {
     public class Promotion
     {

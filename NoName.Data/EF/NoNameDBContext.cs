@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NoName.Data.Configuration;
 using NoName.Data.Entities;
+using NoName.Data.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -32,6 +33,12 @@ namespace NoName.Data.EF
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //base.OnModelCreating(modelBuilder);
+
+            //Data Seeding
+            modelBuilder.Seed();
+
+
+
         }
 
         public DbSet<Product> Products { get; set; }

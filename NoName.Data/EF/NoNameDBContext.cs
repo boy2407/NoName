@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NoName.Data.Configuration;
 using NoName.Data.Entities;
 using NoName.Data.Extensions;
@@ -9,7 +11,7 @@ using System.Text;
 
 namespace NoName.Data.EF
 {
-    public class NoNameDbContext : DbContext
+    public class NoNameDbContext : IdentityDbContext <User, Role, Guid>
     {
         public NoNameDbContext(DbContextOptions options) : base(options)
         {
@@ -33,6 +35,15 @@ namespace NoName.Data.EF
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles").HasKey(x => new { x.UserId, x.RoleId});
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogins").HasKey(x => new {x.UserId});
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens").HasKey(x => new {x.UserId});
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaims");
 
             //Data Seeding
             modelBuilder.Seed();

@@ -19,7 +19,7 @@ namespace NoName.Data.Entities
 
         public Guid UserId { get; set; }
 
-        //public AppUser AppUser { get; set; }
+        public User User { get; set; }
 
     }
 }

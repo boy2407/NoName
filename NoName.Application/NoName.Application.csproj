@@ -9,13 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Features\Order\Commands\" />
     <Folder Include="Features\Order\DTO\" />
     <Folder Include="Features\Order\Queries\" />
-    <Folder Include="Features\Product\DTO\" />
-    <Folder Include="Features\Product\Commands\" />
-    <Folder Include="Features\Product\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="3.1.1" />
+    <PackageReference Include="MediatR" Version="14.1.0" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//using AutoMapper;
+//using NoName.Application.Mapping;
 
 namespace Noname
 {
@@ -25,6 +27,8 @@ namespace Noname
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //// AutoMapper: scan the assembly that contains ProductProfile
+            //services.AddAutoMapper(typeof(ProductProfile).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

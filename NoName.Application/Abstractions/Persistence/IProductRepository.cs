@@ -15,6 +15,7 @@ namespace NoName.Application.Abstractions.Persistence
     {
         Task<int> SaveChangesAsync(CancellationToken ct = default);
         Task<Product?> GetByIdAsync(int id, CancellationToken cancellationToken);
+        Task<Product?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken);
 
         Task AddAsync(Product product, CancellationToken cancellationToken);
 

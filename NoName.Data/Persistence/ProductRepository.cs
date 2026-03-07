@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
-using NoName.Application.Features.Product.DTO;
-using NoName.Application.Models;
+using NoName.Application.Features.Product.DTOs;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using System;
@@ -41,9 +40,31 @@ namespace NoName.Infrastructure.Persistence
             return await _context.Products.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
+        public async Task<Product?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Products
+                .Include(p => p.ProductTranslations)
+                .Include(p => p.ProductInCategories)
+                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        }
+
         public async Task UpdateAsync(Product product, CancellationToken cancellationToken)
         {
-            _context.Products.Update(product);
+            // If the entity is already being tracked, update its current values
+            var tracked = _context.Products.Local.FirstOrDefault(p => p.Id == product.Id);
+            if (tracked == null)
+            {
+                // Attach and mark modified so changes are saved on SaveChangesAsync
+                _context.Products.Attach(product);
+                _context.Entry(product).State = EntityState.Modified;
+            }
+            else
+            {
+                // Copy values to the tracked entity to avoid duplicate tracking
+                _context.Entry(tracked).CurrentValues.SetValues(product);
+            }
+
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(Product product, CancellationToken cancellationToken)

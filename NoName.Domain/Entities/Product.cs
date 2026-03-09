@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NoName.Domain.Entities
@@ -22,7 +23,38 @@ namespace NoName.Domain.Entities
         //public object ProductImages { get; internal set; }
         public List<Cart> Carts { get; set; }
         public List<ProductTranslation> ProductTranslations { get; set; }
-        public List<ProductImage> ProductImages { get; set; }
         public List<PromotionProduct> PromotionProducts { get; set; }
+
+
+        private readonly List<ProductImage> _productImages = new List<ProductImage>();
+        public virtual IReadOnlyCollection<ProductImage> ProductImages => _productImages.AsReadOnly();
+
+ 
+        public void AddImage(string path, long fileSize, bool isDefault)
+        {
+            
+            if (isDefault)
+            {
+                foreach (var img in _productImages)
+                {
+                    img.IsDefault = false;
+                }
+            }
+
+           
+            if (!_productImages.Any())
+            {
+                isDefault = true;
+            }
+
+            _productImages.Add(new ProductImage
+            {
+                ImagePath = path,
+                FileSize = fileSize,
+                IsDefault = isDefault,
+                DateCreated = DateTime.Now,
+                SortOrder = isDefault ? 1 : 2
+            });
+        }
     }
 }

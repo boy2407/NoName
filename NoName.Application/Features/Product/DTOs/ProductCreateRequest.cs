@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,8 @@ namespace NoName.Application.Features.Product.DTOs
         public string Details { get; set; }
         public string SeoAlias { get; set; }
         public string LanguageId { get; set; }
+        public IFormFile ThumbnailImage { get; set; }
+
     }
   
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace NoName.Application.Features.Product.Commands.Update
 {
@@ -17,5 +18,9 @@ namespace NoName.Application.Features.Product.Commands.Update
         public string SeoAlias { get; set; }
         public string LanguageId { get; set; } = "vi";
         public bool IsActive { get; set; } = true;
+        public IFormFile NewThumbnailImage { get; set; }
+        public List<IFormFile> NewGalleryImages { get; set; }
+        public List<int> DeletedImageIds { get; set; } 
+
     }
 }

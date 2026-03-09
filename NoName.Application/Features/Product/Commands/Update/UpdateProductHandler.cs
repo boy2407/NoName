@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using NoName.Application.Abstractions.Persistence;
+using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
 using NoName.Domain.Entities;
 
@@ -12,10 +13,11 @@ namespace NoName.Application.Features.Product.Commands.Update
     public class UpdateProductHandler : IRequestHandler<UpdateProduct, int>
     {
         private readonly IProductRepository _productRepository;
-
-        public UpdateProductHandler(IProductRepository productRepository)
+        private readonly IMediaService _mediaService;
+        public UpdateProductHandler(IProductRepository productRepository, IMediaService mediaService)
         {
             _productRepository = productRepository;
+            _mediaService = mediaService;
         }
 
         public async Task<int> Handle(UpdateProduct request, CancellationToken ct)
@@ -70,6 +72,48 @@ namespace NoName.Application.Features.Product.Commands.Update
             foreach (var add in toAdd)
             {
                 product.ProductInCategories.Add(add);
+            }
+
+
+
+            if (request.NewThumbnailImage != null)
+            {
+                // find old default image
+                var oldImage = product.ProductImages.FirstOrDefault(x => x.IsDefault);
+
+                if (oldImage != null)
+                {
+                    //delete old file on storage
+                    await _mediaService.DeleteFileAsync(oldImage.ImagePath);
+
+                    // save new file to storage
+                    string newPath = await _mediaService.UploadFileAsync(request.NewThumbnailImage, "products");
+
+                    //update new path and file size to db
+                    oldImage.ImagePath = newPath;
+                    oldImage.FileSize = request.NewThumbnailImage.Length;
+                }
+            }
+
+            // handle new gallery images
+            if (request.NewGalleryImages != null && request.NewGalleryImages.Any())
+            {
+                foreach (var file in request.NewGalleryImages)
+                {
+                    // Lưu từng file vật lý và lấy đường dẫn
+                    string galleryPath = await _mediaService.UploadFileAsync(file, "products");
+
+                    // Add thêm một bản ghi mới vào danh sách ảnh của Product
+                    product.ProductImages.Add(new ProductImage
+                    {
+                        Caption = $"Gallery image {file.FileName}",
+                        DateCreated = DateTime.Now,
+                        FileSize = file.Length,
+                        ImagePath = galleryPath,
+                        IsDefault = false, // Đây là ảnh phụ trong bộ sưu tập
+                        SortOrder = 2
+                    });
+                }
             }
 
             await _productRepository.SaveChangesAsync(ct);

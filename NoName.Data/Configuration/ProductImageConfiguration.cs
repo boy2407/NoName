@@ -19,7 +19,11 @@ namespace NoName.Infrastructure.Configuration
             builder.Property(x => x.DateCreated).IsRequired();
             builder.Property(x => x.SortOrder).IsRequired();
             builder.Property(x => x.FileSize).IsRequired();
-   
+
+            builder.HasOne(x => x.Product)
+              .WithMany(x => x.ProductImages)
+              .HasForeignKey(x => x.ProductId);
+
         }
     }
 }

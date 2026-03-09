@@ -104,15 +104,9 @@ namespace NoName.Application.Features.Product.Commands.Update
                     string galleryPath = await _mediaService.UploadFileAsync(file, "products");
 
                     // Add thêm một bản ghi mới vào danh sách ảnh của Product
-                    product.ProductImages.Add(new ProductImage
-                    {
-                        Caption = $"Gallery image {file.FileName}",
-                        DateCreated = DateTime.Now,
-                        FileSize = file.Length,
-                        ImagePath = galleryPath,
-                        IsDefault = false, // Đây là ảnh phụ trong bộ sưu tập
-                        SortOrder = 2
-                    });
+
+                    product.AddImage(galleryPath, file.Length, false, $"Gallery image {file.FileName}");
+
                 }
             }
 

@@ -29,8 +29,7 @@ namespace NoName.Domain.Entities
         private readonly List<ProductImage> _productImages = new List<ProductImage>();
         public virtual IReadOnlyCollection<ProductImage> ProductImages => _productImages.AsReadOnly();
 
- 
-        public void AddImage(string path, long fileSize, bool isDefault)
+        public void AddImage(string path, long fileSize, bool isDefault, string caption = "")
         {
             
             if (isDefault)
@@ -52,6 +51,7 @@ namespace NoName.Domain.Entities
                 ImagePath = path,
                 FileSize = fileSize,
                 IsDefault = isDefault,
+                Caption = caption,
                 DateCreated = DateTime.Now,
                 SortOrder = isDefault ? 1 : 2
             });

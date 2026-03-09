@@ -48,10 +48,7 @@ namespace NoName.Infrastructure.EF
             //Data Seeding
             modelBuilder.Seed();
 
-
-
         }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 

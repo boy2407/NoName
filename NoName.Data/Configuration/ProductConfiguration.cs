@@ -13,11 +13,15 @@ namespace NoName.Infrastructure.Configuration
         {
             builder.ToTable("Products");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Price).IsRequired();
-            builder.Property(x => x.OriginalPrice).IsRequired();
+            builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,2)");
+            builder.Property(x => x.OriginalPrice).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(x => x.Stock).IsRequired().HasDefaultValue(0);
             builder.Property(x =>x.ViewCount).IsRequired().HasDefaultValue(0);
-        
+
+            // Chỉ định field cụ thể nếu tên biến private khác với quy tắc mặc định
+            builder.Navigation(x => x.ProductImages)
+                   .UsePropertyAccessMode(PropertyAccessMode.Field)
+                   .HasField("_productImages");
         }
     }
 }

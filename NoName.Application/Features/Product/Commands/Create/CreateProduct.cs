@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace NoName.Application.Features.Product.Commands.Create
 {
@@ -19,5 +20,7 @@ namespace NoName.Application.Features.Product.Commands.Create
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public bool IsActive { get; set; } = true;
         public DateTime? DateModified { get; set; }
+        public IFormFile ThumbnailImage { get; set; }
+        public List<IFormFile> GalleryImages { get; set; }
     }
 }

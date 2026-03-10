@@ -10,7 +10,7 @@ namespace NoName.Application.Features.Product.Commands.Create
     {
         private readonly IProductRepository _productRepository;
         private readonly IMediaService _mediaService;
-        private readonly IProductAppService _productDomainService; 
+        private readonly IProductAppService _productAppService; 
         private readonly IMapper _mapper; 
         private const string USER_CONTENT_FOLDER_NAME = "user-content";
 
@@ -23,17 +23,17 @@ namespace NoName.Application.Features.Product.Commands.Create
 
         public async Task<int> Handle(CreateProduct request, CancellationToken ct)
         {
-            // 1. Map tự động từ Command sang Entity
+            //auto mapping
             var product = _mapper.Map<NoName.Domain.Entities.Product>(request);
 
-            // 2. Xử lý ảnh (Vẫn dùng Domain Service vì nó chứa logic I/O)
-            await _productDomainService.HandleUploadImagesAsync(
+            //handel upload images
+            await _productAppService.HandleUploadImagesAsync(
                 product,
                 request.ThumbnailImage,
                 request.GalleryImages
             );
 
-            // 3. Lưu Database
+            //Save Database
             await _productRepository.AddAsync(product, ct);
             await _productRepository.SaveChangesAsync(ct);
 

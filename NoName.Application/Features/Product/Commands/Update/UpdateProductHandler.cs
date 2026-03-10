@@ -104,7 +104,6 @@ namespace NoName.Application.Features.Product.Commands.Update
                     string galleryPath = await _mediaService.UploadFileAsync(file, "products");
 
                     // Add thêm một bản ghi mới vào danh sách ảnh của Product
-
                     product.AddImage(galleryPath, file.Length, false, $"Gallery image {file.FileName}");
 
                 }

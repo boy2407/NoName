@@ -16,8 +16,6 @@ namespace NoName.Infrastructure.Persistence
     public class ProductRepository : IProductRepository
     {
         private readonly NoNameDbContext _context;
-        //private readonly IStorageService _storageService;
-        //private const string USER_CONTENT_FOLDER_NAME = "user-content";
 
         public ProductRepository(NoNameDbContext context)
         {
@@ -45,6 +43,7 @@ namespace NoName.Infrastructure.Persistence
             return await _context.Products
                 .Include(p => p.ProductTranslations)
                 .Include(p => p.ProductInCategories)
+                .Include(x => x.ProductImages)
                 .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 

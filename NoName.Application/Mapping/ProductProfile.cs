@@ -46,12 +46,7 @@ namespace NoName.Application.Mapping
             CreateMap<GetProductPagingRequest, GetProductPaging>();
 
             CreateMap<Product, ProductViewModel>()
-            
-              .BeforeMap((src, dest, context) => {
-                  // LanguageId can be passed via context.Items when mapping from Product to ProductViewModel
-                  if (!context.Items.ContainsKey("LanguageId"))
-                      context.Items["LanguageId"] = "vi"; 
-              })
+           
               .ForMember(dest => dest.LanguageId, opt => opt.MapFrom((src, dest, destMember, context) =>
                   context.Items["LanguageId"]))
 

@@ -9,11 +9,13 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
 	<ItemGroup>
+    <Folder Include="Common\Behaviors\" />
     <Folder Include="Features\Order\Commands\" />
     <Folder Include="Features\Order\DTO\" />
     <Folder Include="Features\Order\Queries\" />

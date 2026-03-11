@@ -3,6 +3,7 @@ using NoName.Application;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
 using NoName.Application.Services;
+using NoName.BackendApi;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<NoNameDbContext>(options =>
 
 
 //DI
+builder.Services.AddApplication();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IProductAppService, ProductAppService>();
@@ -34,8 +36,10 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+   
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseMiddleware<ExceptionMiddleware>();
 }
 
 app.UseHttpsRedirection();

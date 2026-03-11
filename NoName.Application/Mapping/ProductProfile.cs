@@ -15,8 +15,8 @@ namespace NoName.Application.Mapping
         public ProductProfile()
         {   //----------------Command Mapping
      
-            CreateMap<ProductCreateRequest, CreateProduct>()
-                .ForMember(d => d.CategoryIds, opt => opt.MapFrom(src => src.CategoryIds ?? new List<int>()));
+            //CreateMap<ProductCreateRequest, CreateProduct>()
+            //    .ForMember(d => d.CategoryIds, opt => opt.MapFrom(src => src.CategoryIds ?? new List<int>()));
 
             //Map Command -> Domain Entity 
             CreateMap<CreateProduct,Product>()

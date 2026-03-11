@@ -25,7 +25,6 @@ namespace NoName.Domain.Entities
         public List<ProductTranslation> ProductTranslations { get; set; }
         public List<PromotionProduct> PromotionProducts { get; set; }
 
-
         private readonly List<ProductImage> _productImages = new List<ProductImage>();
         public virtual IReadOnlyCollection<ProductImage> ProductImages => _productImages.AsReadOnly();
 
@@ -40,7 +39,6 @@ namespace NoName.Domain.Entities
                 }
             }
 
-           
             if (!_productImages.Any())
             {
                 isDefault = true;

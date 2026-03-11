@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NoName.Application.Features.Product.Commands.Create;
+using NoName.Application.Features.Product.DTOs;
 using NoName.Application.Features.Product.Queries.GetProductsPaging;
 
 namespace NoName.BackendApi.Controllers
@@ -15,12 +17,27 @@ namespace NoName.BackendApi.Controllers
         {
             _mediator = mediator;
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateProduct command)
+        // API - ADMIN
+        [HttpPost("create-product")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create([FromForm] CreateProduct command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
+
+            //try
+            //{
+            //    var result = await _mediator.Send(command);
+            //    return Ok(result);
+            //}
+            //catch (ValidationException ex) // Detect errors
+            //{
+            //    return BadRequest(ex.Errors.Select(x => x.ErrorMessage));
+            //}
+            //catch (Exception ex) // 
+            //{
+            //    return StatusCode(500, "Internal Server Error");
+            //}
         }
 
         [HttpGet("paging")]

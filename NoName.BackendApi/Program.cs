@@ -22,6 +22,8 @@ builder.Services.AddDbContext<NoNameDbContext>(options =>
 //DI
 builder.Services.AddApplication();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
+
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IProductAppService, ProductAppService>();
 

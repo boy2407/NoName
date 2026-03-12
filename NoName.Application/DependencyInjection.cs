@@ -10,7 +10,7 @@ namespace NoName.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            // import Validators
+            // import Validators on the current assembly
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddMediatR(cfg => {

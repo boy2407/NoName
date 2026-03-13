@@ -6,6 +6,7 @@ using NoName.Application.Services;
 using NoName.BackendApi;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
+using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,11 +20,11 @@ builder.Services.AddDbContext<NoNameDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NoNameDB")));
 
 
-//DI
+//DI 
 builder.Services.AddApplication();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
-
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IProductAppService, ProductAppService>();
 
@@ -32,13 +33,17 @@ builder.Services.AddScoped<IProductAppService, ProductAppService>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IApplicationAssemblyMarker).Assembly));
 // Resigter AutoMapper
 builder.Services.AddAutoMapper(typeof(IApplicationAssemblyMarker).Assembly);
-
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-   
+
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseMiddleware<ExceptionMiddleware>();

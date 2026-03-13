@@ -14,8 +14,11 @@ namespace NoName.Domain.Entities
         public int? ParentId { set; get; }
         public Status Status { set; get; }
 
-        public List<ProductInCategory> ProductInCategories { get; set; }
+        /// Family: A category can have a parent category and multiple child categories.
+        public Category ParentCategory { get; set; }
+        public List<Category> ChildCategories { get; set; } = new List<Category>();
 
-        public List<CategoryTranslation> CategoryTranslations { get; set; }
+        public List<ProductInCategory> ProductInCategories { get; set; }
+        public List<CategoryTranslation> CategoryTranslations { get; set; } = new List<CategoryTranslation>();
     }
 }

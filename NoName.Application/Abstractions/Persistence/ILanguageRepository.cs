@@ -13,10 +13,9 @@ namespace NoName.Application.Abstractions.Persistence
         Task<bool> CheckIfLanguageIsUsedAsync(string languageId);
         Task<List<Language>> GetAllAsync(CancellationToken ct = default);
         Task<Language?> GetByIdAsync(string id, CancellationToken ct = default);
-        Task AddAsync(Language language, CancellationToken ct = default);
-        Task DeleteAsync(Language language, CancellationToken ct = default);
+        void Add(Language language);
+        void Delete(Language language);
         Task<bool> ExistsAsync(string id, CancellationToken ct = default);
         Task<int> SaveChangesAsync(CancellationToken ct = default);
-        IQueryable<Language> Query();
     }
 }

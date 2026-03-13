@@ -39,7 +39,7 @@ namespace NoName.Application.Features.Languages.Commands.DeleteLanguage
                 throw new Exception("Cannot delete this language because it is being used in product or category translations.");
             }
 
-            _repository.DeleteAsync(language);
+            _repository.Delete(language);
             await _repository.SaveChangesAsync(ct);
 
             return true;

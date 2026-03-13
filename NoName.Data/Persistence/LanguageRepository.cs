@@ -26,10 +26,14 @@ namespace NoName.Infrastructure.Persistence
 
             return isUsedInProduct || isUsedInCategory;
         }
-        public IQueryable<Language> Query() => _context.Languages.AsQueryable();
-        public async Task AddAsync(Language language, CancellationToken ct = default)
+        public void Add(Language language)
         {
-            await _context.Languages.AddAsync(language, ct);
+            _context.Languages.Add(language);
+        }
+
+        public void Delete(Language language)
+        {
+            _context.Languages.Remove(language);
         }
 
         public async Task<bool> ExistsAsync(string id, CancellationToken ct = default)
@@ -37,14 +41,9 @@ namespace NoName.Infrastructure.Persistence
             return await _context.Languages.AnyAsync(l => l.Id == id, ct);
         }
 
-       public async Task DeleteAsync (Language language, CancellationToken ct = default)
-        {
-            _context.Languages.Remove(language);
-           await _context.SaveChangesAsync(ct);
-        }
         public async Task<List<Language>> GetAllAsync(CancellationToken ct = default)
         {
-            return await _context.Languages.ToListAsync(ct);
+            return await _context.Languages.AsNoTracking().ToListAsync(ct);
         }
 
         public async Task<Language?> GetByIdAsync(string id, CancellationToken ct = default)

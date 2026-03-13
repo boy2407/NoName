@@ -15,7 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <Folder Include="Features\Categories\Command\Get\" />
     <Folder Include="Features\Order\Commands\" />
     <Folder Include="Features\Order\DTO\" />
     <Folder Include="Features\Order\Queries\" />

@@ -21,10 +21,7 @@ namespace NoName.Application.Features.Languages.Commands.UpdateLanguage
 
             bool isUsed = await _repo.CheckIfLanguageIsUsedAsync(request.Id);
 
-            if (isUsed)
-            {
-                throw new Exception("Cannot delete this language because it is being used in product or category translations.");
-            }
+
 
             language.Name = request.Name;
             language.IsDefault = request.IsDefault;

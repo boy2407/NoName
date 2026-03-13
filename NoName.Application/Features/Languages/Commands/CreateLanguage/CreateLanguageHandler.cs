@@ -32,7 +32,7 @@ namespace NoName.Application.Features.Languages.Commands.CreateLanguage
                 throw new Exception($"Language with ID '{request.Id}' already exists.");
             }
             var language = _mapper.Map<Language>(request);
-            await _repository.AddAsync(language, ct);
+             _repository.Add(language);
             await _repository.SaveChangesAsync(ct);
 
             return language.Id;

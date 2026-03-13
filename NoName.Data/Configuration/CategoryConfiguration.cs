@@ -13,6 +13,12 @@ namespace NoName.Infrastructure.Configuration
         {
             builder.ToTable("Categories");
             builder.HasKey(x => x.Id);
+
+            builder.HasOne(x => x.ParentCategory) 
+               .WithMany(x => x.ChildCategories)
+               .HasForeignKey(x => x.ParentId)
+               .OnDelete(DeleteBehavior.Restrict);
+          
             builder.Property(x => x.SortOrder).IsRequired();
             builder.Property(x => x.IsShowOnHome).IsRequired();
             builder.Property(x => x.ParentId).IsRequired(false);

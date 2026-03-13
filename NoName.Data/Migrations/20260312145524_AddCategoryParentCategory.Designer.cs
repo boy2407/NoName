@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoName.Infrastructure.EF;
 
@@ -11,9 +12,11 @@ using NoName.Infrastructure.EF;
 namespace NoName.Infrastructure.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
-    partial class NoNameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260312145524_AddCategoryParentCategory")]
+    partial class AddCategoryParentCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,38 +238,6 @@ namespace NoName.Infrastructure.Migrations
                             IsShowOnHome = true,
                             SortOrder = 2,
                             Status = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsShowOnHome = true,
-                            ParentId = 1,
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IsShowOnHome = true,
-                            ParentId = 1,
-                            SortOrder = 2,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsShowOnHome = true,
-                            ParentId = 2,
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            IsShowOnHome = false,
-                            ParentId = 3,
-                            SortOrder = 1,
-                            Status = 1
                         });
                 });
 
@@ -339,7 +310,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 3,
                             CategoryId = 2,
                             LanguageId = "vi-VN",
-                            Name = "Áo nữ",
+                            Name = "Áo nứ",
                             SeoAlias = "ao-nu",
                             SeoDescription = "Sản phẩm áo thời trang nữ",
                             SeoTitle = "Sản phẩm áo thời trang nữ"
@@ -353,66 +324,6 @@ namespace NoName.Infrastructure.Migrations
                             SeoAlias = "Women-shirt",
                             SeoDescription = "shirt for Women",
                             SeoTitle = "shirt for Women "
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 3,
-                            LanguageId = "vi-VN",
-                            Name = "Áo sơ mi nam",
-                            SeoAlias = "ao-so-mi-nam",
-                            SeoDescription = "",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 3,
-                            LanguageId = "en-US",
-                            Name = "Men's Shirts",
-                            SeoAlias = "mens-shirts",
-                            SeoDescription = "",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 4,
-                            LanguageId = "vi-VN",
-                            Name = "Áo thun nam",
-                            SeoAlias = "ao-thun-nam",
-                            SeoDescription = "",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 4,
-                            LanguageId = "en-US",
-                            Name = "Men's T-Shirts",
-                            SeoAlias = "mens-tshirts",
-                            SeoDescription = "",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 6,
-                            LanguageId = "vi-VN",
-                            Name = "Sơ mi công sở",
-                            SeoAlias = "so-mi-cong-so",
-                            SeoDescription = "",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 6,
-                            LanguageId = "en-US",
-                            Name = "Office Shirts",
-                            SeoAlias = "office-shirts",
-                            SeoDescription = "",
-                            SeoTitle = ""
                         });
                 });
 
@@ -599,32 +510,12 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2026, 3, 13, 9, 57, 9, 182, DateTimeKind.Local).AddTicks(9643),
+                            DateCreated = new DateTime(2026, 3, 12, 21, 55, 23, 279, DateTimeKind.Local).AddTicks(969),
                             IsActive = true,
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
                             ViewCount = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateCreated = new DateTime(2026, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            OriginalPrice = 100000m,
-                            Price = 180000m,
-                            Stock = 50,
-                            ViewCount = 10
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DateCreated = new DateTime(2026, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            OriginalPrice = 300000m,
-                            Price = 450000m,
-                            Stock = 20,
-                            ViewCount = 5
                         });
                 });
 
@@ -687,36 +578,6 @@ namespace NoName.Infrastructure.Migrations
                         {
                             CategoryId = 1,
                             ProductId = 1
-                        },
-                        new
-                        {
-                            CategoryId = 3,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            CategoryId = 6,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            CategoryId = 1,
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            ProductId = 3
-                        },
-                        new
-                        {
-                            CategoryId = 5,
-                            ProductId = 3
                         });
                 });
 
@@ -797,42 +658,6 @@ namespace NoName.Infrastructure.Migrations
                             SeoAlias = "viet-tien-shirt",
                             SeoDescription = "Viet Tien shirt",
                             SeoTitle = "Viet Tien shirt"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "4-way stretch cotton",
-                            Details = " Description for product",
-                            LanguageId = "en-US",
-                            Name = "Men's Basic T-Shirt",
-                            ProductId = 2,
-                            SeoAlias = "mens-basic-tshirt",
-                            SeoDescription = "Men's Basic T-Shirt",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Váy lụa nhẹ nhàng",
-                            Details = "Mô tả sản phẩm",
-                            LanguageId = "vi-VN",
-                            Name = "Váy hoa nhí",
-                            ProductId = 3,
-                            SeoAlias = "vay-hoa-nhi",
-                            SeoDescription = "Váy hoa nhí",
-                            SeoTitle = ""
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Soft silk dress",
-                            Details = "Mô tả sản phẩm",
-                            LanguageId = "en-US",
-                            Name = "Floral Dress",
-                            ProductId = 3,
-                            SeoAlias = "floral-dress",
-                            SeoDescription = "Floral Dress",
-                            SeoTitle = ""
                         });
                 });
 
@@ -1140,7 +965,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad752c1d-15f6-41ca-b177-2bbe4b3f3851",
+                            ConcurrencyStamp = "bd3259dd-c167-4f7b-8b66-970c76da6582",
                             Dob = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyentrongnghia7949@gmail.com",
                             EmailConfirmed = true,
@@ -1149,7 +974,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "nguyentrongnghia7949@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC1OMD5FQE/gDfVI0LmtpxSV4FXRCw8jddAYKVle09QubXGfkdl+cs2bktLZAYEo1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMosH59WeiYLezon/BM8zOOyY9MtT8wrAa3sOOZbN93ZTFR5oM6TlDwuT2O6vu6oRA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

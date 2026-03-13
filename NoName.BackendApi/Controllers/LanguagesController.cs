@@ -19,22 +19,7 @@ namespace NoName.BackendApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
-        {
-            var query = new GetLanguages();
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-
-        [HttpGet("GetById-{id}")]
-        public async Task<IActionResult> GetById(string id)
-        {
-
-            var result = await _mediator.Send(new GetLanguageById(id));
-            return Ok(result);
-        }
-
+       
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateLanguage command)
         {
@@ -57,5 +42,22 @@ namespace NoName.BackendApi.Controllers
             var result = await _mediator.Send(new DeleteLanguage(id));
             return Ok(result);
         }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetLanguages();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("GetById-{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+
+            var result = await _mediator.Send(new GetLanguageById(id));
+            return Ok(result);
+        }
+
     }
 }

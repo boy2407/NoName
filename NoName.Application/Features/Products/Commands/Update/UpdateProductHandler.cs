@@ -22,7 +22,7 @@ namespace NoName.Application.Features.Product.Commands.Update
 
         public async Task<int> Handle(UpdateProduct request, CancellationToken ct)
         {
-            var product = await _productRepository.GetByIdWithDetailsAsync(request.Id, ct);
+            var product = await _productRepository.GetByIdAsync(request.Id, ct);
             if (product == null)
             {
                 throw new NotFoundException($"cannot find product with id : {request.Id}");

@@ -35,16 +35,16 @@ namespace NoName.Application.Features.Product.Queries.GetProductsByCategory
             var items = await productQuery
                 .Select(x => new ProductViewModel
                 {
-                    Id = x.Product.Id,
-                    Name = x.Translation != null ? x.Translation.Name : string.Empty,
-                    Description = x.Translation != null ? x.Translation.Description : string.Empty,
-                    Details = x.Translation != null ? x.Translation.Details : string.Empty,
-                    SeoAlias = x.Translation != null ? x.Translation.SeoAlias : string.Empty,
-                    Price = x.Product.Price,
-                    OriginalPrice = x.Product.OriginalPrice,
-                    Stock = x.Product.Stock,
-                    CategoryIds = x.Product.ProductInCategories.Select(pc => pc.CategoryId).ToList(),
-                    LanguageId = languageId
+                    //Id = x.Product.Id,
+                    //Name = x.Translation != null ? x.Translation.Name : string.Empty,
+                    //Description = x.Translation != null ? x.Translation.Description : string.Empty,
+                    //Details = x.Translation != null ? x.Translation.Details : string.Empty,
+                    //SeoAlias = x.Translation != null ? x.Translation.SeoAlias : string.Empty,
+                    //Price = x.Product.Price,
+                    //OriginalPrice = x.Product.OriginalPrice,
+                    //Stock = x.Product.Stock,
+                    //CategoryIds = x.Product.ProductInCategories.Select(pc => pc.CategoryId).ToList(),
+                    //LanguageId = languageId
                 })
                 .ToListAsync(cancellationToken);
 

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using NoName.Application;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
@@ -26,7 +27,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IMediaService, MediaService>();
-builder.Services.AddScoped<IProductAppService, ProductAppService>();
+builder.Services.AddHttpContextAccessor(); 
+builder.Services.AddScoped<ILanguageService, LanguageService>();
 
 
 // Resigter  MediatR 
@@ -48,6 +50,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseMiddleware<ExceptionMiddleware>();
 }
+
+
+app.UseStaticFiles();
+
+
 
 app.UseHttpsRedirection();
 

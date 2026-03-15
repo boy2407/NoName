@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NoName.Application.Abstractions;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
@@ -11,17 +13,19 @@ using System.Threading.Tasks;
 
 namespace NoName.Infrastructure
 {
-    public static class InfrastructureRegistration
+    public static class DependencyInjection
     {
-        //public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    //services.AddDbContext<NoNameDbContext>(options =>
-        //    //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<NoNameDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
 
-        //    //services.AddScoped<ICategoryRepository, CategoryRepository>();
-        //    //// Register other repositories and services here 
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
-        //    //return services;
-        //}
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            return services;
+        }
     }
 }

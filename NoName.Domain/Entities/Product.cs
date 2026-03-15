@@ -7,27 +7,37 @@ namespace NoName.Domain.Entities
 {
     public class Product
     {
-        public int Id { set; get; }
-        public decimal Price { set; get; }
-        public decimal OriginalPrice { set; get; }
-        public int Stock { set; get; }
-        public int ViewCount { set; get; }
-        public DateTime DateCreated { set; get; }
+        public int Id { get; set; }
+        public int ViewCount { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime? DateModified { get; set; }
+        public List<ProductTranslation> ProductTranslations { get; set; }
+
+        public IReadOnlyCollection<ProductVariant> ProductVariants => _productVariants.AsReadOnly();
+        private readonly List<ProductVariant> _productVariants = new List<ProductVariant>();
 
         //public bool? IsFeatured { get; set; }
         public List<ProductInCategory> ProductInCategories { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
-
-        //public object ProductImages { get; internal set; }
         public List<Cart> Carts { get; set; }
-        public List<ProductTranslation> ProductTranslations { get; set; }
+
         public List<PromotionProduct> PromotionProducts { get; set; }
 
         private readonly List<ProductImage> _productImages = new List<ProductImage>();
-        public virtual IReadOnlyCollection<ProductImage> ProductImages => _productImages.AsReadOnly();
+        public  IReadOnlyCollection<ProductImage> ProductImages => _productImages.AsReadOnly();
+        public void AddVariant(string sku, decimal price, decimal originalPrice)
+        {
+            if (_productVariants.Any(v => v.SKU == sku))
+                throw new Exception("SKU already exist");
 
+            _productVariants.Add(new ProductVariant
+            {
+                SKU = sku,
+                Price = price,
+                OriginalPrice = originalPrice
+            });
+        }
         public void AddImage(string path, long fileSize, bool isDefault, string caption = "")
         {
             

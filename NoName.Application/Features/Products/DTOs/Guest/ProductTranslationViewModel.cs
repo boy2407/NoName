@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Product.DTOs
+namespace NoName.Application.Features.Products.DTOs.Guest
 {
     public class ProductTranslationViewModel
     {

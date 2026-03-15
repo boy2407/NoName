@@ -5,6 +5,7 @@ using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
 using NoName.Application.Services;
 using NoName.BackendApi;
+using NoName.Infrastructure;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
 using System.Text.Json.Serialization;
@@ -17,17 +18,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<NoNameDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NoNameDB")));
+//builder.Services.AddDbContext<NoNameDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("NoNameDB")));
 
 
 //DI 
 builder.Services.AddApplication();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IMediaService, MediaService>();
-builder.Services.AddHttpContextAccessor(); 
 builder.Services.AddScoped<ILanguageService, LanguageService>();
 
 

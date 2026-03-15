@@ -23,7 +23,10 @@ namespace NoName.Infrastructure.EF
             modelBuilder.ApplyConfiguration(new ContactConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new InventoryConfiguration());
+            modelBuilder.ApplyConfiguration(new InventoryTransactionConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductVariantConfiguration());
             modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
@@ -49,7 +52,14 @@ namespace NoName.Infrastructure.EF
             modelBuilder.Seed();
 
         }
+
+
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductVariant> ProductVariants { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<InventoryTransaction> InventoryTransactions { get; set; }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<AppConfig> AppConfigs { get; set; }
         public DbSet<Cart> Carts { get; set; }

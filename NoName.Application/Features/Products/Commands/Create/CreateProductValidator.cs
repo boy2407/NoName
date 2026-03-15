@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using NoName.Application.Abstractions.Persistence;
-using NoName.Application.Features.Product.DTOs;
 using NoName.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,14 +18,6 @@ namespace NoName.Application.Features.Products.Commands.Create
         {
             _categoryRepository = categoryRepository;
             _languageRepository = languageRepository;
-
-            RuleFor(x => x.Price)
-                 .GreaterThan(0).WithMessage("Price must be greater than 0");
-            RuleFor(x => x.OriginalPrice)
-                .GreaterThan(0).WithMessage("Original price must be greater than 0");
-            RuleFor(x => x.Stock)
-                .GreaterThanOrEqualTo(0).WithMessage("Stock quantity cannot be negative");
-
 
             //// category rules
             RuleForEach(x => x.CategoryIds)

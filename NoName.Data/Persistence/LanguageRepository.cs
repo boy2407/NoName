@@ -59,6 +59,15 @@ namespace NoName.Infrastructure.Persistence
                 .Select(l => l.Id)
                 .ToListAsync(ct);
         }
+
+        public async Task<List<string>> GetExistingIdsAsync(List<string> ids, CancellationToken ct)
+        {
+          
+            return await _context.Languages
+                .Where(x => ids.Contains(x.Id)) 
+                .Select(x => x.Id)
+                .ToListAsync(ct);
+        }
         public async Task<int> SaveChangesAsync(CancellationToken ct = default)
         {
             return await _context.SaveChangesAsync(ct);

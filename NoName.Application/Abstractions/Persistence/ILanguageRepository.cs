@@ -18,5 +18,6 @@ namespace NoName.Application.Abstractions.Persistence
         void Delete(Language language);
         Task<bool> ExistsAsync(string id, CancellationToken ct = default);
         Task<int> SaveChangesAsync(CancellationToken ct = default);
+        Task<List<string>> GetExistingIdsAsync(List<string> ids, CancellationToken ct);
     }
 }

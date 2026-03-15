@@ -1,7 +1,8 @@
 ﻿    using AutoMapper;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
-    using NoName.Application.Abstractions.Persistence;
+using NoName.Application.Abstractions;
+using NoName.Application.Abstractions.Persistence;
     using NoName.Application.Abstractions.Services;
     using NoName.Domain.Entities;
     using System;
@@ -10,45 +11,66 @@
     using System.Threading.Tasks;
 namespace NoName.Application.Features.Products.Commands.Create
 {
-    public class CreateProductHandler : IRequestHandler<CreateProduct, bool>, IRequestHandler<AddProductImage, bool>
+    public class CreateProductHandler :IRequestHandler<CreateProduct, int>,IRequestHandler<AddProductImage, bool>,IRequestHandler<AddProductVariant, bool>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork; // Quản lý chung các Repositories
         private readonly IMediaService _mediaService;
         private readonly IMapper _mapper;
 
-        public CreateProductHandler(IProductRepository productRepository, IMediaService mediaService, IMapper mapper)
+        public CreateProductHandler(IUnitOfWork unitOfWork, IMediaService mediaService, IMapper mapper)
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
             _mediaService = mediaService;
             _mapper = mapper;
         }
-        public async Task<bool> Handle(CreateProduct request, CancellationToken ct)
+        public async Task<int> Handle(CreateProduct request, CancellationToken ct)
         {
-            //auto mapping
             var product = _mapper.Map<NoName.Domain.Entities.Product>(request);
             product.DateCreated = DateTime.Now;
-            product.DateModified = DateTime.Now;
             product.ViewCount = 0;
-            //Save Database
-            await _productRepository.AddAsync(product, ct);
-            await _productRepository.SaveChangesAsync(ct);
+            await _unitOfWork.Products.AddAsync(product, ct);
+            await _unitOfWork.SaveChangesAsync(ct);
 
-            return true;
+            return product.Id;
         }
-        public async Task<bool> Handle(AddProductImage request, CancellationToken cancellationToken)
-        {
 
-            var product = await _productRepository.GetProductWithImagesAsync(request.ProductId, cancellationToken);
+        // ADD VARIANT & SKU
+        public async Task<bool> Handle(AddProductVariant request, CancellationToken ct)
+        {
+            var product = await _unitOfWork.Products.GetByIdAsync(request.ProductId, ct);
             if (product == null) return false;
+
+            product.AddVariant(request.SKU, request.Price, request.OriginalPrice);
+            var newVariant = product.ProductVariants.LastOrDefault(x => x.SKU == request.SKU);
+
+            if (newVariant != null)
+            {
+                newVariant.Inventory = new Inventory
+                {
+                    PhysicalQuantity = request.Stock,
+                    ReservedQuantity = 0,
+                    LastUpdated = DateTime.Now
+                };
+            }
+
+            // Lưu thông qua UnitOfWork
+            return await _unitOfWork.SaveChangesAsync(ct) > 0;
+        }
+
+        public async Task<bool> Handle(AddProductImage request, CancellationToken ct)
+        {
+            var product = await _unitOfWork.Products.GetProductWithImagesAsync(request.ProductId, ct);
+            if (product == null) return false;
+
             var caption = product.ProductTranslations
-                                 .FirstOrDefault(x => string.Equals(x.LanguageId, "vi-VN", StringComparison.OrdinalIgnoreCase))
+                                 .FirstOrDefault(x => x.LanguageId.Equals("vi-VN", StringComparison.OrdinalIgnoreCase))
                                  ?.Name ?? "Product Image";
+
             if (request.ThumbnailImage != null)
             {
                 var path = await _mediaService.UploadFileAsync(request.ThumbnailImage, "products");
                 product.AddImage(path, request.ThumbnailImage.Length, isDefault: true, caption: caption);
             }
-
 
             if (request.GalleryImages != null && request.GalleryImages.Any())
             {
@@ -59,8 +81,7 @@ namespace NoName.Application.Features.Products.Commands.Create
                 }
             }
 
-            await _productRepository.SaveChangesAsync(cancellationToken);
-            return true;
+            return await _unitOfWork.SaveChangesAsync(ct) > 0;
         }
 
     }

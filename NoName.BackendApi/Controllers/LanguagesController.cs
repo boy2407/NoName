@@ -4,7 +4,7 @@ using NoName.Application.Features.Languages.Commands.CreateLanguage;
 using NoName.Application.Features.Languages.Commands.DeleteLanguage;
 using NoName.Application.Features.Languages.Commands.UpdateLanguage;
 using NoName.Application.Features.Languages.Queries.GetLanguage;
-using NoName.Application.Features.Languages.Queries.GetLanguageById;    
+using NoName.Application.Features.Languages.Queries.GetLanguageById;
 
 namespace NoName.BackendApi.Controllers
 {
@@ -20,7 +20,7 @@ namespace NoName.BackendApi.Controllers
         }
 
        
-        [HttpPost("create")]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateLanguage command)
         {
             var result = await _mediator.Send(command);
@@ -28,7 +28,7 @@ namespace NoName.BackendApi.Controllers
             return Ok(result);
         }
 
-        [HttpPut("update-{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguage command)
         {
             command.Id = id;
@@ -36,14 +36,14 @@ namespace NoName.BackendApi.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("delete-{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             var result = await _mediator.Send(new DeleteLanguage(id));
             return Ok(result);
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var query = new GetLanguages();
@@ -51,7 +51,7 @@ namespace NoName.BackendApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetById-{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
 

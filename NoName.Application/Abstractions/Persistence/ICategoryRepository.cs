@@ -23,6 +23,7 @@ namespace NoName.Application.Abstractions.Persistence
         Task<Category> GetByIdAsync(int id, CancellationToken ct = default);
         Task<List<Category>> GetByParentIdAsync(int? parentId, string languageId, CancellationToken ct);
         Task<bool> HasChildrenAsync(int id, CancellationToken ct);
+        Task<List<int>> GetExistingIdsAsync(List<int> ids, CancellationToken ct);
     }
 
 }

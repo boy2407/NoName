@@ -12,10 +12,12 @@ namespace NoName.Application.Abstractions.Persistence
     {
         Task<bool> CheckIfLanguageIsUsedAsync(string languageId);
         Task<List<Language>> GetAllAsync(CancellationToken ct = default);
+        Task<List<string>> GetAllLanguageIdsAsync(CancellationToken ct = default);
         Task<Language?> GetByIdAsync(string id, CancellationToken ct = default);
         void Add(Language language);
         void Delete(Language language);
         Task<bool> ExistsAsync(string id, CancellationToken ct = default);
         Task<int> SaveChangesAsync(CancellationToken ct = default);
+        Task<List<string>> GetExistingIdsAsync(List<string> ids, CancellationToken ct);
     }
 }

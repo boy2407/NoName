@@ -81,6 +81,13 @@ namespace NoName.Infrastructure.Persistence
             return _mapper.Map<CategoryViewModel>(category, opt => opt.Items["LanguageId"] = languageId);
         }
 
+        public async Task<List<int>> GetExistingIdsAsync(List<int> ids, CancellationToken ct)
+        {
+            return await _context.Categories
+                .Where(x => ids.Contains(x.Id))
+                .Select(x => x.Id)
+                .ToListAsync(ct);
+        }
 
         public  async Task<int> SaveChangesAsync(CancellationToken ct){
             return await _context.SaveChangesAsync(ct);

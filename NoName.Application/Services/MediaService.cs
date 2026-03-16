@@ -15,13 +15,26 @@ namespace NoName.Application.Services
 
         public MediaService(IWebHostEnvironment webHostEnvironment)
         {
-            _userContentFolder = Path.Combine(webHostEnvironment.WebRootPath, USER_CONTENT_FOLDER_NAME);
+
+            string rootPath = webHostEnvironment.WebRootPath;
+            if (string.IsNullOrEmpty(rootPath))
+            {
+                rootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            }
+
+            _userContentFolder = Path.Combine(rootPath, USER_CONTENT_FOLDER_NAME);
+   
+            if (!Directory.Exists(_userContentFolder))
+            {
+                Directory.CreateDirectory(_userContentFolder);
+            }
+
         }
         public async Task<string> UploadFileAsync(IFormFile file, string folderName)
         {
             var datePath = Path.Combine(DateTime.Now.ToString("yyyy"),
-                                         DateTime.Now.ToString("MM"),
-                                         DateTime.Now.ToString("dd"));
+                                        DateTime.Now.ToString("MM"),
+                                        DateTime.Now.ToString("dd"));
 
             var fullFolderPath = Path.Combine(_userContentFolder, folderName, datePath);
 

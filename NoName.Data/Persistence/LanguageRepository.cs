@@ -50,6 +50,24 @@ namespace NoName.Infrastructure.Persistence
         {
             return await _context.Languages.FindAsync(new object[] { id }, ct);
         }
+
+        public async Task<List<string>> GetAllLanguageIdsAsync(CancellationToken ct = default)
+        {
+           
+            return await _context.Languages
+                .AsNoTracking()
+                .Select(l => l.Id)
+                .ToListAsync(ct);
+        }
+
+        public async Task<List<string>> GetExistingIdsAsync(List<string> ids, CancellationToken ct)
+        {
+          
+            return await _context.Languages
+                .Where(x => ids.Contains(x.Id)) 
+                .Select(x => x.Id)
+                .ToListAsync(ct);
+        }
         public async Task<int> SaveChangesAsync(CancellationToken ct = default)
         {
             return await _context.SaveChangesAsync(ct);

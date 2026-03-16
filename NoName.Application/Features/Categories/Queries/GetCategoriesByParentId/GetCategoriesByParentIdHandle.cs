@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using NoName.Application.Abstractions.Persistence;
+using NoName.Application.Abstractions.Services;
 using NoName.Application.Features.Categories.DTOs;
 using NoName.Domain.Entities;
 using System;
@@ -14,17 +15,21 @@ namespace NoName.Application.Features.Categories.Queries.GetCategoriesByParentId
 {
     public class GetCategoriesByParentIdHandle : IRequestHandler<GetCategoriesByParentId, List<CategoryViewModel>>
     {
-        ICategoryRepository _categoryRepository;
-        ILanguageRepository _languageRepository; 
-        IMapper _mapper;
-        public GetCategoriesByParentIdHandle(ICategoryRepository categoryRepository, IMapper mapper, ILanguageRepository languageRepository)
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ILanguageRepository _languageRepository;
+        private readonly IMapper _mapper;
+        private readonly ILanguageService _languageService;
+        public GetCategoriesByParentIdHandle(ICategoryRepository categoryRepository, IMapper mapper, ILanguageRepository languageRepository, ILanguageService languageService)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;
             _languageRepository = languageRepository;
+            _languageService = languageService;
         }
         public async Task<List<CategoryViewModel>> Handle(GetCategoriesByParentId request, CancellationToken ct)
         {
+            var currentLang = await _languageService.GetCurrentLanguage();
+            request.LanguageId = string.IsNullOrEmpty(request.LanguageId) ? currentLang : request.LanguageId;
             var categories = await _categoryRepository.GetByParentIdAsync(request.ParentId, request.LanguageId, ct);
             var result = _mapper.Map<List<CategoryViewModel>>(categories);
             return result;

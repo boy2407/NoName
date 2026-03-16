@@ -1,0 +1,26 @@
+﻿using NoName.Domain.Enums;
+using System;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using System.Text;
+
+namespace NoName.Domain.Entities
+{
+    public class Promotion
+    {
+        public int Id { set; get; }
+        public DateTime FromDate { set; get; }
+        public DateTime ToDate { set; get; }
+        public bool ApplyForAll { set; get; }
+        public int? DiscountPercent { set; get; }
+        public decimal? DiscountAmount { set; get; }
+        //public string ProductIds { set; get; }
+        //public string ProductCategoryIds { set; get; }
+        public Status Status { set; get; }
+        public string Name { set; get; }
+        public bool IsActive { get; set; } = true;
+        public List<PromotionProduct> PromotionProducts { get; set; }
+
+
+    }
+}

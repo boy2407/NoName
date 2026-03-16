@@ -33,7 +33,7 @@ namespace NoName.Application.Features.Products.Queries.GetProductsById
 
             var lang = await _languageService.GetCurrentLanguage();
             var product = await _productRepository.GetByIdWithDetailsAsync<ProductViewModel>(request.Id, lang, ct);
-            if (product == null)
+            if (product == null||!product.IsActive)
             {
                 throw new Exception($"Product Id does not exist: {request.Id}");
             }

@@ -8,6 +8,7 @@ using NoName.Application.Common;
 using NoName.Application.Features.Product.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.Commands.Update.common;
+using NoName.Application.Features.Products.Commands.Update.Variants;
 using NoName.Application.Features.Products.DTOs.Admin;
 using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Application.Features.Products.Queries.GetProductsById;
@@ -23,7 +24,8 @@ namespace NoName.BackendApi.Controllers
         {
             _mediator = mediator;
         }
-        // API - ADMIN
+
+        //Create
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateProduct command)
         {
@@ -51,6 +53,7 @@ namespace NoName.BackendApi.Controllers
             return Ok("Images uploaded successfully.");
         }
 
+        // Update
         [HttpPut("{id}")]
         public async Task<ActionResult<ApiResult<bool>>> Update(int id, [FromBody] UpdateProduct command)
         {
@@ -59,6 +62,21 @@ namespace NoName.BackendApi.Controllers
         }
 
 
+        [HttpPut("{productId}/variants")]
+        public async Task<ActionResult<ApiResult<bool>>> UpdateVariants(int productId, [FromBody] List<UpdateVariant> variants)
+        {
+            var command = new UpdateProductVariant
+            {
+                ProductId = productId,
+                Variants = variants
+            };
+
+            return await _mediator.Send(command);
+        }
+
+
+
+        //Queries 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {

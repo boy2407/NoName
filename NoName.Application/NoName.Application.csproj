@@ -20,7 +20,6 @@
     <Folder Include="Features\Order\Queries\" />
     <Folder Include="Features\Products\Commands\Update\Inventory\" />
     <Folder Include="Features\Products\Commands\Update\Images\" />
-    <Folder Include="Features\Products\Commands\Update\Variants\" />
   </ItemGroup>
 
   <ItemGroup>

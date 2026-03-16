@@ -29,8 +29,7 @@ namespace NoName.Application.Features.Product.Queries.GetProductsPaging
 
         public async Task<PagedResult<ProductViewModel>> Handle(GetProductsPagingRequest request, CancellationToken cancellationToken)
         {
-
-          
+  
             var currentLang = await _languageService.GetCurrentLanguage();
             if(request.LanguageId == null)
             {

@@ -13,7 +13,7 @@ namespace NoName.Application.Abstractions
         IProductRepository Products { get; }
         ICategoryRepository Categories { get; }
         ILanguageRepository Languages { get; }
-
+        IProductVariantRepository ProductVariants { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

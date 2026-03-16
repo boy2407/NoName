@@ -23,7 +23,7 @@ namespace NoName.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+            services.AddScoped<IProductVariantRepository, ProductVariantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }

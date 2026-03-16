@@ -30,7 +30,7 @@ namespace NoName.Application.Features.Products.Commands.Update.common
         {
 
             var product = await _unitOfWork.Products.GetProductForUpdateAsync(request.Id, ct);
-            if (product == null) return ApiResult<bool>.Failure("Not Found Product");
+            if (product == null||!product.IsActive) return ApiResult<bool>.Failure("Not Product Found ");
 
             var distinctLangIds = request.Translations.Select(x => x.LanguageId).Distinct().ToList();
             var distinctCategoryIds = request.CategoryIds.Distinct().ToList();

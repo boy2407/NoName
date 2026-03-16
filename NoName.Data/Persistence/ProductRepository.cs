@@ -1,7 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Azure.Core;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
-using NoName.Application.Features.Product.DTOs;
+using NoName.Application.Features.Product.Queries.GetProductsPaging;
+using NoName.Application.Features.Products.Commands.Create;
+using NoName.Application.Features.Products.DTOs;
+using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using System;
@@ -10,67 +17,138 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace NoName.Infrastructure.Persistence
 {
     public class ProductRepository : IProductRepository
     {
         private readonly NoNameDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductRepository(NoNameDbContext context)
+        public ProductRepository(NoNameDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public IQueryable<Product> Query() => _context.Products.AsQueryable();
-        public async Task<int> SaveChangesAsync(CancellationToken ct = default)
-        {
-          
-            return await _context.SaveChangesAsync(ct);
-        }
+        // --- COMMANDS ---
+
         public async Task AddAsync(Product product, CancellationToken cancellationToken)
         {
             await _context.Products.AddAsync(product, cancellationToken);
         }
 
-        public async Task<Product?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Products.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-        }
-
-        public async Task<Product?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken)
-        {
-            return await _context.Products
-                .Include(p => p.ProductTranslations)
-                .Include(p => p.ProductInCategories)
-                .Include(x => x.ProductImages)
-                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            return await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task UpdateAsync(Product product, CancellationToken cancellationToken)
         {
-            // If the entity is already being tracked, update its current values
             var tracked = _context.Products.Local.FirstOrDefault(p => p.Id == product.Id);
             if (tracked == null)
             {
-                // Attach and mark modified so changes are saved on SaveChangesAsync
                 _context.Products.Attach(product);
                 _context.Entry(product).State = EntityState.Modified;
             }
             else
             {
-                // Copy values to the tracked entity to avoid duplicate tracking
                 _context.Entry(tracked).CurrentValues.SetValues(product);
             }
-
             await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(Product product, CancellationToken cancellationToken)
         {
             _context.Products.Remove(product);
+            await Task.CompletedTask;
         }
 
+        // --- QUERIES
+
+        public async Task<bool> ExistsAsync(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Products.AnyAsync(x => x.Id == id, cancellationToken);
+        }
+
+        //Check SKU
+        public async Task<bool> CheckSkuExistsAsync(string sku, CancellationToken ct)
+        {
+            return await _context.ProductVariants.AnyAsync(v => v.SKU == sku, ct);
+        }
+
+        public async Task<Product?> GetByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Products
+                .Include(p => p.ProductTranslations)
+                .Include(p => p.ProductVariants) // Load luôn variant
+                    .ThenInclude(v => v.Inventory) // Load luôn kho
+                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        }
+
+        public async Task<Product?> GetProductWithImagesAsync(int id, CancellationToken ct)
+        {
+            return await _context.Products
+                .Include(p => p.ProductTranslations)
+                .Include(p => p.ProductImages)
+                .FirstOrDefaultAsync(x => x.Id == id, ct);
+        }
+
+       
+        public async Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingRequest request, CancellationToken ct = default)
+        {
+            var query = _context.Products.AsNoTracking();
+
+            // Filter theo ngôn ngữ và từ khóa
+            if (!string.IsNullOrWhiteSpace(request.Keyword))
+            {
+                query = query.Where(p => p.ProductTranslations.Any(t =>
+                    t.LanguageId == request.LanguageId && t.Name.Contains(request.Keyword)));
+            }
+
+            // Filter theo Category
+            if (request.CategoryId.HasValue && request.CategoryId > 0)
+            {
+                query = query.Where(p => p.ProductInCategories.Any(pc => pc.CategoryId == request.CategoryId));
+            }
+
+            int totalRecords = await query.CountAsync(ct);
+
+            var items = await query
+                .OrderByDescending(p => p.DateCreated)
+                .Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider, new { lang = request.LanguageId })
+                .ToListAsync(ct);
+
+            return new PagedResult<ProductViewModel>
+            {
+                Items = items,
+                TotalRecords = totalRecords,
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize
+            };
+        }
+
+        public IQueryable<Product> Query() => _context.Products.AsQueryable();
+        public async Task<Product> GetProductForUpdateAsync(int id, CancellationToken ct)
+        {
+            return await _context.Products
+                .Include(p => p.ProductInCategories) // Load danh mục để so khớp
+                .Include(p => p.ProductTranslations) // Load bản dịch để so khớp
+                .FirstOrDefaultAsync(p => p.Id == id, ct);
+        }
+        public async Task<T> GetByIdWithDetailsAsync<T>(int id, string languageId, CancellationToken cancellationToken)
+        where T : class
+        {
+            //  ProjectTo auto include related entities 
+            return await _context.Products
+                .Where(p => p.Id == id)
+                .ProjectTo<T>(_mapper.ConfigurationProvider, new { lang = languageId }) 
+                .AsNoTracking()
+                .FirstOrDefaultAsync(cancellationToken);
+        }
 
     }
 }

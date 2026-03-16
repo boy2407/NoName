@@ -51,27 +51,51 @@ namespace NoName.Infrastructure.Extensions
                 new CategoryTranslation() { Id = 4, CategoryId = 2, Name = "Women shirt", LanguageId = "en-US", SeoAlias = "Women-shirt", SeoDescription = "shirt for Women", SeoTitle = "shirt for Women " },
 
                 // Translate Id 3
-                new CategoryTranslation() { Id = 5, CategoryId = 3, Name = "Áo sơ mi nam", LanguageId = "vi-VN", SeoAlias = "ao-so-mi-nam", SeoDescription ="", SeoTitle = "", },
-                new CategoryTranslation() { Id = 6, CategoryId = 3, Name = "Men's Shirts", LanguageId = "en-US", SeoAlias = "mens-shirts", SeoDescription ="", SeoTitle = "", },
+                new CategoryTranslation() { Id = 5, CategoryId = 3, Name = "Áo sơ mi nam", LanguageId = "vi-VN", SeoAlias = "ao-so-mi-nam", SeoDescription = "", SeoTitle = "", },
+                new CategoryTranslation() { Id = 6, CategoryId = 3, Name = "Men's Shirts", LanguageId = "en-US", SeoAlias = "mens-shirts", SeoDescription = "", SeoTitle = "", },
 
                 // Translate Id 4
-                new CategoryTranslation() { Id = 7, CategoryId = 4, Name = "Áo thun nam", LanguageId = "vi-VN", SeoAlias = "ao-thun-nam", SeoDescription ="", SeoTitle = "", },
-                new CategoryTranslation() { Id = 8, CategoryId = 4, Name = "Men's T-Shirts", LanguageId = "en-US", SeoAlias = "mens-tshirts", SeoDescription ="", SeoTitle = "", },
+                new CategoryTranslation() { Id = 7, CategoryId = 4, Name = "Áo thun nam", LanguageId = "vi-VN", SeoAlias = "ao-thun-nam", SeoDescription = "", SeoTitle = "", },
+                new CategoryTranslation() { Id = 8, CategoryId = 4, Name = "Men's T-Shirts", LanguageId = "en-US", SeoAlias = "mens-tshirts", SeoDescription = "", SeoTitle = "", },
 
                 // Translate Id 6
-                new CategoryTranslation() { Id = 9, CategoryId = 6, Name = "Sơ mi công sở", LanguageId = "vi-VN", SeoAlias = "so-mi-cong-so", SeoDescription ="", SeoTitle = "", },
-                new CategoryTranslation() { Id = 10, CategoryId = 6, Name = "Office Shirts", LanguageId = "en-US", SeoAlias = "office-shirts", SeoDescription ="", SeoTitle = "", }
+                new CategoryTranslation() { Id = 9, CategoryId = 6, Name = "Sơ mi công sở", LanguageId = "vi-VN", SeoAlias = "so-mi-cong-so", SeoDescription = "", SeoTitle = "", },
+                new CategoryTranslation() { Id = 10, CategoryId = 6, Name = "Office Shirts", LanguageId = "en-US", SeoAlias = "office-shirts", SeoDescription = "", SeoTitle = "", }
             );
 
 
             modelBuilder.Entity<Product>().HasData(
+                new Product() { Id = 1, DateCreated = new DateTime(2026, 03, 1), ViewCount = 0, IsActive = true },// Sơ mi
+                new Product() { Id = 2, DateCreated = new DateTime(2026, 03, 1), ViewCount = 10, IsActive = true },// Áo thun
+                new Product() { Id = 3, DateCreated = new DateTime(2026, 03, 1), ViewCount = 5, IsActive = true }// Váy
+            );
 
-                new Product() { Id = 1, DateCreated = DateTime.Now, OriginalPrice = 100000, Price = 200000, ViewCount = 0, Stock = 0, },
+            modelBuilder.Entity<ProductVariant>().HasData(
+                //  Sơ mi 
+                new ProductVariant() { Id = 1, ProductId = 1, SKU = "SM-VT-M", OriginalPrice = 100000, Price = 200000 },
+                new ProductVariant() { Id = 2, ProductId = 1, SKU = "SM-VT-L", OriginalPrice = 100000, Price = 200000 },
 
-                new Product() { Id = 2, DateCreated = new DateTime(2026, 03, 11), OriginalPrice = 100000, Price = 180000, Stock = 50, ViewCount = 10 },
+                // Áo thun
+                new ProductVariant() { Id = 3, ProductId = 2, SKU = "AT-BS-M", OriginalPrice = 100000, Price = 180000 },
+                new ProductVariant() { Id = 4, ProductId = 2, SKU = "AT-BS-L", OriginalPrice = 100000, Price = 180000 },
 
-                new Product() { Id = 3, DateCreated = new DateTime(2026, 03, 12), OriginalPrice = 300000, Price = 450000, Stock = 20, ViewCount = 5 }
+                //  Váy
+                new ProductVariant() { Id = 5, ProductId = 3, SKU = "VH-01-M", OriginalPrice = 300000, Price = 450000 },
+                new ProductVariant() { Id = 6, ProductId = 3, SKU = "VH-01-L", OriginalPrice = 300000, Price = 450000 }
+            );
 
+            modelBuilder.Entity<Inventory>().HasData(
+                // Kho cho SP 1
+                new Inventory() { Id = 1, ProductVariantId = 1, PhysicalQuantity = 25, ReservedQuantity = 0, LastUpdated = DateTime.Now }, // Size M
+                new Inventory() { Id = 2, ProductVariantId = 2, PhysicalQuantity = 25, ReservedQuantity = 0, LastUpdated = DateTime.Now }, // Size L
+
+                // Kho cho SP 2
+                new Inventory() { Id = 3, ProductVariantId = 3, PhysicalQuantity = 30, ReservedQuantity = 0, LastUpdated = DateTime.Now }, // Size M
+                new Inventory() { Id = 4, ProductVariantId = 4, PhysicalQuantity = 20, ReservedQuantity = 0, LastUpdated = DateTime.Now }, // Size L
+
+                // Kho cho SP 3
+                new Inventory() { Id = 5, ProductVariantId = 5, PhysicalQuantity = 10, ReservedQuantity = 0, LastUpdated = DateTime.Now }, // Size M
+                new Inventory() { Id = 6, ProductVariantId = 6, PhysicalQuantity = 10, ReservedQuantity = 0, LastUpdated = DateTime.Now }  // Size L
              );
 
             modelBuilder.Entity<ProductTranslation>().HasData(
@@ -108,7 +132,7 @@ namespace NoName.Infrastructure.Extensions
                     Name = "Men's Basic T-Shirt",
                     SeoAlias = "mens-basic-tshirt",
                     SeoDescription = "Men's Basic T-Shirt",
-                    SeoTitle="",
+                    SeoTitle = "",
                     Details = " Description for product",
                     Description = "4-way stretch cotton"
                 },
@@ -131,13 +155,12 @@ namespace NoName.Infrastructure.Extensions
                     LanguageId = "en-US",
                     Name = "Floral Dress",
                     SeoAlias = "floral-dress",
-                    SeoDescription ="Floral Dress",
+                    SeoDescription = "Floral Dress",
                     SeoTitle = "",
                     Details = "Mô tả sản phẩm",
                     Description = "Soft silk dress"
                 }
             );
-
 
             modelBuilder.Entity<ProductInCategory>().HasData(
                 new ProductInCategory() { ProductId = 1, CategoryId = 1 }, // sơ mi VT -> Áo nam

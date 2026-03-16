@@ -46,6 +46,7 @@ namespace NoName.Application.Features.Categories.Command.CreateCategory
                     }).WithMessage("Language does not exist");
 
                 t.RuleFor(x => x.Name)
+
                     .NotEmpty().WithMessage("Translations name is required. / Validator")
                     .MaximumLength(200);
                 t.RuleFor(x => x.SeoAlias)
@@ -55,6 +56,10 @@ namespace NoName.Application.Features.Categories.Command.CreateCategory
                 t.RuleFor(x => x.SeoDescription)
                    .NotEmpty().WithMessage("SeoAlias is required. / Validator");
             });
+
+           RuleFor(x => x.Translations)
+              .Must(x => x != null && x.Any(t => string.Equals(t.LanguageId, "vi-VN", StringComparison.OrdinalIgnoreCase)))
+              .WithMessage("Category information in Vietnamese (vi-VN) is mandatory");
         }
     }
 }

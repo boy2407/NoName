@@ -20,27 +20,21 @@ namespace NoName.BackendApi.Controllers
 
         public CategoriesController(IMediator mediator) => _mediator = mediator;
 
-        [HttpPost("create")]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCategory command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
         }
 
-        [HttpPut("update/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdateCategory command)
         {
             command.Id = id;
             var result = await _mediator.Send(command);
             return result ? NoContent() : NotFound();
         }
-        [HttpPost("get-category-by-id-with-translates/{id}")]
-        public async Task<IActionResult> GetCategoryByIdWithTranslates(int id)
-        {
-            var result = await _mediator.Send(new GetCategoryByIdWithTranslates(id));
-            if (result == null) return NotFound();
-            return Ok(result);
-        }
+     
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -49,19 +43,29 @@ namespace NoName.BackendApi.Controllers
             return result ? NoContent() : NotFound();
         }
 
-        [HttpGet("getbyparent")]
-        public async Task<IActionResult> GetByParentId([FromQuery]GetCategoriesByParentId request)
-        {
-            var result = await _mediator.Send(request);
-            return Ok(result);
-        }
-
-        [HttpGet("getall")]
+        [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllCategories request)
         {
 
             var result = await _mediator.Send(request);
             return Ok(result);
         }
+
+        [HttpGet("{id}/translations")]
+        public async Task<IActionResult> GetCategoryByIdWithTranslates(int id)
+        {
+            var result = await _mediator.Send(new GetCategoryByIdWithTranslates(id));
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
+
+        [HttpGet("parents")]
+        public async Task<IActionResult> GetByParentId([FromQuery]GetCategoriesByParentId request)
+        {
+            var result = await _mediator.Send(request);
+            return Ok(result);
+        }
+
+        
     }
 }

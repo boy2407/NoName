@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
-using NoName.Application.Common.Behaviors; 
+using Microsoft.Extensions.DependencyInjection;
+using NoName.Application.Abstractions;
+using NoName.Application.Abstractions.Persistence;
+using NoName.Application.Common.Behaviors;
+using System.Reflection;
 
 namespace NoName.Application
 {
@@ -23,5 +25,6 @@ namespace NoName.Application
 
             return services;
         }
+
     }
 }

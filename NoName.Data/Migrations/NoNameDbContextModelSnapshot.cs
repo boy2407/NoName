@@ -452,6 +452,128 @@ namespace NoName.Infrastructure.Migrations
                     b.ToTable("Contacts", (string)null);
                 });
 
+            modelBuilder.Entity("NoName.Domain.Entities.Inventory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PhysicalQuantity")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("ProductVariantId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReservedQuantity")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductVariantId")
+                        .IsUnique();
+
+                    b.ToTable("Inventories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9109),
+                            PhysicalQuantity = 25,
+                            ProductVariantId = 1,
+                            ReservedQuantity = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9122),
+                            PhysicalQuantity = 25,
+                            ProductVariantId = 2,
+                            ReservedQuantity = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9124),
+                            PhysicalQuantity = 30,
+                            ProductVariantId = 3,
+                            ReservedQuantity = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9125),
+                            PhysicalQuantity = 20,
+                            ProductVariantId = 4,
+                            ReservedQuantity = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9127),
+                            PhysicalQuantity = 10,
+                            ProductVariantId = 5,
+                            ReservedQuantity = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9129),
+                            PhysicalQuantity = 10,
+                            ProductVariantId = 6,
+                            ReservedQuantity = 0
+                        });
+                });
+
+            modelBuilder.Entity("NoName.Domain.Entities.InventoryTransaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("InventoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantityChange")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InventoryId");
+
+                    b.ToTable("InventoryTransactions", (string)null);
+                });
+
             modelBuilder.Entity("NoName.Domain.Entities.Language", b =>
                 {
                     b.Property<string>("Id")
@@ -573,18 +695,9 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("OriginalPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Stock")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("ViewCount")
                         .ValueGeneratedOnAdd()
@@ -599,31 +712,22 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2026, 3, 13, 9, 57, 9, 182, DateTimeKind.Local).AddTicks(9643),
+                            DateCreated = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            OriginalPrice = 100000m,
-                            Price = 200000m,
-                            Stock = 0,
                             ViewCount = 0
                         },
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2026, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            OriginalPrice = 100000m,
-                            Price = 180000m,
-                            Stock = 50,
                             ViewCount = 10
                         },
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2026, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            OriginalPrice = 300000m,
-                            Price = 450000m,
-                            Stock = 20,
                             ViewCount = 5
                         });
                 });
@@ -833,6 +937,88 @@ namespace NoName.Infrastructure.Migrations
                             SeoAlias = "floral-dress",
                             SeoDescription = "Floral Dress",
                             SeoTitle = ""
+                        });
+                });
+
+            modelBuilder.Entity("NoName.Domain.Entities.ProductVariant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SKU")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SKU")
+                        .IsUnique();
+
+                    b.ToTable("ProductVariants", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OriginalPrice = 100000m,
+                            Price = 200000m,
+                            ProductId = 1,
+                            SKU = "SM-VT-M"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            OriginalPrice = 100000m,
+                            Price = 200000m,
+                            ProductId = 1,
+                            SKU = "SM-VT-L"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            OriginalPrice = 100000m,
+                            Price = 180000m,
+                            ProductId = 2,
+                            SKU = "AT-BS-M"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            OriginalPrice = 100000m,
+                            Price = 180000m,
+                            ProductId = 2,
+                            SKU = "AT-BS-L"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            OriginalPrice = 300000m,
+                            Price = 450000m,
+                            ProductId = 3,
+                            SKU = "VH-01-M"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            OriginalPrice = 300000m,
+                            Price = 450000m,
+                            ProductId = 3,
+                            SKU = "VH-01-L"
                         });
                 });
 
@@ -1140,7 +1326,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad752c1d-15f6-41ca-b177-2bbe4b3f3851",
+                            ConcurrencyStamp = "81432aa4-f832-491a-a143-a823e099f8ae",
                             Dob = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyentrongnghia7949@gmail.com",
                             EmailConfirmed = true,
@@ -1149,7 +1335,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "nguyentrongnghia7949@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC1OMD5FQE/gDfVI0LmtpxSV4FXRCw8jddAYKVle09QubXGfkdl+cs2bktLZAYEo1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBRafz7VgaITzMBDU7VxRAjYPdaVNymTIg1lRBwmuy831R0sLP6qX5X0GKoWaHTZ4g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -1203,6 +1389,28 @@ namespace NoName.Infrastructure.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("NoName.Domain.Entities.Inventory", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.ProductVariant", "ProductVariant")
+                        .WithOne("Inventory")
+                        .HasForeignKey("NoName.Domain.Entities.Inventory", "ProductVariantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductVariant");
+                });
+
+            modelBuilder.Entity("NoName.Domain.Entities.InventoryTransaction", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.Inventory", "Inventory")
+                        .WithMany("InventoryTransactions")
+                        .HasForeignKey("InventoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Inventory");
                 });
 
             modelBuilder.Entity("NoName.Domain.Entities.Order", b =>
@@ -1284,6 +1492,17 @@ namespace NoName.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("NoName.Domain.Entities.ProductVariant", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.Product", "Product")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("NoName.Domain.Entities.PromotionProduct", b =>
                 {
                     b.HasOne("NoName.Domain.Entities.Product", "Product")
@@ -1323,6 +1542,11 @@ namespace NoName.Infrastructure.Migrations
                     b.Navigation("ProductInCategories");
                 });
 
+            modelBuilder.Entity("NoName.Domain.Entities.Inventory", b =>
+                {
+                    b.Navigation("InventoryTransactions");
+                });
+
             modelBuilder.Entity("NoName.Domain.Entities.Language", b =>
                 {
                     b.Navigation("CategoryTranslations");
@@ -1347,7 +1571,15 @@ namespace NoName.Infrastructure.Migrations
 
                     b.Navigation("ProductTranslations");
 
+                    b.Navigation("ProductVariants");
+
                     b.Navigation("PromotionProducts");
+                });
+
+            modelBuilder.Entity("NoName.Domain.Entities.ProductVariant", b =>
+                {
+                    b.Navigation("Inventory")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NoName.Domain.Entities.Promotion", b =>

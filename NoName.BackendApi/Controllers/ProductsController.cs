@@ -26,14 +26,14 @@ namespace NoName.BackendApi.Controllers
         }
 
         //-----------------------COMMANDS----------------------
-        [Authorize]
+        [Authorize(policy: "ManagementContent")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateProduct command)
         {
             var productId = await _mediator.Send(command);
             return Ok(new { Id = productId });
         }
-        [Authorize]
+        [Authorize(policy: "ManagementContent")]
         [HttpPost("{id}/variants")]
         public async Task<IActionResult> AddVariant(int id, [FromBody] AddProductVariant command)
         {
@@ -43,7 +43,7 @@ namespace NoName.BackendApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(policy: "ManagementContent")]
         [HttpPost("{id}/images")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadImages(int id, [FromForm] AddProductImage command)
@@ -55,7 +55,7 @@ namespace NoName.BackendApi.Controllers
         }
 
         // ----------------------UPDATE----------------------
-        [Authorize]
+        [Authorize(policy: "ManagementContent")]
         [HttpPut("{id}")]
         public async Task<ActionResult<ApiResult<bool>>> Update(int id, [FromBody] UpdateProduct command)
         {
@@ -63,7 +63,7 @@ namespace NoName.BackendApi.Controllers
             return await _mediator.Send(command);
         }
 
-        [Authorize]
+        [Authorize(policy: "AdminOnly")]
         [HttpPut("{productId}/variants")]
         public async Task<ActionResult<ApiResult<bool>>> UpdateVariants(int productId, [FromBody] List<UpdateVariant> variants)
         {

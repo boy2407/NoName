@@ -8,6 +8,7 @@ using NoName.Application.Abstractions.Services;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
+using NoName.Infrastructure.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,9 @@ namespace NoName.Infrastructure
             services.AddDbContext<NoNameDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
 
+            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
            
+
             services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -41,6 +44,7 @@ namespace NoName.Infrastructure
             services.AddHttpContextAccessor();
 
             // Register TokenService
+            services.AddTransient<IEmailService, EmailService>();
             services.AddScoped<ITokenService, TokenService>();
             //  Repositories and UnitOfWork
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -48,6 +52,25 @@ namespace NoName.Infrastructure
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductVariantRepository, ProductVariantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+
+            services.AddAuthorization(options =>
+            {
+               
+                options.AddPolicy("AdminOnly", policy =>
+                    policy.RequireRole("Admin"));
+
+                options.AddPolicy("ManagementContent", policy =>
+                    policy.RequireRole("Admin", "Manager"));
+
+                options.AddPolicy("VerifiedUser", policy =>
+                    policy.RequireClaim("EmailConfirmed", "true"));
+
+                //options.AddPolicy("HCMAdminOnly", policy =>
+                //    policy.RequireRole("Admin").RequireClaim("City", "HCM"));
+            });
+
             return services;
         }
     }

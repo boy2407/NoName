@@ -15,11 +15,21 @@ A high-performance backend system built with **.NET 8**, adhering to **Clean Arc
 ---
 
 ## ✨ Key Features
-* **Product Core (Done):** Multi-language (`ProductTranslations`), Pagination, and Filtering.
+* **Product Core (Done):** Multi-language (`ProductTranslations`), Variant Management, Pagination, and Filtering.
+* **AI Agent (In Progress):**
+    * **Smart Consultant:** RAG-based product recommendations.
+    * **Admin Copilot:** Function calling for real-time inventory and sales reports.
 * **Security (In Progress):** JWT Authentication & Role-based Authorization.
 * **Shopping (Roadmap):** Cart system, Order processing, and Inventory sync.
 * **Infrastructure (Roadmap):** Cloud Media Storage, Serilog, and xUnit Testing.
 
+
+
+## 🤖 AI Agent Roadmap
+1. [x] **Phase 1:** Database Schema update & Diverse Data Seeding (Current).
+2. [ ] **Phase 2:** Integrate OpenClaw & Ollama Service into Infrastructure layer.
+3. [ ] **Phase 3:** Implement AI Tools (Function Calling) for Product Search & Inventory.
+4. [ ] **Phase 4:** Setup RAG flow for deep product knowledge.
 ---
 
 ## 🛠 Setup & Installation

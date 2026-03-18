@@ -37,7 +37,7 @@ namespace NoName.Infrastructure.EF
             modelBuilder.ApplyConfiguration(new CategoryTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
@@ -55,11 +55,9 @@ namespace NoName.Infrastructure.EF
 
 
         public DbSet<Product> Products { get; set; }
-
         public DbSet<ProductVariant> ProductVariants { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryTransaction> InventoryTransactions { get; set; }
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<AppConfig> AppConfigs { get; set; }
         public DbSet<Cart> Carts { get; set; }

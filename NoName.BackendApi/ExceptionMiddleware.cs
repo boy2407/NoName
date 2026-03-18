@@ -1,5 +1,6 @@
-﻿using System.Net;
-using FluentValidation;
+﻿using FluentValidation;
+using NoName.Application.Common;
+using System.Net;
 using System.Text.Json;
 
 namespace NoName.BackendApi
@@ -22,7 +23,16 @@ namespace NoName.BackendApi
             catch (Exception ex)
             {
                 await HandleExceptionAsync(context, ex);
-            }
+
+                
+                 //context.Response.StatusCode = 500;
+                 //context.Response.ContentType = "application/json";
+                
+                 //var response = ApiResult<string>.Failure("Hệ thống gặp sự cố: " + ex.Message);
+                 //await context.Response.WriteAsJsonAsync(response);
+
+
+             }
         }
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)

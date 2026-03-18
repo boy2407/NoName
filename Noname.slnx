@@ -5,6 +5,6 @@
   <Project Path="NoName.App/NoName.App.csproj" Id="ef10069f-89e6-4673-8ddb-5a46c5f17e10" />
   <Project Path="NoName.Application/NoName.Application.csproj" />
   <Project Path="NoName.BackendApi/NoName.BackendApi.csproj" Id="10dfa69f-521d-451b-b382-3cd8706970bf" />
-  <Project Path="NoName.Data/NoName.Infrastructure.csproj" />
+  <Project Path="NoName.Infrastructure/NoName.Infrastructure.csproj" />
   <Project Path="NoName.Domain/NoName.Domain.csproj" Id="25b3713d-70cd-4a00-b2f0-1fab48c17051" />
 </Solution>

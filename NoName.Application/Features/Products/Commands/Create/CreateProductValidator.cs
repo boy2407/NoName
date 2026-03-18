@@ -20,19 +20,19 @@ namespace NoName.Application.Features.Products.Commands.Create
             _languageRepository = languageRepository;
 
             //// category rules
-            RuleForEach(x => x.CategoryIds)
-                .MustAsync(async (id, ct) =>
-                {
-                    var exists = await _categoryRepository.ExistsAsync(id, ct);
-                    return exists;
-                }).WithMessage("Category does not exist.")
-                .NotEmpty().WithMessage("Please select at least one category for the product");
-
-
             RuleFor(x => x.CategoryIds)
                 .Must(t => t.Select(ct => ct).Distinct().Count() == t.Count)
                 .WithMessage("Category already exists.");
+           
 
+            RuleFor(x => x.CategoryIds)
+                .MustAsync(async (ids, ct) =>
+                {
+                    if (ids == null || !ids.Any()) return true;
+   
+                    return await _categoryRepository.AreAllIdsExistAsync(ids, ct);
+                })
+                .WithMessage("One or more categories do not exist.");
 
             //// LAnguage translation rules
             ///

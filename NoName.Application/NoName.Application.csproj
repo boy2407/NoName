@@ -15,9 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <Folder Include="Features\Order\Commands\" />
-    <Folder Include="Features\Order\DTO\" />
-    <Folder Include="Features\Order\Queries\" />
     <Folder Include="Features\Products\Commands\Update\Inventory\" />
     <Folder Include="Features\Products\Commands\Update\Images\" />
   </ItemGroup>
@@ -25,7 +22,6 @@
   <ItemGroup>
 	  <PackageReference Include="AutoMapper" Version="12.0.1" />
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-
 	  <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 

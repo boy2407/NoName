@@ -179,7 +179,7 @@ namespace NoName.Infrastructure.Extensions
             {
                 Id = roleId,
                 Name = "admin",
-                NormalizedName = "admin",
+                NormalizedName = "ADMIN",
                 Description = "Administrator role"
             });
 
@@ -188,11 +188,11 @@ namespace NoName.Infrastructure.Extensions
             {
                 Id = adminId,
                 UserName = "admin",
-                NormalizedUserName = "admin",
+                NormalizedUserName = "ADMIN",
                 Email = "nguyentrongnghia7949@gmail.com",
                 NormalizedEmail = "nguyentrongnghia7949@gmail.com",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "trnghia1234@"),
+                PasswordHash = hasher.HashPassword(null, "admin@"),
                 SecurityStamp = string.Empty,
                 FirstName = "Nghia",
                 LastName = "Trong",

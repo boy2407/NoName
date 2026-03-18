@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoName.Infrastructure.EF;
 
@@ -11,9 +12,11 @@ using NoName.Infrastructure.EF;
 namespace NoName.Infrastructure.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
-    partial class NoNameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260318040030_Update_Role_Entity_And_Seeding")]
+    partial class Update_Role_Entity_And_Seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +44,8 @@ namespace NoName.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("RoleClaims", (string)null);
                 });
 
@@ -63,24 +68,23 @@ namespace NoName.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderKey")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
@@ -98,6 +102,8 @@ namespace NoName.Infrastructure.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("UserRoles", (string)null);
 
                     b.HasData(
@@ -111,15 +117,12 @@ namespace NoName.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Value")
@@ -487,7 +490,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9109),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9689),
                             PhysicalQuantity = 25,
                             ProductVariantId = 1,
                             ReservedQuantity = 0
@@ -495,7 +498,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9122),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9700),
                             PhysicalQuantity = 25,
                             ProductVariantId = 2,
                             ReservedQuantity = 0
@@ -503,7 +506,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9124),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9701),
                             PhysicalQuantity = 30,
                             ProductVariantId = 3,
                             ReservedQuantity = 0
@@ -511,7 +514,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9125),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9702),
                             PhysicalQuantity = 20,
                             ProductVariantId = 4,
                             ReservedQuantity = 0
@@ -519,7 +522,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9127),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9704),
                             PhysicalQuantity = 10,
                             ProductVariantId = 5,
                             ReservedQuantity = 0
@@ -527,7 +530,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 6,
-                            LastUpdated = new DateTime(2026, 3, 15, 12, 4, 34, 704, DateTimeKind.Local).AddTicks(9129),
+                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9705),
                             PhysicalQuantity = 10,
                             ProductVariantId = 6,
                             ReservedQuantity = 0
@@ -1083,6 +1086,7 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -1090,12 +1094,19 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", (string)null);
 
@@ -1105,7 +1116,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = new Guid("4ccf9361-16bc-4224-99c6-b87223226ea5"),
                             Description = "Administrator role",
                             Name = "admin",
-                            NormalizedName = "admin"
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -1266,13 +1277,15 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -1294,10 +1307,12 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -1308,6 +1323,12 @@ namespace NoName.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -1315,9 +1336,18 @@ namespace NoName.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
 
@@ -1326,7 +1356,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "81432aa4-f832-491a-a143-a823e099f8ae",
+                            ConcurrencyStamp = "16ac6299-c1ab-4895-9589-f438b7c6a724",
                             Dob = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyentrongnghia7949@gmail.com",
                             EmailConfirmed = true,
@@ -1334,13 +1364,64 @@ namespace NoName.Infrastructure.Migrations
                             LastName = "Trong",
                             LockoutEnabled = false,
                             NormalizedEmail = "nguyentrongnghia7949@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBRafz7VgaITzMBDU7VxRAjYPdaVNymTIg1lRBwmuy831R0sLP6qX5X0GKoWaHTZ4g==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA1iwPF7BygFW6xSZ39qOqx9uX96TaoD+0s/buqn7THJ6s/H4yxntEGgalteUh86Jw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NoName.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("NoName.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NoName.Domain.Entities.Cart", b =>

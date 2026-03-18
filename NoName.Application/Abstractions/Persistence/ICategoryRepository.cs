@@ -15,6 +15,7 @@ namespace NoName.Application.Abstractions.Persistence
      
         Task CreateAsync(Category category, CancellationToken ct = default);
         void DeleteAsync(Category category, CancellationToken ct = default);
+        Task<bool> AreAllIdsExistAsync(List<int> ids, CancellationToken ct);
         Task<bool> ExistsAsync(int id, CancellationToken ct);
         Task<int> SaveChangesAsync(CancellationToken ct = default);
         Task<Category> GetByIdWithTranslationsAsync(int id, CancellationToken ct);

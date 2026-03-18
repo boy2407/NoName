@@ -29,7 +29,16 @@ namespace NoName.Infrastructure.Persistence
             _context.Categories.Remove(category);
             //await _context.Categories.Where(c => c.Id == category.Id).ExecuteDeleteAsync();
         }
+        public async Task<bool> AreAllIdsExistAsync(List<int> ids, CancellationToken ct)
+        {
+            if (ids == null || !ids.Any()) return true;
 
+            var count = await _context.Categories
+                .Where(x => ids.Contains(x.Id))
+                .CountAsync(ct);
+
+            return count == ids.Distinct().Count();
+        }
         public async Task<List<Category>> GetAllAsync(string languageId, CancellationToken ct)
         {
 

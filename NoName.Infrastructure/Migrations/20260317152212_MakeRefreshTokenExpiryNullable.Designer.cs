@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoName.Infrastructure.EF;
 
@@ -11,9 +12,11 @@ using NoName.Infrastructure.EF;
 namespace NoName.Infrastructure.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
-    partial class NoNameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260317152212_MakeRefreshTokenExpiryNullable")]
+    partial class MakeRefreshTokenExpiryNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -487,7 +490,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9689),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2488),
                             PhysicalQuantity = 25,
                             ProductVariantId = 1,
                             ReservedQuantity = 0
@@ -495,7 +498,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9700),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2498),
                             PhysicalQuantity = 25,
                             ProductVariantId = 2,
                             ReservedQuantity = 0
@@ -503,7 +506,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9701),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2499),
                             PhysicalQuantity = 30,
                             ProductVariantId = 3,
                             ReservedQuantity = 0
@@ -511,7 +514,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9702),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2500),
                             PhysicalQuantity = 20,
                             ProductVariantId = 4,
                             ReservedQuantity = 0
@@ -519,7 +522,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9704),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2501),
                             PhysicalQuantity = 10,
                             ProductVariantId = 5,
                             ReservedQuantity = 0
@@ -527,7 +530,7 @@ namespace NoName.Infrastructure.Migrations
                         new
                         {
                             Id = 6,
-                            LastUpdated = new DateTime(2026, 3, 18, 11, 0, 29, 486, DateTimeKind.Local).AddTicks(9705),
+                            LastUpdated = new DateTime(2026, 3, 17, 22, 22, 11, 990, DateTimeKind.Local).AddTicks(2502),
                             PhysicalQuantity = 10,
                             ProductVariantId = 6,
                             ReservedQuantity = 0
@@ -1113,7 +1116,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = new Guid("4ccf9361-16bc-4224-99c6-b87223226ea5"),
                             Description = "Administrator role",
                             Name = "admin",
-                            NormalizedName = "ADMIN"
+                            NormalizedName = "admin"
                         });
                 });
 
@@ -1353,7 +1356,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = new Guid("d60a807d-a3ef-4a9c-ba73-b6ffb21cae11"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "16ac6299-c1ab-4895-9589-f438b7c6a724",
+                            ConcurrencyStamp = "ac69d33f-2a87-44db-8000-9cf5f3673ad7",
                             Dob = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyentrongnghia7949@gmail.com",
                             EmailConfirmed = true,
@@ -1361,8 +1364,8 @@ namespace NoName.Infrastructure.Migrations
                             LastName = "Trong",
                             LockoutEnabled = false,
                             NormalizedEmail = "nguyentrongnghia7949@gmail.com",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA1iwPF7BygFW6xSZ39qOqx9uX96TaoD+0s/buqn7THJ6s/H4yxntEGgalteUh86Jw==",
+                            NormalizedUserName = "admin",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPp7qtXBJfJ4SZdmkR1La3QiAANS4IDJRKwN3u3AU3Dv6AMprkHhHQ7RVh9N5rSftw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

@@ -173,15 +173,20 @@ namespace NoName.Infrastructure.Extensions
 
             );
 
-            var roleId = new Guid("4CCF9361-16BC-4224-99C6-B87223226EA5");
+
             var adminId = new Guid("D60A807D-A3EF-4A9C-BA73-B6FFB21CAE11");
-            modelBuilder.Entity<Role>().HasData(new Role
-            {
-                Id = roleId,
-                Name = "admin",
-                NormalizedName = "ADMIN",
-                Description = "Administrator role"
-            });
+
+            var adminRoleId = Guid.Parse("A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D");
+            var managerRoleId = Guid.Parse("B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E");
+            var staffRoleId = Guid.Parse("C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F");
+            var userRoleId = Guid.Parse("D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A");
+           
+            modelBuilder.Entity<Role>().HasData(
+                new Role { Id = adminRoleId, Name = "Admin", NormalizedName = "ADMIN", Description = "Full System Administrator" },
+                new Role { Id = managerRoleId, Name = "Manager", NormalizedName = "MANAGER", Description = "Inventory and Product Manager" },
+                new Role { Id = staffRoleId, Name = "Staff", NormalizedName = "STAFF", Description = "Order Processing Staff" },
+                new Role { Id = userRoleId, Name = "User", NormalizedName = "USER", Description = "Default Customer" }
+            );
 
             var hasher = new PasswordHasher<User>();
             modelBuilder.Entity<User>().HasData(new User
@@ -189,8 +194,8 @@ namespace NoName.Infrastructure.Extensions
                 Id = adminId,
                 UserName = "admin",
                 NormalizedUserName = "ADMIN",
-                Email = "nguyentrongnghia7949@gmail.com",
-                NormalizedEmail = "nguyentrongnghia7949@gmail.com",
+                Email = "admin@noname.com",
+                NormalizedEmail = "ADMIN@NONAME.COM",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "admin@"),
                 SecurityStamp = string.Empty,
@@ -201,7 +206,7 @@ namespace NoName.Infrastructure.Extensions
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
             {
-                RoleId = roleId,
+                RoleId = adminRoleId,
                 UserId = adminId
             });
 

@@ -11,11 +11,8 @@ namespace NoName.Application.Abstractions.Services
     public interface ITokenService
     {
         
-        string CreateJwtToken(User user);
+        Task<string> CreateJwtToken(User user);
         string GenerateRefreshToken();
-        void SetRefreshTokenInCookie(string refreshToken);
-
-        // (Dùng khi cần refresh để biết token đó từng thuộc về ai)
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

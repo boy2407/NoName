@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NoName.Application.Abstractions.Services;
@@ -18,14 +19,14 @@ namespace NoName.Infrastructure.Persistence
     {
         private readonly IConfiguration _config;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+        private readonly UserManager<User> _userManager;
         public TokenService(IConfiguration config, IHttpContextAccessor httpContextAccessor)
         {
             _config = config;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public string CreateJwtToken(User user)
+        public async Task<string> CreateJwtToken(User user)
         {
             var expirationMinutes = double.Parse(_config["Jwt:AccessTokenExpirationMinutes"] ?? "1");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
@@ -37,6 +38,12 @@ namespace NoName.Infrastructure.Persistence
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            var roles = await _userManager.GetRolesAsync(user);
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -61,19 +68,6 @@ namespace NoName.Infrastructure.Persistence
             return Convert.ToBase64String(randomNumber);
         }
 
-     
-        public void SetRefreshTokenInCookie(string refreshToken)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,   
-                Secure = true,     
-                SameSite = SameSiteMode.Strict,
-                Expires = DateTime.UtcNow.AddDays(7)
-            };
-
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("refreshToken", refreshToken, cookieOptions);
-        }
 
 
         public ClaimsPrincipal? GetPrincipalFromExpiredToken(string token)

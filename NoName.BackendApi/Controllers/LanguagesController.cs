@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoName.Application.Features.Languages.Commands.CreateLanguage;
 using NoName.Application.Features.Languages.Commands.DeleteLanguage;
@@ -19,7 +20,7 @@ namespace NoName.BackendApi.Controllers
             _mediator = mediator;
         }
 
-       
+        [Authorize(policy: "ManagementContent")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateLanguage command)
         {
@@ -27,7 +28,7 @@ namespace NoName.BackendApi.Controllers
  
             return Ok(result);
         }
-
+        [Authorize(policy: "ManagementContent")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguage command)
         {
@@ -35,7 +36,7 @@ namespace NoName.BackendApi.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
-
+        [Authorize(policy: "AdminOnly")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

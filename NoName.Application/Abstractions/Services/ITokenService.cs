@@ -12,7 +12,7 @@ namespace NoName.Application.Abstractions.Services
     {
         
         Task<string> CreateJwtToken(User user);
-        string GenerateRefreshToken();
+        Task<string> GenerateRefreshToken();
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

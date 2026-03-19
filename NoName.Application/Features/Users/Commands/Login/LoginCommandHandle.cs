@@ -34,8 +34,8 @@ namespace NoName.Application.Features.Auth.Commands.Login
                 return ApiResult<AuthenticatedResponse>.Failure("Unverified email ");
             }
 
-            var accessToken = _tokenService.CreateJwtToken(user);
-            var refreshToken = _tokenService.GenerateRefreshToken();
+            var accessToken = await _tokenService.CreateJwtToken(user);
+            var refreshToken = await _tokenService.GenerateRefreshToken();
 
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);

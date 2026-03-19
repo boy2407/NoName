@@ -49,8 +49,8 @@ namespace NoName.Application.Features.Users.Commands.RefreshToken
                 }
 
                
-                var newAccessToken = _tokenService.CreateJwtToken(user);
-                var newRefreshToken = _tokenService.GenerateRefreshToken();
+                var newAccessToken =  await _tokenService.CreateJwtToken(user);
+                var newRefreshToken = await _tokenService.GenerateRefreshToken();
 
                 user.RefreshToken = newRefreshToken;
                 user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(expirationDays);

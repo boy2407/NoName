@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Command.DeleteCategory
 {
-    public class DeleteCategoryHandler : IRequestHandler<DeleteCategory, bool>
+    public class DeleteCategoryHandler : IRequestHandler<DeleteCategoryCommand, bool>
     {
 
         private readonly ICategoryRepository _repo;
         public DeleteCategoryHandler(ICategoryRepository repo) => _repo = repo;
 
-        public async Task<bool> Handle(DeleteCategory request, CancellationToken ct)
+        public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken ct)
         {
             var category = await _repo.GetByIdAsync(request.Id, ct);
             _repo.DeleteAsync(category, ct);

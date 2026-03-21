@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Commands.Create
 {
-    public class AddProductVariantValidator : AbstractValidator<AddProductVariant>
+    public class AddProductVariantValidator : AbstractValidator<AddProductVariantCommand>
     {
         IProductRepository _productRepository;
         public AddProductVariantValidator(IProductRepository productRepository)
@@ -23,7 +23,7 @@ namespace NoName.Application.Features.Products.Commands.Create
                 }).WithMessage("Product does not exist.");
             RuleFor(x => x.SKU)
                 .NotEmpty().WithMessage("SKU is required")
-                .MustAsync(async (sku, ct) => !await productRepository.CheckSkuExistsAsync(sku, ct))
+                .MustAsync(async (sku, ct) => !await _productRepository.CheckSkuExistsAsync(sku, ct))
                 .WithMessage("SKU already exist in the systhem");
 
             RuleFor(x => x.Price).GreaterThan(0);

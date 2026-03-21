@@ -23,14 +23,14 @@ namespace NoName.BackendApi.Controllers
 
         [Authorize(policy: "ManagementContent")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCategory command)
+        public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
         }
         [Authorize(policy: "ManagementContent")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateCategory command)
+        public async Task<IActionResult> Update(int id, UpdateCategoryCommand command)
         {
             command.Id = id;
             var result = await _mediator.Send(command);
@@ -41,12 +41,12 @@ namespace NoName.BackendApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _mediator.Send(new DeleteCategory(id));
+            var result = await _mediator.Send(new DeleteCategoryCommand(id));
             return result ? NoContent() : NotFound();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] GetAllCategories request)
+        public async Task<IActionResult> GetAll([FromQuery] GetAllCategoriesQuery request)
         {
 
             var result = await _mediator.Send(request);
@@ -62,7 +62,7 @@ namespace NoName.BackendApi.Controllers
         }
 
         [HttpGet("parents")]
-        public async Task<IActionResult> GetByParentId([FromQuery]GetCategoriesByParentId request)
+        public async Task<IActionResult> GetByParentId([FromQuery]GetCategoriesByParentIdQuery request)
         {
             var result = await _mediator.Send(request);
             return Ok(result);

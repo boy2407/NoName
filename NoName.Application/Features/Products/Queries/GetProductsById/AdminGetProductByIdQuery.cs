@@ -1,0 +1,17 @@
+﻿using MediatR;
+using NoName.Application.Features.Products.DTOs.Admin;
+using NoName.Application.Features.Products.DTOs.Guest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NoName.Application.Features.Products.Queries.GetProductsById
+{
+    public class AdminGetProductByIdQuery : IRequest<ProductAdminViewModel>
+    {
+        public int Id { get; set; }
+        public AdminGetProductByIdQuery(int id) => Id = id;
+    }
+}

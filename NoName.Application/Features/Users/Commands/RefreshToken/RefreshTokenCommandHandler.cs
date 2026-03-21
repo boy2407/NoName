@@ -42,14 +42,14 @@ namespace NoName.Application.Features.Users.Commands.RefreshToken
                 var username = principal.Identity.Name;
                 var user = await _userManager.FindByNameAsync(username);
 
-               
+
                 if (user == null || user.RefreshToken != request.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
                 {
                     return ApiResult<AuthenticatedResponse>.Failure("Phiên làm việc đã hết hạn hoặc mã không khớp.");
                 }
 
-               
-                var newAccessToken =  await _tokenService.CreateJwtToken(user);
+
+                var newAccessToken = await _tokenService.CreateJwtToken(user);
                 var newRefreshToken = await _tokenService.GenerateRefreshToken();
 
                 user.RefreshToken = newRefreshToken;
@@ -69,7 +69,7 @@ namespace NoName.Application.Features.Users.Commands.RefreshToken
             }
             catch (Exception ex)
             {
-             
+
                 return ApiResult<AuthenticatedResponse>.Failure($"Lỗi hệ thống: {ex.Message}");
             }
         }

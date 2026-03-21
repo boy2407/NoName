@@ -20,19 +20,19 @@ namespace NoName.Application.Mapping
             //---command  Create/Update
             CreateMap<CategoryTranslationRequest, CategoryTranslation>();
 
-            CreateMap<CreateCategory, Category>()
+            CreateMap<CreateCategoryCommand, Category>()
                 .ForMember(dest => dest.CategoryTranslations, opt => opt.MapFrom(src => src.Translations))
                 .ForMember(dest => dest.ChildCategories, opt => opt.Ignore());
             /// if mapper UpdateCategory to Category,
             /// we will ignore CategoryTranslations because it delete all translations and add new translations,
             /// but we just want update translations
-            CreateMap<UpdateCategory, Category>()
+            CreateMap<UpdateCategoryCommand, Category>()
                 .ForMember(dest => dest.CategoryTranslations, opt => opt.Ignore());
 
 
             //---for update
             CreateMap<CategoryTranslation, CategoryTranslationRequest>();
-            CreateMap<Category, UpdateCategory>()
+            CreateMap<Category, UpdateCategoryCommand>()
                 .ForMember(dest => dest.Translations, opt => opt.MapFrom(src => src.CategoryTranslations));
 
 

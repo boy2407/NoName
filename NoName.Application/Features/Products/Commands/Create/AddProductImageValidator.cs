@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Commands.Create
 {
-    public class AddProductImageValidator : AbstractValidator<AddProductImage>
+    public class AddProductImageValidator : AbstractValidator<AddProductImageCommand>
     {
 
         IProductRepository _productRepository;

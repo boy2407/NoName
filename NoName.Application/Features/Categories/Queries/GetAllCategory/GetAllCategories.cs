@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategory
 {
-    public class GetAllCategories : IRequest<List<CategoryViewModel>> {
+    public class GetAllCategoriesQuery : IRequest<List<CategoryViewModel>> {
         public string LanguageId { get; set; }
     }
 }

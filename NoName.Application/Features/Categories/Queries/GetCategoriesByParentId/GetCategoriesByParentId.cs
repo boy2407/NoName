@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoriesByParentId
 {
-    public class GetCategoriesByParentId: IRequest<List<CategoryViewModel>>
+    public class GetCategoriesByParentIdQuery: IRequest<List<CategoryViewModel>>
     {
         public int? ParentId { get; set; }
         public string LanguageId { get; set; }

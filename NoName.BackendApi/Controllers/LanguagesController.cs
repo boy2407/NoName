@@ -22,7 +22,7 @@ namespace NoName.BackendApi.Controllers
 
         [Authorize(policy: "ManagementContent")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateLanguage command)
+        public async Task<IActionResult> Create([FromBody] CreateLanguageCommand command)
         {
             var result = await _mediator.Send(command);
  
@@ -30,7 +30,7 @@ namespace NoName.BackendApi.Controllers
         }
         [Authorize(policy: "ManagementContent")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguage command)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguageCommand command)
         {
             command.Id = id;
             var result = await _mediator.Send(command);
@@ -40,14 +40,14 @@ namespace NoName.BackendApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var result = await _mediator.Send(new DeleteLanguage(id));
+            var result = await _mediator.Send(new DeleteLanguageCommand(id));
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var query = new GetLanguages();
+            var query = new GetLanguagesQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -56,7 +56,7 @@ namespace NoName.BackendApi.Controllers
         public async Task<IActionResult> GetById(string id)
         {
 
-            var result = await _mediator.Send(new GetLanguageById(id));
+            var result = await _mediator.Send(new GetLanguageByIdQuery(id));
             return Ok(result);
         }
 

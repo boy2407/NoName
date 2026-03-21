@@ -24,7 +24,7 @@ namespace NoName.Application.Features.Auth.Commands.Login
         public async Task<ApiResult<AuthenticatedResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password) )
+            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password))
             {
                 return ApiResult<AuthenticatedResponse>.Failure("Invalid credentials");
             }

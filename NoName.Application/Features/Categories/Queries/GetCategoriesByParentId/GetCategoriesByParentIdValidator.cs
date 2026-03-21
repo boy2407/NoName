@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoriesByParentId
 {
-    public class GetCategoriesByParentIdValidator : AbstractValidator<GetCategoriesByParentId>
+    public class GetCategoriesByParentIdValidator : AbstractValidator<GetCategoriesByParentIdQuery>
     {
         private readonly ILanguageRepository _languageRepository;
         private readonly ICategoryRepository _categoryRepository;

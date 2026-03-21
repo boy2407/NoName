@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
+using NoName.Application.Features.Chatbot.DTOs;
 using NoName.Application.Features.Product.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs;
@@ -94,9 +95,8 @@ namespace NoName.Infrastructure.Persistence
                 .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(x => x.Id == id, ct);
         }
-
-       
-        public async Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingRequest request, CancellationToken ct = default)
+  
+        public async Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default)
         {
             var query = _context.Products.AsNoTracking();
 
@@ -137,6 +137,11 @@ namespace NoName.Infrastructure.Persistence
             return await _context.Products
                 .Include(p => p.ProductInCategories) // Load danh mục để so khớp
                 .Include(p => p.ProductTranslations) // Load bản dịch để so khớp
+                .Include(p => p.Options) // load options
+                    .ThenInclude(o => o.ProductOptionTranslations)
+                .Include(p => p.Options)
+                    .ThenInclude(o => o.Values)
+                        .ThenInclude(v => v.ProductOptionValueTranslations) // load option values + translations
                 .FirstOrDefaultAsync(p => p.Id == id, ct);
         }
         public async Task<T> GetByIdWithDetailsAsync<T>(int id, string languageId, CancellationToken cancellationToken)
@@ -148,6 +153,83 @@ namespace NoName.Infrastructure.Persistence
                 .ProjectTo<T>(_mapper.ConfigurationProvider, new { lang = languageId }) 
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        // --------------AI
+        public async Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria)
+        {
+
+            var selectedTags = criteria.Tags ?? new List<string>();
+            var selectedColors = criteria.Colors ?? new List<string>();
+            var selectedMaterials = criteria.Materials ?? new List<string>();
+            var langCode = criteria.LanguageId ?? "vi-VN";
+
+
+            // 1. Khởi tạo Base Query & Eager Loading các bảng Translation theo LanguageCode
+            var query = _context.Products
+                .Include(p => p.ProductTranslations.Where(t => t.LanguageId == criteria.LanguageId))
+                .Include(p => p.ProductVariants)
+                .Include(p => p.Options)
+                    .ThenInclude(o => o.ProductOptionTranslations.Where(ot => ot.LanguageId == criteria.LanguageId))
+                .Include(p => p.Options)
+                    .ThenInclude(o => o.Values)
+                        .ThenInclude(v => v.ProductOptionValueTranslations.Where(vt => vt.LanguageId == criteria.LanguageId))
+                .AsSplitQuery()
+                .AsQueryable();
+
+            // 2. Filter theo Category (Tìm trong CategoryTranslation và ProductTranslation)
+            if (!string.IsNullOrEmpty(criteria.Category))
+            {
+                query = query.Where(p => p.ProductInCategories.Any(pic =>
+                    pic.Category.CategoryTranslations.Any(ct =>
+                        ct.LanguageId == criteria.LanguageId && ct.Name.Contains(criteria.Category)))
+                    ||
+                    p.ProductTranslations.Any(pt =>
+                        pt.LanguageId == criteria.LanguageId && pt.Name.Contains(criteria.Category))
+                );
+            }
+
+            // 3. Filter theo Tags đa ngôn ngữ
+            if (criteria.Tags != null && criteria.Tags.Any())
+            {
+                query = query.Where(p => p.ProductTagMappings.Any(ptm =>
+                    ptm.ProductTag.TagTranslations.Any(ptt =>
+                        ptt.LanguageId == criteria.LanguageId && criteria.Tags.Contains(ptt.Name))));
+            }
+
+            // 4. Filter theo Giá (Tối đa)
+            if (criteria.MaxPrice.HasValue && criteria.MaxPrice > 0)
+            {
+                query = query.Where(p => p.ProductVariants.Any(pv => pv.Price <= criteria.MaxPrice.Value));
+            }
+
+            // 5. Filter theo Màu sắc (Tìm Option Name và Value Name trong bảng Translation)
+            if (criteria.Colors != null && criteria.Colors.Any())
+            {
+                query = query.Where(p => p.Options.Any(o =>
+                    o.ProductOptionTranslations.Any(ot =>
+                        ot.LanguageId == criteria.LanguageId && (ot.Name.ToLower() == "color" || ot.Name.ToLower() == "màu sắc")) &&
+                    o.Values.Any(v => v.ProductOptionValueTranslations.Any(vt =>
+                        vt.LanguageId == criteria.LanguageId && criteria.Colors.Contains(vt.Name)))
+                ));
+            }
+
+            // 6. Filter theo Chất liệu (Tương tự Màu sắc)
+            if (criteria.Materials != null && criteria.Materials.Any())
+            {
+                query = query.Where(p => p.Options.Any(o =>
+                    o.ProductOptionTranslations.Any(ot =>
+                        ot.LanguageId == criteria.LanguageId && (ot.Name.ToLower() == "material" || ot.Name.ToLower() == "chất liệu")) &&
+                    o.Values.Any(v => v.ProductOptionValueTranslations.Any(vt =>
+                        vt.LanguageId == criteria.LanguageId && criteria.Materials.Contains(vt.Name)))
+                ));
+            }
+
+            // 7. Thực thi Query, giới hạn kết quả trả về để tối ưu Token cho AI
+            return await query
+                .OrderByDescending(p => p.DateCreated)
+                .Take(10)
+                .ToListAsync();
         }
 
     }

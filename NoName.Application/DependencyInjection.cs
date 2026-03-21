@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NoName.Application.Abstractions;
 using NoName.Application.Abstractions.Persistence;
@@ -10,21 +11,21 @@ namespace NoName.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+
+
+        public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
-            // import Validators on the current assembly
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-            services.AddMediatR(cfg => {
-                // Register Handler 
-                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 
-                //Connect ValidationBehavior with Command/Query
+
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             });
 
             return services;
         }
-
     }
 }

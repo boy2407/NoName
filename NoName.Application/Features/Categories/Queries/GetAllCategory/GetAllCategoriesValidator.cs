@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategory
 {
-    public class GetAllCategoriesValidator : AbstractValidator<GetAllCategories>
+    public class GetAllCategoriesValidator : AbstractValidator<GetAllCategoriesQuery>
     {
         private readonly ILanguageRepository _languageRepository;
 

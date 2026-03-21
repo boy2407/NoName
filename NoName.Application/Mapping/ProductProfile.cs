@@ -16,7 +16,7 @@ namespace NoName.Application.Mapping
         public ProductProfile()
         {   //----------------Command Mapping
 
-            CreateMap<CreateProduct, Product>()
+            CreateMap<CreateProductCommand, Product>()
 
                 .ForMember(dest => dest.ProductTranslations, opt => opt.MapFrom(src => src.Translations))
                 .ForMember(dest => dest.ProductInCategories, opt => opt.MapFrom(src =>
@@ -56,7 +56,17 @@ namespace NoName.Application.Mapping
 
             CreateMap<ProductVariant, ProductVariantViewModel>()
                 .ForMember(dest => dest.Stock, opt => opt.MapFrom(src =>
-                    src.Inventory != null ?(src.Inventory.PhysicalQuantity - src.Inventory.ReservedQuantity): 0));
+                    src.Inventory != null ? (src.Inventory.PhysicalQuantity - src.Inventory.ReservedQuantity) : 0))
+                .ForMember(dest => dest.OptionValueNames, opt => opt.MapFrom(src =>
+                    src.OptionValues
+                        .OrderBy(ov => ov.OptionValue.OptionId)
+                        .Select(ov => ov.OptionValue.ProductOptionValueTranslations
+                            .Where(t => t.LanguageId == lang)
+                            .Select(t => t.Name)
+                            .FirstOrDefault()
+                            ?? ov.OptionValue.ProductOptionValueTranslations
+                                .Select(t => t.Name)
+                                .FirstOrDefault())));
 
             CreateMap<ProductTranslation, ProductTranslationViewModel>();
 

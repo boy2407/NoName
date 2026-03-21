@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoryWithTranslate
 {
-    public class GetCategoryByIdWithTranslates : IRequest<UpdateCategory>
+    public class GetCategoryByIdWithTranslates : IRequest<UpdateCategoryCommand>
     {
         public int Id { get; set; }
         public GetCategoryByIdWithTranslates(int id) => Id = id;

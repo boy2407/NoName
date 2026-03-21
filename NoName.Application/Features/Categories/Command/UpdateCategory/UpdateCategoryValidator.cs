@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Command.UpdateCategory
 {
-    public class UpdateCategoryValidator : AbstractValidator<UpdateCategory>
+    public class UpdateCategoryValidator : AbstractValidator<UpdateCategoryCommand>
     {   ICategoryRepository _categoryRepository;
         ILanguageRepository _languageRepository;
         public UpdateCategoryValidator(ICategoryRepository categoryRepository, ILanguageRepository languageRepository)

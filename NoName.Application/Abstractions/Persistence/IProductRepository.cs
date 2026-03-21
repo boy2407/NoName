@@ -1,4 +1,5 @@
 ﻿using NoName.Application.Common;
+using NoName.Application.Features.Chatbot.DTOs;
 using NoName.Application.Features.Product.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs.Guest;
@@ -16,7 +17,7 @@ namespace NoName.Application.Abstractions.Persistence
     {
         Task<int> SaveChangesAsync(CancellationToken ct = default);
         Task<Product?> GetByIdAsync(int id, CancellationToken cancellationToken);
-        Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingRequest request, CancellationToken ct = default);
+        Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default);
         Task<Product> GetProductForUpdateAsync(int id, CancellationToken ct);
         Task<T> GetByIdWithDetailsAsync<T>(int id, string languageId, CancellationToken cancellationToken) where T : class;
         Task<Product?> GetProductWithImagesAsync(int id, CancellationToken ct);
@@ -26,5 +27,9 @@ namespace NoName.Application.Abstractions.Persistence
         Task <bool> ExistsAsync(int id, CancellationToken cancellationToken);
         IQueryable <Product> Query();
         Task<bool> CheckSkuExistsAsync(string sku, CancellationToken cancellationToken);
+
+
+        //-------------- AI 
+        Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria);
     }
 }

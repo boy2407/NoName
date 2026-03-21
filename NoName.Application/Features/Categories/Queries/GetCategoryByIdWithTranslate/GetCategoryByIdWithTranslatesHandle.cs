@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoryWithTranslate
 {
-    public class GetCategoryByIdWithTranslatesHandle : IRequestHandler<GetCategoryByIdWithTranslates, UpdateCategory>
+    public class GetCategoryByIdWithTranslatesHandle : IRequestHandler<GetCategoryByIdWithTranslates, UpdateCategoryCommand>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -22,11 +22,11 @@ namespace NoName.Application.Features.Categories.Queries.GetCategoryWithTranslat
             _mapper = mapper;
         }
 
-        public async Task<UpdateCategory> Handle(GetCategoryByIdWithTranslates request, CancellationToken ct)
+        public async Task<UpdateCategoryCommand> Handle(GetCategoryByIdWithTranslates request, CancellationToken ct)
         {   
             var category = await _categoryRepository.GetByIdWithTranslationsAsync(request.Id, ct);
             if (category == null) throw new Exception("Category does not exist.");
-            return _mapper.Map<UpdateCategory>(category);
+            return _mapper.Map<UpdateCategoryCommand>(category);
         }
 
     }

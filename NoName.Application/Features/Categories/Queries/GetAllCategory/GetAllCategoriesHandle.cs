@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategory
 {
-    public class GetAllCategoriesHandle : IRequestHandler<GetAllCategories, List<CategoryViewModel>>
+    public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, List<CategoryViewModel>>
     {
 
         private readonly ICategoryRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetAllCategoriesHandle(ICategoryRepository repository, IMapper mapper)
+        public GetAllCategoriesQueryHandler(ICategoryRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -33,7 +33,7 @@ namespace NoName.Application.Features.Categories.Queries.GetCategory
             }
 
         }
-        public async Task<List<CategoryViewModel>> Handle(GetAllCategories request, CancellationToken ct)
+        public async Task<List<CategoryViewModel>> Handle(GetAllCategoriesQuery request, CancellationToken ct)
         {
             var categories = await _repository.GetAllAsync(request.LanguageId,ct);
             var allItems = _mapper.Map<List<CategoryViewModel>>(categories);

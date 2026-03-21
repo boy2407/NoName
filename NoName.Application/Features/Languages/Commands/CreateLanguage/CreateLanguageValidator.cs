@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Languages.Commands.CreateLanguage
 {
-    public class CreateLanguageValidator : AbstractValidator<CreateLanguage>
+    public class CreateLanguageValidator : AbstractValidator<CreateLanguageCommand>
     {
         public CreateLanguageValidator()
         {
            
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("Language ID is required.")
-                .Length(2).WithMessage("Language ID must be exactly 2 characters (e.g., 'vi', 'en').");
+                .Length(5).WithMessage("Language ID must be exactly 2 characters (e.g., 'vi-VN', 'en-US').");
 
          
             RuleFor(x => x.Name)

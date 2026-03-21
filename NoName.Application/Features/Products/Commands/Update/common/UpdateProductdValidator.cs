@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Commands.Update.common
 {
-    public class UpdateProductValidator : AbstractValidator<UpdateProduct>
+    public class UpdateProductValidator : AbstractValidator<UpdateProductCommand>
     {
         public UpdateProductValidator()
         {

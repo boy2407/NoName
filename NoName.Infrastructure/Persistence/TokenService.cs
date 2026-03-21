@@ -20,10 +20,11 @@ namespace NoName.Infrastructure.Persistence
         private readonly IConfiguration _config;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<User> _userManager;
-        public TokenService(IConfiguration config, IHttpContextAccessor httpContextAccessor)
+        public TokenService(IConfiguration config, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
         {
             _config = config;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         public async Task<string> CreateJwtToken(User user)

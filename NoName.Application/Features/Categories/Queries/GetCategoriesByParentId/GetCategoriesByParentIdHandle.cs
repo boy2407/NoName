@@ -13,20 +13,20 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoriesByParentId
 {
-    public class GetCategoriesByParentIdHandle : IRequestHandler<GetCategoriesByParentId, List<CategoryViewModel>>
+    public class GetCategoriesByParentIdQueryHandler : IRequestHandler<GetCategoriesByParentIdQuery, List<CategoryViewModel>>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILanguageRepository _languageRepository;
         private readonly IMapper _mapper;
         private readonly ILanguageService _languageService;
-        public GetCategoriesByParentIdHandle(ICategoryRepository categoryRepository, IMapper mapper, ILanguageRepository languageRepository, ILanguageService languageService)
+        public GetCategoriesByParentIdQueryHandler(ICategoryRepository categoryRepository, IMapper mapper, ILanguageRepository languageRepository, ILanguageService languageService)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;
             _languageRepository = languageRepository;
             _languageService = languageService;
         }
-        public async Task<List<CategoryViewModel>> Handle(GetCategoriesByParentId request, CancellationToken ct)
+        public async Task<List<CategoryViewModel>> Handle(GetCategoriesByParentIdQuery request, CancellationToken ct)
         {
             var currentLang = await _languageService.GetCurrentLanguage();
             request.LanguageId = string.IsNullOrEmpty(request.LanguageId) ? currentLang : request.LanguageId;

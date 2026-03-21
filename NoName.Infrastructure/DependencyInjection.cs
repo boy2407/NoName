@@ -5,9 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using NoName.Application.Abstractions;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
+using NoName.Application.Contracts;
+using NoName.Application.Services;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
+using NoName.Infrastructure.Services;
 using NoName.Infrastructure.Settings;
 using System;
 using System.Collections.Generic;
@@ -19,13 +22,31 @@ namespace NoName.Infrastructure
 {
     public static class DependencyInjection
     {
+        public const string OllamaKey = "Ollama";
+        public const string SemanticKernelKey = "SemanticKernel";
+        public const string OpenRouterKey = "OpenRouter";
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<NoNameDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-           
+
+            services.AddKeyedScoped<IAIService, OllamaService>(OllamaKey);
+            services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
+
+            services.AddKeyedScoped<IAIService, OpenRouterFreeService>(OpenRouterKey, (sp, key) =>
+            {
+                var apiKey = configuration["AI:OpenRouter:ApiKey"];
+
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    throw new InvalidOperationException("Missing configuration: AI:OpenRouter:ApiKey");
+                }
+
+                return new OpenRouterFreeService(apiKey);
+            });
+
 
             services.AddIdentity<User, Role>(options =>
             {

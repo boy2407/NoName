@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoName.Application.Features.Languages.Commands.CreateLanguage;
 using NoName.Application.Features.Languages.Commands.DeleteLanguage;
@@ -19,34 +20,34 @@ namespace NoName.BackendApi.Controllers
             _mediator = mediator;
         }
 
-       
+        [Authorize(policy: "ManagementContent")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateLanguage command)
+        public async Task<IActionResult> Create([FromBody] CreateLanguageCommand command)
         {
             var result = await _mediator.Send(command);
  
             return Ok(result);
         }
-
+        [Authorize(policy: "ManagementContent")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguage command)
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateLanguageCommand command)
         {
             command.Id = id;
             var result = await _mediator.Send(command);
             return Ok(result);
         }
-
+        [Authorize(policy: "AdminOnly")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var result = await _mediator.Send(new DeleteLanguage(id));
+            var result = await _mediator.Send(new DeleteLanguageCommand(id));
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var query = new GetLanguages();
+            var query = new GetLanguagesQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -55,7 +56,7 @@ namespace NoName.BackendApi.Controllers
         public async Task<IActionResult> GetById(string id)
         {
 
-            var result = await _mediator.Send(new GetLanguageById(id));
+            var result = await _mediator.Send(new GetLanguageByIdQuery(id));
             return Ok(result);
         }
 

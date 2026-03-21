@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Queries.GetProductsById
 {
-    public class GetProductByIdValidator : AbstractValidator<GetProductById>
+    public class GetProductByIdValidator : AbstractValidator<GetProductByIdQuery>
     {
         public GetProductByIdValidator()
         {
@@ -18,7 +18,7 @@ namespace NoName.Application.Features.Products.Queries.GetProductsById
         }
     }
 
-    public class AdminGetProductByIdValidator : AbstractValidator<AdminGetProductById>
+    public class AdminGetProductByIdValidator : AbstractValidator<AdminGetProductByIdQuery>
     {
         public AdminGetProductByIdValidator()
         {

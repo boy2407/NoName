@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NoName.Application.Common;
 using NoName.Application.Features.Auth.Commands.RefreshToken;
+using NoName.Application.Features.Users.Commands.ConfirmEmail;
 using NoName.Application.Features.Users.Commands.Login;
 using NoName.Application.Features.Users.Commands.Logout;
 using NoName.Application.Features.Users.Commands.RegisterUser;
@@ -44,6 +46,15 @@ namespace NoName.BackendApi.Controllers
             }
         }
 
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.IsSuccessed ? Ok(result) : BadRequest(result);
+        }
+
+
+
         private void SetRefreshTokenCookie(string token)
         {
             var expirationDays = double.Parse(_config["Jwt:RefreshTokenExpirationDays"] ?? "7");
@@ -74,7 +85,6 @@ namespace NoName.BackendApi.Controllers
 
 
         [HttpPost("refresh-token")]
-
         public async Task<IActionResult> Refresh([FromBody] string expiredAccessToken) 
         {
            

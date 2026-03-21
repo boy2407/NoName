@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Commands.Create
 {
-    public class CreateProductValidator : AbstractValidator<CreateProduct>
+    public class CreateProductValidator : AbstractValidator<CreateProductCommand>
     {
         ICategoryRepository _categoryRepository;
         ILanguageRepository _languageRepository;

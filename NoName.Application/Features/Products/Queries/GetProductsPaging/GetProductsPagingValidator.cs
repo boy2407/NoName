@@ -3,7 +3,7 @@ using NoName.Application.Features.Product.Queries.GetProductsPaging;
 
 namespace NoName.Application.Features.Products.Queries.GetProductsPaging
 {
-    public class GetProductsPagingValidator : AbstractValidator<GetProductsPagingRequest>
+    public class GetProductsPagingValidator : AbstractValidator<GetProductsPagingQuery>
     {
         public GetProductsPagingValidator()
         {

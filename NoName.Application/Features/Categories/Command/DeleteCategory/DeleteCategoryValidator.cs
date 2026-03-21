@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Command.DeleteCategory
 {
-    public class DeleteCategoryValidator : AbstractValidator<DeleteCategory>
+    public class DeleteCategoryValidator : AbstractValidator<DeleteCategoryCommand>
     {
         private readonly ICategoryRepository _repo;
 

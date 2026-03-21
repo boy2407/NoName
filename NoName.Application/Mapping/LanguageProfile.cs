@@ -17,9 +17,9 @@ namespace NoName.Application.Mapping
         {
             CreateMap<Language, LanguageViewModel>();
 
-            CreateMap<CreateLanguage, Language>();
+            CreateMap<CreateLanguageCommand, Language>();
 
-            CreateMap<UpdateLanguage, Language>()
+            CreateMap<UpdateLanguageCommand, Language>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
             
         }

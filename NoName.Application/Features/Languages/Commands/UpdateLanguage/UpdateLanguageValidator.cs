@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Languages.Commands.UpdateLanguage
 {
-    public class UpdateLanguageValidator : AbstractValidator<UpdateLanguage>
+    public class UpdateLanguageValidator : AbstractValidator<UpdateLanguageCommand>
     {
         public UpdateLanguageValidator()
         {

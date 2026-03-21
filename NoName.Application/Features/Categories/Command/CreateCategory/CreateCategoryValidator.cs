@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Command.CreateCategory
 {
-    public class CreateCategoryValidator : AbstractValidator<CreateCategory>
+    public class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILanguageRepository _languageRepository;

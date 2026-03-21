@@ -17,10 +17,15 @@ namespace NoName.Infrastructure.Configuration
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.SKU).IsRequired().HasMaxLength(50);
-            builder.HasIndex(x => x.SKU).IsUnique(); 
+            builder.HasIndex(x => x.SKU).IsUnique();
 
             builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(x => x.OriginalPrice).IsRequired().HasColumnType("decimal(18,2)");
+
+            builder.HasMany(x => x.OptionValues)
+               .WithOne(x => x.Variant)
+               .HasForeignKey(x => x.VariantId)
+               .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

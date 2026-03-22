@@ -2,12 +2,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NoName.Application.Features.Categories.Command.CreateCategory;
-using NoName.Application.Features.Categories.Command.DeleteCategory;
-using NoName.Application.Features.Categories.Command.UpdateCategory;
+using NoName.Application.Features.Categories.Commands.CreateCategory;
+using NoName.Application.Features.Categories.Commands.DeleteCategory;
+using NoName.Application.Features.Categories.Commands.UpdateCategory;
 using NoName.Application.Features.Categories.Queries.GetCategoriesByParentId;
-using NoName.Application.Features.Categories.Queries.GetCategory;
-using NoName.Application.Features.Categories.Queries.GetCategoryWithTranslate;
+using NoName.Application.Features.Categories.Queries.GetAllCategory;
+using NoName.Application.Features.Categories.Queries.GetCategoryByIdWithTranslate;
 using NoName.Application.Features.Languages.Queries.GetLanguage;
 using System.Windows.Input;
 
@@ -56,7 +56,7 @@ namespace NoName.BackendApi.Controllers
         [HttpGet("{id}/translations")]
         public async Task<IActionResult> GetCategoryByIdWithTranslates(int id)
         {
-            var result = await _mediator.Send(new GetCategoryByIdWithTranslates(id));
+            var result = await _mediator.Send(new GetCategoryByIdWithTranslatesQuery(id));
             if (result == null) return NotFound();
             return Ok(result);
         }

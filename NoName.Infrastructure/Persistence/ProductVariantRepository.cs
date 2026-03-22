@@ -15,6 +15,13 @@ namespace NoName.Infrastructure.Persistence
         private readonly NoNameDbContext _context;
         public ProductVariantRepository(NoNameDbContext context) => _context = context;
 
+        public async Task<ProductVariant?> GetByIdAsync(int id, CancellationToken ct)
+        {
+            return await _context.ProductVariants
+                .Include(x => x.Inventory)
+                .FirstOrDefaultAsync(x => x.Id == id, ct);
+        }
+
         public async Task<List<ProductVariant>> GetByProductIdAsync(int productId, CancellationToken ct)
         {
             return await _context.ProductVariants

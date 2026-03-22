@@ -12,9 +12,9 @@ namespace NoName.Infrastructure.Configuration
         {
             builder.ToTable("OrderDetails");
             builder.HasKey(x => x.Id);
-            builder.HasIndex(x => new { x.OrderId, x.ProductId }).IsUnique();
+            builder.HasIndex(x => new { x.OrderId, x.ProductVariantId }).IsUnique();
             builder.HasOne(x => x.Order).WithMany(x => x.OrderDetails).HasForeignKey(x => x.OrderId);
-            builder.HasOne(x => x.Product).WithMany(x => x.OrderDetails).HasForeignKey(x => x.ProductId);
+            builder.HasOne(x => x.ProductVariant).WithMany(x => x.OrderDetails).HasForeignKey(x => x.ProductVariantId);
         }
     }
 }

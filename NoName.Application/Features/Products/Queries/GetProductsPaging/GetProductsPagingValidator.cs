@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
 
 namespace NoName.Application.Features.Products.Queries.GetProductsPaging
 {

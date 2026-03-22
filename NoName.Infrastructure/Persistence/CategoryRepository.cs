@@ -2,7 +2,7 @@
 using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
-using NoName.Application.Features.Categories.Command.UpdateCategory;
+using NoName.Application.Features.Categories.Commands.UpdateCategory;
 using NoName.Application.Features.Categories.DTOs;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;

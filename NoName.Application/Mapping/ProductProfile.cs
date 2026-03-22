@@ -1,6 +1,5 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs.Admin;
 using NoName.Application.Features.Products.DTOs.Guest;

@@ -106,6 +106,7 @@ public static class ModelBuilderExtension
         var variants = new List<ProductVariant>();
         var variantOptionValues = new List<VariantOptionValue>();
         var inventories = new List<Inventory>();
+        var inventoryTransactions = new List<InventoryTransaction>();
         var productInCategories = new List<ProductInCategory>();
 
         int catIdCounter = 10;
@@ -231,11 +232,13 @@ public static class ModelBuilderExtension
                         foreach (var colorValId in colorValueIds)
                         {
                             int currentVId = vIdCounter++;
-                            decimal originalPrice = faker.Random.Int(20, 80) * 10000m;
-                            decimal price = Math.Round(originalPrice * faker.Random.Decimal(0.75m, 0.98m), 2);
-
+                            // Giá nhập từ nhà cung cấp (Dùng để tính lợi nhuận nội bộ)
+                            decimal costPrice = faker.Random.Int(10, 50) * 10000m;
+                            decimal originalPrice = costPrice * 1.5m;
+                            decimal rawPrice = originalPrice * faker.Random.Decimal(0.75m, 0.98m);
+                            decimal price = (Math.Round(rawPrice / 1000m) * 1000m) - 1000m;
                             variants.Add(new ProductVariant { Id = currentVId, ProductId = currentPId, SKU = $"SKU-{currentPId}-{currentVId}", Price = price, OriginalPrice = originalPrice, CreatedAt = seedDate });
-                            inventories.Add(new Inventory { Id = currentVId, ProductVariantId = currentVId, PhysicalQuantity = faker.Random.Int(20, 200), ReservedQuantity = faker.Random.Int(0, 20), LastUpdated = seedDate });
+                            inventories.Add(new Inventory { Id = currentVId, ProductVariantId = currentVId, PhysicalQuantity = faker.Random.Int(20, 200), ReservedQuantity = 0, LastUpdated = seedDate });
 
                             variantOptionValues.Add(new VariantOptionValue { Id = vovIdCounter++, VariantId = currentVId, OptionValueId = sizeId });
                             variantOptionValues.Add(new VariantOptionValue { Id = vovIdCounter++, VariantId = currentVId, OptionValueId = colorValId });
@@ -260,14 +263,21 @@ public static class ModelBuilderExtension
 
         modelBuilder.Entity<ProductVariant>().HasData(variants);
         modelBuilder.Entity<VariantOptionValue>().HasData(variantOptionValues);
-        modelBuilder.Entity<Inventory>().HasData(inventories);
         modelBuilder.Entity<ProductInCategory>().HasData(productInCategories);
 
         // --- 5. SEED IDENTITY (USER/ROLE) ---
         var adminId = Guid.Parse("D60A807D-A3EF-4A9C-BA73-B6FFB21CAE11");
         var adminRoleId = Guid.Parse("A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D");
+        var managerRoleId = Guid.Parse("B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E");
+        var staffRoleId = Guid.Parse("C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F");
+        var customerRoleId = Guid.Parse("D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F80");
 
-        modelBuilder.Entity<Role>().HasData(new Role { Id = adminRoleId, Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = "ROLE-ADMIN-0001" });
+        modelBuilder.Entity<Role>().HasData(
+            new Role { Id = adminRoleId, Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = "ROLE-ADMIN-0001" },
+            new Role { Id = managerRoleId, Name = "Manager", NormalizedName = "MANAGER", ConcurrencyStamp = "ROLE-MANAGER-0001" },
+            new Role { Id = staffRoleId, Name = "Staff", NormalizedName = "STAFF", ConcurrencyStamp = "ROLE-STAFF-0001" },
+            new Role { Id = customerRoleId, Name = "Customer", NormalizedName = "CUSTOMER", ConcurrencyStamp = "ROLE-CUSTOMER-0001" }
+        );
 
         var hasher = new PasswordHasher<User>();
         modelBuilder.Entity<User>().HasData(new User
@@ -286,6 +296,129 @@ public static class ModelBuilderExtension
         });
 
         modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid> { RoleId = adminRoleId, UserId = adminId });
+
+        // --- 5.1 SEED CUSTOMER USERS + ORDERS ---
+        var customer1Id = Guid.Parse("E5F6A7B8-C9D0-4E1F-2A3B-4C5D6E7F8091");
+        var customer2Id = Guid.Parse("F6A7B8C9-D0E1-4F2A-3B4C-5D6E7F8091A2");
+
+        var customerUsers = new List<User>
+        {
+            new User
+            {
+                Id = customer1Id,
+                UserName = "customer01",
+                NormalizedUserName = "CUSTOMER01",
+                Email = "customer01@noname.com",
+                NormalizedEmail = "CUSTOMER01@NONAME.COM",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "customer@"),
+                SecurityStamp = "SEC-CUSTOMER-0001",
+                ConcurrencyStamp = "CUS-USER-0001",
+                FirstName = "Minh",
+                LastName = "Anh",
+                Dob = new DateTime(1998, 5, 20)
+            },
+            new User
+            {
+                Id = customer2Id,
+                UserName = "customer02",
+                NormalizedUserName = "CUSTOMER02",
+                Email = "customer02@noname.com",
+                NormalizedEmail = "CUSTOMER02@NONAME.COM",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "customer@"),
+                SecurityStamp = "SEC-CUSTOMER-0002",
+                ConcurrencyStamp = "CUS-USER-0002",
+                FirstName = "Lan",
+                LastName = "Chi",
+                Dob = new DateTime(1999, 8, 15)
+            }
+        };
+
+        modelBuilder.Entity<User>().HasData(customerUsers);
+
+        modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
+            new IdentityUserRole<Guid> { RoleId = customerRoleId, UserId = customer1Id },
+            new IdentityUserRole<Guid> { RoleId = customerRoleId, UserId = customer2Id }
+        );
+
+        var seededOrders = new List<Order>();
+        var seededOrderDetails = new List<OrderDetail>();
+
+        var seededVariantIds = variants.Select(v => v.Id).ToList();
+        var variantPriceMap = variants.ToDictionary(v => v.Id, v => v.Price);
+        var inventoryByVariantId = inventories.ToDictionary(i => i.ProductVariantId);
+        var orderRandom = new Random(20260321);
+
+        int orderIdCounter = 1;
+        int orderDetailIdCounter = 1;
+        int inventoryTransactionIdCounter = 1;
+
+        var customerIds = new[] { customer1Id, customer2Id };
+        foreach (var customerId in customerIds)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                var orderId = orderIdCounter++;
+                var orderDate = seedDate.AddDays(i + (customerId == customer1Id ? 1 : 8));
+
+                seededOrders.Add(new Order
+                {
+                    Id = orderId,
+                    UserId = customerId,
+                    OrderDate = orderDate,
+                    ShipName = customerId == customer1Id ? "Minh Anh" : "Lan Chi",
+                    ShipAddress = customerId == customer1Id ? "123 Nguyen Trai, HCM" : "456 Le Loi, HCM",
+                    ShipEmail = customerId == customer1Id ? "customer01@noname.com" : "customer02@noname.com",
+                    ShipPhoneNumber = customerId == customer1Id ? "0901000001" : "0901000002",
+                    Status = OrderStatus.InProgress
+                });
+
+                var detailsCount = orderRandom.Next(3, 6);
+                var usedVariantIds = new HashSet<int>();
+
+                while (usedVariantIds.Count < detailsCount)
+                {
+                    var variantId = seededVariantIds[orderRandom.Next(seededVariantIds.Count)];
+                    if (!usedVariantIds.Add(variantId))
+                    {
+                        continue;
+                    }
+
+                    seededOrderDetails.Add(new OrderDetail
+                    {
+                        Id = orderDetailIdCounter++,
+                        OrderId = orderId,
+                        ProductVariantId = variantId,
+                        Quantity = orderRandom.Next(1, 4),
+                        Price = variantPriceMap[variantId]
+                    });
+
+                    var lastOrderDetail = seededOrderDetails[^1];
+                    if (inventoryByVariantId.TryGetValue(variantId, out var inventory))
+                    {
+                        inventory.ReservedQuantity += lastOrderDetail.Quantity;
+                        inventory.LastUpdated = orderDate;
+
+                        inventoryTransactions.Add(new InventoryTransaction
+                        {
+                            Id = inventoryTransactionIdCounter++,
+                            InventoryId = inventory.Id,
+                            QuantityChange = -lastOrderDetail.Quantity,
+                            Type = InventoryTransactionType.Adjustment,
+                            Description = $"Reserved {lastOrderDetail.Quantity} for seeded order #{orderId} (VariantId: {variantId}).",
+                            CreatedAt = orderDate,
+                            CreatedBy = customerId.ToString()
+                        });
+                    }
+                }
+            }
+        }
+
+        modelBuilder.Entity<Inventory>().HasData(inventories);
+        modelBuilder.Entity<Order>().HasData(seededOrders);
+        modelBuilder.Entity<OrderDetail>().HasData(seededOrderDetails);
+        modelBuilder.Entity<InventoryTransaction>().HasData(inventoryTransactions);
 
         // --- 6. SEED SLIDES ---
         modelBuilder.Entity<Slide>().HasData(

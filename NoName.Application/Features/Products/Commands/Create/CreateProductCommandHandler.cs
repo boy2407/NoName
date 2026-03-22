@@ -26,7 +26,7 @@ namespace NoName.Application.Features.Products.Commands.Create
 
         public async Task<int> Handle(CreateProductCommand request, CancellationToken ct)
         {
-            var product = _mapper.Map<NoName.Domain.Entities.Product>(request);
+            var product = _mapper.Map<Product>(request);
             product.DateCreated = DateTime.Now;
             product.ViewCount = 0;
             await _unitOfWork.Products.AddAsync(product, ct);

@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Users.Commands.ConfirmEmail
 {
-    public class ConfirmEmailHandler : IRequestHandler<ConfirmEmailCommand, ApiResult<bool>>
+    public class ConfirmEmailCommandHandler : IRequestHandler<ConfirmEmailCommand, ApiResult<bool>>
     {
         private readonly UserManager<User> _userManager;
 
-        public ConfirmEmailHandler(UserManager<User> userManager)
+        public ConfirmEmailCommandHandler(UserManager<User> userManager)
         {
             _userManager = userManager;
         }

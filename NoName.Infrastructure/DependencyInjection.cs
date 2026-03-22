@@ -31,8 +31,6 @@ namespace NoName.Infrastructure
             options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-
-            services.AddKeyedScoped<IAIService, OllamaService>(OllamaKey);
             services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
 
             services.AddKeyedScoped<IAIService, OpenRouterFreeService>(OpenRouterKey, (sp, key) =>
@@ -69,6 +67,8 @@ namespace NoName.Infrastructure
             services.AddScoped<ITokenService, TokenService>();
             //  Repositories and UnitOfWork
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductVariantRepository, ProductVariantRepository>();

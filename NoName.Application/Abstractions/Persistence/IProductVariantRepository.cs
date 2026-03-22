@@ -10,6 +10,7 @@ namespace NoName.Application.Abstractions.Persistence
 {
     public interface IProductVariantRepository
     {
+        Task<ProductVariant?> GetByIdAsync(int id, CancellationToken ct);
         Task<List<ProductVariant>> GetByProductIdAsync(int productId, CancellationToken ct);
         Task<List<string>> GetExistingSKUsAsync(List<string> SKUs, CancellationToken ct);
         void Add(ProductVariant variant);

@@ -1,6 +1,6 @@
 ﻿using NoName.Application.Common;
 using NoName.Application.Features.Chatbot.DTOs;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
+using NoName.Application.Features.Products.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
@@ -31,5 +31,6 @@ namespace NoName.Application.Abstractions.Persistence
 
         //-------------- AI 
         Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria);
+        Task<Product?> GetByNameAsync(string productName);
     }
 }

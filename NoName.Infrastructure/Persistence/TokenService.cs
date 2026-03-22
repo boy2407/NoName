@@ -37,6 +37,7 @@ namespace NoName.Infrastructure.Persistence
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName!),
+                new Claim("EmailConfirmed", user.EmailConfirmed.ToString().ToLowerInvariant()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

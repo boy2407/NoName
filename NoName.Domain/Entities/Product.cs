@@ -18,8 +18,6 @@ namespace NoName.Domain.Entities
         // Relationships
         public List<ProductTagMapping> ProductTagMappings { get; set; } = new();
         public List<ProductInCategory> ProductInCategories { get; set; } = new();
-        public List<OrderDetail> OrderDetails { get; set; } = new();
-        public List<Cart> Carts { get; set; } = new();
 
         public List<PromotionProduct> PromotionProducts { get; set; } = new();
 

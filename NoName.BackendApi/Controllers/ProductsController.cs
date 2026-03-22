@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NoName.Application.Common;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
+using NoName.Application.Features.Products.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.Commands.Options;
 using NoName.Application.Features.Products.Commands.Delete;
@@ -95,7 +95,7 @@ namespace NoName.BackendApi.Controllers
         [HttpPut("{productId}/variants")]
         public async Task<ActionResult<ApiResult<bool>>> UpdateVariants(int productId, [FromBody] List<UpdateVariant> variants)
         {
-            var command = new UpdateProductVariant
+            var command = new UpdateProductVariantCommand
             {
                 ProductId = productId,
                 Variants = variants

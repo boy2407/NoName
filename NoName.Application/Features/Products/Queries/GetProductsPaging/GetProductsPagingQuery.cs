@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NoName.Application.Features.Product.Queries.GetProductsPaging
+namespace NoName.Application.Features.Products.Queries.GetProductsPaging
 {
 
     public record GetProductsPagingQuery : IRequest<PagedResult<ProductViewModel>>

@@ -26,6 +26,7 @@ namespace NoName.Application.Abstractions.Persistence
         Task DeleteAsync(Product product, CancellationToken cancellationToken);
         Task <bool> ExistsAsync(int id, CancellationToken cancellationToken);
         IQueryable <Product> Query();
+        IQueryable<Product> GetProductQuery(int id);
         Task<bool> CheckSkuExistsAsync(string sku, CancellationToken cancellationToken);
 
 

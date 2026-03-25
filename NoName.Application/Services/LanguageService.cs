@@ -27,7 +27,6 @@ namespace NoName.Application.Services
             var request = _httpContextAccessor.HttpContext?.Request;
             if (request == null) return DefaultLang;
 
-            // Phải có await ở đây
             var supportedLanguages = await _languageRepository.GetAllLanguageIdsAsync();
 
             var userLangs = request.GetTypedHeaders().AcceptLanguage;

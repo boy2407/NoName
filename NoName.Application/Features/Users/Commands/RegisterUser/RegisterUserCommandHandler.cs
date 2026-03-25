@@ -58,9 +58,6 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, A
         // Email Veriftation and send confirmation email
 
 
-
-
-
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
         var requestUrl = _httpContextAccessor.HttpContext.Request;
         var baseUrl = $"{requestUrl.Scheme}://{requestUrl.Host}";

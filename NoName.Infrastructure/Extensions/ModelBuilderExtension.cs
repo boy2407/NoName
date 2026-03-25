@@ -235,8 +235,10 @@ public static class ModelBuilderExtension
                             // Giá nhập từ nhà cung cấp (Dùng để tính lợi nhuận nội bộ)
                             decimal costPrice = faker.Random.Int(10, 50) * 10000m;
                             decimal originalPrice = costPrice * 1.5m;
-                            decimal rawPrice = originalPrice * faker.Random.Decimal(0.75m, 0.98m);
-                            decimal price = (Math.Round(rawPrice / 1000m) * 1000m) - 1000m;
+                            decimal rawPrice = originalPrice * faker.Random.Decimal(1.2m, 1.5m);
+
+                            decimal price = (Math.Round(rawPrice / 1000m) * 1000m);
+
                             variants.Add(new ProductVariant { Id = currentVId, ProductId = currentPId, SKU = $"SKU-{currentPId}-{currentVId}", Price = price, OriginalPrice = originalPrice, CreatedAt = seedDate });
                             inventories.Add(new Inventory { Id = currentVId, ProductVariantId = currentVId, PhysicalQuantity = faker.Random.Int(20, 200), ReservedQuantity = 0, LastUpdated = seedDate });
 

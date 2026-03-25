@@ -39,13 +39,12 @@ builder.Services.AddCors(options =>
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IMediaService, MediaService>();
-builder.Services.AddScoped<ILanguageService, LanguageService>();
+
 
 // Resigter  MediatR 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IApplicationAssemblyMarker).Assembly));
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IApplicationAssemblyMarker).Assembly));
 // Resigter AutoMapper
-builder.Services.AddAutoMapper(typeof(IApplicationAssemblyMarker).Assembly);
+//builder.Services.AddAutoMapper(typeof(IApplicationAssemblyMarker).Assembly);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

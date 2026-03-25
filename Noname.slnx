@@ -6,12 +6,12 @@
     <File Path="docker-compose.yml" />
     <File Path="README.md" />
   </Folder>
-
   <Project Path="src/NoName.Application/NoName.Application.csproj" />
   <Project Path="src/NoName.BackendApi/NoName.BackendApi.csproj" Id="10dfa69f-521d-451b-b382-3cd8706970bf" />
   <Project Path="src/NoName.Domain/NoName.Domain.csproj" Id="25b3713d-70cd-4a00-b2f0-1fab48c17051" />
   <Project Path="src/NoName.Infrastructure/NoName.Infrastructure.csproj" />
-  <Project Path="test/NoName.Application.UnitTests/NoName.Application.UnitTests.csproj" />
+  <Project Path="test/NoName.Application.UnitTest/NoName.Application.UnitTest.csproj" Id="483076c8-e0d5-41e9-a8f6-9e9a43499012" />
+  <Project Path="test/NoName.BackEndApi.UnitTest/NoName.BackEndApi.UnitTest.csproj" Id="94e41a81-0618-4988-b83e-7deead7d2c13" />
 
   
 </Solution>

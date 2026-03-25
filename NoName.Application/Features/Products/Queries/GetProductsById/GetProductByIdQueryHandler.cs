@@ -18,13 +18,11 @@ namespace NoName.Application.Features.Products.Queries.GetProductsById
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductViewModel>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
         private readonly ILanguageService _languageService;
 
-        public GetProductByIdQueryHandler(IProductRepository productRepository, IMapper mapper, ILanguageService languageService)
+        public GetProductByIdQueryHandler(IProductRepository productRepository, ILanguageService languageService)
         {
             _productRepository = productRepository;
-            _mapper = mapper;
             _languageService = languageService;
         }
 
@@ -41,8 +39,6 @@ namespace NoName.Application.Features.Products.Queries.GetProductsById
             return product;
 
         }
-
-       
 
 
     }    

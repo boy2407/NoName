@@ -5,6 +5,7 @@ using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
 using NoName.Application.Features.Products.Commands.Update.common;
 using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Application.Features.Products.Events;
 using NoName.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,10 @@ namespace NoName.Application.Features.Products.Commands.Update.common
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILanguageService _languageService;
-
-        public UpdateProductCommandHandler(IUnitOfWork unitOfWork, ILanguageService languageService)
+        private readonly IMediator _mediator;
+        public UpdateProductCommandHandler(IMediator mediator, IUnitOfWork unitOfWork, ILanguageService languageService)
         {
+            _mediator = mediator;
             _unitOfWork = unitOfWork;
             _languageService = languageService;
         }
@@ -50,10 +52,15 @@ namespace NoName.Application.Features.Products.Commands.Update.common
             var result = await _unitOfWork.SaveChangesAsync(ct);
 
             if (result>0)
+            {
+                await _mediator.Publish(new ProductChangedEvent(request.Id), ct);
                 return ApiResult<bool>.Success(true, "Product information updated successfully.");
+            }    
+
 
             return ApiResult<bool>.Failure("Product information update failed.");
         }
+
 
         private void UpdateProductCategories(NoName.Domain.Entities.Product product, List<int> newCategoryIds)
         {

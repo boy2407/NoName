@@ -154,7 +154,12 @@ namespace NoName.Infrastructure.Persistence
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);
         }
-
+        public IQueryable<Product> GetProductQuery(int id)
+        {
+            return _context.Products
+                .AsNoTracking()
+                .Where(p => p.Id == id);
+        }
         // --------------AI
         public async Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria)
         {

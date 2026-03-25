@@ -12,6 +12,10 @@ using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
 using NoName.Infrastructure.Services;
 using NoName.Infrastructure.Settings;
+using RedLockNet;
+using RedLockNet.SERedis;
+using RedLockNet.SERedis.Configuration;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +31,31 @@ namespace NoName.Infrastructure
         public const string OpenRouterKey = "OpenRouter";
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            //Database
             services.AddDbContext<NoNameDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-            services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
 
+            // Redis Configuration
+            var redisConnectionString = configuration.GetConnectionString("Redis") ?? "localhost:6379";
+            var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+            services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+
+            //RedLock
+            services.AddSingleton<IDistributedLockFactory>(sp =>
+            {
+                var connection = sp.GetRequiredService<IConnectionMultiplexer>();
+
+                var endpoints = connection.GetEndPoints().Select(e => new RedLockEndPoint(e)).ToList();
+
+
+                return RedLockFactory.Create(endpoints);
+            });
+
+
+
+            services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
             services.AddKeyedScoped<IAIService, OpenRouterFreeService>(OpenRouterKey, (sp, key) =>
             {
                 var apiKey = configuration["AI:OpenRouter:ApiKey"];
@@ -46,7 +69,7 @@ namespace NoName.Infrastructure
             });
 
 
-            services.AddIdentity<User, Role>(options =>
+            services.AddIdentity<User, Domain.Entities.Role>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
@@ -61,7 +84,7 @@ namespace NoName.Infrastructure
 
 
             services.AddHttpContextAccessor();
-
+            services.AddScoped<ICacheService, RedisCacheService>();
             // Register TokenService
             services.AddTransient<IEmailService, EmailService>();
             services.AddScoped<ITokenService, TokenService>();
@@ -73,7 +96,6 @@ namespace NoName.Infrastructure
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductVariantRepository, ProductVariantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 
 
             services.AddAuthorization(options =>

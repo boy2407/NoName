@@ -20,7 +20,7 @@ namespace NoName.Application.Services
             _chatClient = new ChatClient(_modelId, new ApiKeyCredential(apiKey), options);
         }
 
-        public async Task<string> GetAIResponseAsync(string prompt, CancellationToken cancellationToken = default)
+        public async Task<string> GetAIResponseAsync(string prompt, string userRole = "Guest", CancellationToken cancellationToken = default)
         {
             try
             {

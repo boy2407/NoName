@@ -4,16 +4,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
-using NoName.Application.Features.Products.Commands.Options;
 using NoName.Application.Features.Products.Commands.Delete;
+using NoName.Application.Features.Products.Commands.Options;
 using NoName.Application.Features.Products.Commands.Update.common;
 using NoName.Application.Features.Products.Commands.Update.Variants;
 using NoName.Application.Features.Products.DTOs.Admin;
 using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Application.Features.Products.Queries.GetProductsById;
+using NoName.Application.Features.Products.Queries.GetProductsPaging;
 
 namespace NoName.BackendApi.Controllers
 {
@@ -22,9 +23,11 @@ namespace NoName.BackendApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ProductsController(IMediator mediator)
+        private readonly ICacheService _cacheService;
+        public ProductsController(IMediator mediator, ICacheService cacheService)
         {
             _mediator = mediator;
+            _cacheService = cacheService;
         }
 
         //-----------------------COMMANDS----------------------
@@ -95,7 +98,7 @@ namespace NoName.BackendApi.Controllers
         [HttpPut("{productId}/variants")]
         public async Task<ActionResult<ApiResult<bool>>> UpdateVariants(int productId, [FromBody] List<UpdateVariant> variants)
         {
-            var command = new UpdateProductVariant
+            var command = new UpdateProductVariantCommand
             {
                 ProductId = productId,
                 Variants = variants
@@ -110,14 +113,25 @@ namespace NoName.BackendApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            if (User.IsInRole("Admin"))
+            bool isAdmin = User.IsInRole("Admin");
+            string role = isAdmin ? "Admin" : "Public";
+            string cacheKey = CacheKeys.ProductDetail(id, role);
+
+            var cached = await _cacheService.GetAsync<object>(cacheKey);
+            if (cached != null) return Ok(cached);
+
+            object result = isAdmin
+                ? await _mediator.Send(new AdminGetProductByIdQuery(id))
+                : await _mediator.Send(new GetProductByIdQuery(id));
+
+            if (result != null)
             {
-                var adminquery = new AdminGetProductByIdQuery(id);
-                return Ok(await _mediator.Send(adminquery));
+                var cacheTime = isAdmin ? TimeSpan.FromMinutes(10) : TimeSpan.FromHours(1);
+                await _cacheService.SetAsync(cacheKey, result, cacheTime);
+                return Ok(result);
             }
 
-            var guestQuery = new GetProductByIdQuery(id);
-            return Ok(await _mediator.Send(guestQuery));
+            return NotFound();
         }
 
         [HttpGet]

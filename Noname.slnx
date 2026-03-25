@@ -3,6 +3,7 @@
     <File Path="Directory.Build.props" />
   </Folder>
   <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
     <File Path="README.md" />
   </Folder>
   <Project Path="NoName.App/NoName.App.csproj" Id="ef10069f-89e6-4673-8ddb-5a46c5f17e10" />

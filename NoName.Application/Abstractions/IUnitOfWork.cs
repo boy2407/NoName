@@ -11,6 +11,8 @@ namespace NoName.Application.Abstractions
     public interface IUnitOfWork : IDisposable
     {
         IProductRepository Products { get; }
+        ICartRepository Carts { get; }
+        IOrderRepository Orders { get; }
         ICategoryRepository Categories { get; }
         ILanguageRepository Languages { get; }
         IProductVariantRepository ProductVariants { get; }

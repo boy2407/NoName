@@ -54,11 +54,8 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, A
             return ApiResult<Guid>.Failure($"Registration failed: {errors}");
         }
 
-        await _userManager.AddToRoleAsync(user, "User");
+        await _userManager.AddToRoleAsync(user, "Customer");
         // Email Veriftation and send confirmation email
-
-
-
 
 
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);

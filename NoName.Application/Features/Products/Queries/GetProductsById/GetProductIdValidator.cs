@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using NoName.Application.Abstractions.Persistence;
-using NoName.Application.Features.Categories.Queries.GetCategory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

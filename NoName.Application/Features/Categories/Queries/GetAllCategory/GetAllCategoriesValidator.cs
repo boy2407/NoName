@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Categories.Queries.GetCategory
+namespace NoName.Application.Features.Categories.Queries.GetAllCategory
 {
     public class GetAllCategoriesValidator : AbstractValidator<GetAllCategoriesQuery>
     {

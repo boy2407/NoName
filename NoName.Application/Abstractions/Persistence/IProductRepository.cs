@@ -1,6 +1,6 @@
 ﻿using NoName.Application.Common;
 using NoName.Application.Features.Chatbot.DTOs;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
+using NoName.Application.Features.Products.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
@@ -26,10 +26,12 @@ namespace NoName.Application.Abstractions.Persistence
         Task DeleteAsync(Product product, CancellationToken cancellationToken);
         Task <bool> ExistsAsync(int id, CancellationToken cancellationToken);
         IQueryable <Product> Query();
+        IQueryable<Product> GetProductQuery(int id);
         Task<bool> CheckSkuExistsAsync(string sku, CancellationToken cancellationToken);
 
 
         //-------------- AI 
         Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria);
+        Task<Product?> GetByNameAsync(string productName);
     }
 }

@@ -8,16 +8,20 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly NoNameDbContext _context;
     public IProductRepository Products { get; }
+    public ICartRepository Carts { get; }
+    public IOrderRepository Orders { get; }
     public ILanguageRepository Languages { get; }
     public ICategoryRepository Categories { get; }
     public IProductVariantRepository ProductVariants { get; }
 
 
-    public UnitOfWork (NoNameDbContext context, IProductRepository products, ILanguageRepository languages,
+    public UnitOfWork (NoNameDbContext context, IProductRepository products, ICartRepository carts, IOrderRepository orders, ILanguageRepository languages,
                                               ICategoryRepository categories, IProductVariantRepository productVariants)
     {
         _context = context;
         Products = products;
+        Carts = carts;
+        Orders = orders;
         Languages = languages;
         Categories = categories;
         ProductVariants = productVariants;

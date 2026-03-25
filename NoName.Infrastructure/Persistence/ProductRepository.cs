@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
 using NoName.Application.Features.Chatbot.DTOs;
-using NoName.Application.Features.Product.Queries.GetProductsPaging;
+using NoName.Application.Features.Products.Queries.GetProductsPaging;
 using NoName.Application.Features.Products.Commands.Create;
 using NoName.Application.Features.Products.DTOs;
 using NoName.Application.Features.Products.DTOs.Guest;
@@ -154,7 +154,12 @@ namespace NoName.Infrastructure.Persistence
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);
         }
-
+        public IQueryable<Product> GetProductQuery(int id)
+        {
+            return _context.Products
+                .AsNoTracking()
+                .Where(p => p.Id == id);
+        }
         // --------------AI
         public async Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria)
         {
@@ -230,6 +235,19 @@ namespace NoName.Infrastructure.Persistence
                 .OrderByDescending(p => p.DateCreated)
                 .Take(10)
                 .ToListAsync();
+        }
+
+        public async Task<Product?> GetByNameAsync(string productName)
+        {
+            if (string.IsNullOrWhiteSpace(productName))
+            {
+                return null;
+            }
+
+            return await _context.Products
+                .Include(p => p.ProductTranslations)
+                .Include(p => p.ProductVariants)
+                .FirstOrDefaultAsync(p => p.ProductTranslations.Any(t => t.Name.Contains(productName)));
         }
 
     }

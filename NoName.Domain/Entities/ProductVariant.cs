@@ -16,6 +16,8 @@ namespace NoName.Domain.Entities
         public Product Product { get; set; }
         public Inventory Inventory { get; set; }
         public List<VariantOptionValue> OptionValues { get; set; }
+        public List<Cart> Carts { get; set; } = new();
+        public List<OrderDetail> OrderDetails { get; set; } = new();
         public DateTime CreatedAt { get; set; }
     }
 }

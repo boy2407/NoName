@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using NoName.Application.Features.Categories.Command.CreateCategory;
-using NoName.Application.Features.Categories.Command.UpdateCategory;
+using NoName.Application.Features.Categories.Commands.CreateCategory;
+using NoName.Application.Features.Categories.Commands.UpdateCategory;
 using NoName.Application.Features.Categories.DTOs;
 using NoName.Domain.Entities;
 using System;

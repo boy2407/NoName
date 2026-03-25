@@ -9,6 +9,8 @@ namespace NoName.Application.Contracts
 {
     public interface IAIService
     {
-        Task<string> GetAIResponseAsync(string prompt, CancellationToken ct = default);
+
+        Task<string> GetAIResponseAsync(string prompt, string userRole = "Guest", CancellationToken ct = default);
+        // Task<string> GetAIResponseAsync(string prompt, CancellationToken ct = default);
     }
 }

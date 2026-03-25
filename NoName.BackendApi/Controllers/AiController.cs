@@ -25,8 +25,7 @@ namespace NoName.BackendApi.Controllers
                 return BadRequest("Question cannot be empty.");
             }
 
-      
-            var result = await _mediator.Send(new AskChatbotCommand(request.Question));
+            var result = await _mediator.Send(new AskChatbotCommand(request.Question, User));
 
       
             return Ok(new { Answer = result });

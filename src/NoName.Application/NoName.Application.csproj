@@ -15,6 +15,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    <Folder Include="Features\Carts\Queries\GetAsyncCart\" />
+    <Folder Include="Features\Carts\Services\" />
     <Folder Include="Features\Products\Commands\Update\Inventory\" />
     <Folder Include="Features\Products\Commands\Update\Images\" />
   </ItemGroup>

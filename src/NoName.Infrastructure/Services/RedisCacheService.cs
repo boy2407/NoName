@@ -26,8 +26,23 @@ namespace NoName.Infrastructure.Services
         public async Task<T?> GetAsync<T>(string key)
         {
             var value = await _db.StringGetAsync(key);
-            if (value.IsNullOrEmpty) return default;
-            return  JsonSerializer.Deserialize<T>((string)value!);
+            if (!value.HasValue)
+            {
+                return default;
+            }
+
+            try
+            {
+                return JsonSerializer.Deserialize<T>(value.ToString());
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Loi ket noi Redis");
+                return default;
+            }
+            //var value = await _db.StringGetAsync(key);
+            //if (value.IsNullOrEmpty) return default;
+            //return  JsonSerializer.Deserialize<T>((string)value!);
         }
 
         public async Task SetAsync<T>(string key, T value, TimeSpan? expiration = null)

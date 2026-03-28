@@ -18,10 +18,16 @@ namespace NoName.Infrastructure.EF
                 .Build();
 
             var connectionString =
-                configuration.GetConnectionString("NoNameDB");
+                configuration.GetConnectionString("DefaultConnection");
 
-            var optionsBuilder =
-                new DbContextOptionsBuilder<NoNameDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<NoNameDbContext>();
+            optionsBuilder.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+            {
+                sqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null);
+            });
 
             optionsBuilder.UseSqlServer(connectionString);
 

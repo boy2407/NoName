@@ -27,6 +27,8 @@ namespace NoName.Application
                 cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             });
+
+
             services.AddScoped<IMediaService, MediaService>();
             services.AddScoped<ILanguageService, LanguageService>();
             return services;

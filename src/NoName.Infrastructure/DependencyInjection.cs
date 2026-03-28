@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using NoName.Application.Abstractions;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
@@ -33,16 +35,29 @@ namespace NoName.Infrastructure
         {
             //Database
             services.AddDbContext<NoNameDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
+            //options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-
             // Redis Configuration
-            var redisConnectionString = configuration.GetConnectionString("Redis") ?? "localhost:6379";
-            var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
-            services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+            //var redisConnectionString = configuration.GetConnectionString("Redis") ;
+            //var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+
+
+
+            var redisConnectionString = configuration.GetConnectionString("Redis");
+            services.AddSingleton<IConnectionMultiplexer>(sp =>
+                ConnectionMultiplexer.Connect(redisConnectionString));
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = redisConnectionString; 
+                options.InstanceName = "NoName-";
+            });
+
 
             //RedLock
+            services.AddSingleton<IDistributedLockService, DistributedLockService>();
             services.AddSingleton<IDistributedLockFactory>(sp =>
             {
                 var connection = sp.GetRequiredService<IConnectionMultiplexer>();

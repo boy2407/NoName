@@ -24,10 +24,12 @@ namespace NoName.BackendApi.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ICacheService _cacheService;
-        public ProductsController(IMediator mediator, ICacheService cacheService)
+        private readonly ILanguageService _languageService;
+        public ProductsController(IMediator mediator, ICacheService cacheService, ILanguageService languageService)
         {
             _mediator = mediator;
             _cacheService = cacheService;
+            _languageService = languageService;
         }
 
         //-----------------------COMMANDS----------------------
@@ -38,6 +40,8 @@ namespace NoName.BackendApi.Controllers
             var productId = await _mediator.Send(command);
             return Ok(new { Id = productId });
         }
+
+
         [Authorize(policy: "ManagementContent")]
         [HttpPost("{id}/variants")]
         public async Task<IActionResult> AddVariant(int id, [FromBody] AddProductVariantCommand command)
@@ -115,7 +119,8 @@ namespace NoName.BackendApi.Controllers
         {
             bool isAdmin = User.IsInRole("Admin");
             string role = isAdmin ? "Admin" : "Public";
-            string cacheKey = CacheKeys.ProductDetail(id, role);
+            var lang = await _languageService.GetCurrentLanguage();
+            string cacheKey = CacheKeys.ProductDetail(id, lang, role);
 
             var cached = await _cacheService.GetAsync<object>(cacheKey);
             if (cached != null) return Ok(cached);
@@ -123,7 +128,7 @@ namespace NoName.BackendApi.Controllers
             object result = isAdmin
                 ? await _mediator.Send(new AdminGetProductByIdQuery(id))
                 : await _mediator.Send(new GetProductByIdQuery(id));
-
+            Console.WriteLine(result);
             if (result != null)
             {
                 var cacheTime = isAdmin ? TimeSpan.FromMinutes(10) : TimeSpan.FromHours(1);

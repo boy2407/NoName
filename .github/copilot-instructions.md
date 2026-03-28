@@ -2,7 +2,7 @@
 
 ## General Guidelines
 - **Architecture**: Strict Clean Architecture (Domain, Application, Infrastructure, WebAPI).
-- **Patterns**: Mandatory CQRS with MediatR. No business logic in Controllers.
+- **Patterns**: Mandatory CQRS with MediatR. No business logic in Controllers. Code and tests must follow strict CQRS structure conventions.
 - **Entity Framework**: Use Fluent API for configurations, not Data Annotations.
 - **C# 12 Features**: Use Primary Constructors for Dependency Injection.
 - **Naming**: Commands/Queries must end with 'Command' or 'Query'. Handlers must match.

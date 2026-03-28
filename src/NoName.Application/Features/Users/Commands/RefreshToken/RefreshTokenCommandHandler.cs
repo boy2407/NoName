@@ -6,6 +6,7 @@ using NoName.Application.Common;
 using NoName.Application.Features.Auth.Commands.RefreshToken;
 using NoName.Application.Features.Users.Commands.Login;
 using NoName.Domain.Entities;
+using NoName.Shared.Contracts.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,11 +62,7 @@ namespace NoName.Application.Features.Users.Commands.RefreshToken
                     return ApiResult<AuthenticatedResponse>.Failure("Không thể cập nhật thông tin User vào Database.");
                 }
 
-                return ApiResult<AuthenticatedResponse>.Success(new AuthenticatedResponse
-                {
-                    AccessToken = newAccessToken,
-                    RefreshToken = newRefreshToken
-                });
+                return ApiResult<AuthenticatedResponse>.Success(new AuthenticatedResponse(newAccessToken, newRefreshToken));
             }
             catch (Exception ex)
             {

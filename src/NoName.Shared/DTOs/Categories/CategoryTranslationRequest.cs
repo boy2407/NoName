@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Categories.DTOs
+namespace NoName.Shared.DTOs.Categories
 {
     public class CategoryTranslationRequest
     {

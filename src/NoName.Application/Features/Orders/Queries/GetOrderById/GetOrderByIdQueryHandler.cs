@@ -1,7 +1,7 @@
 using MediatR;
 using NoName.Application.Abstractions;
 using NoName.Application.Common;
-using NoName.Application.Features.Orders.DTOs;
+using NoName.Shared.DTOs.Orders;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;

@@ -10,7 +10,6 @@ namespace NoName.Application.Abstractions.Services
 {
     public interface ITokenService
     {
-        
         Task<string> CreateJwtToken(User user);
         Task<string> GenerateRefreshToken();
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);

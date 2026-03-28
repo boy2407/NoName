@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Products.DTOs.Admin
+namespace NoName.Shared.DTOs.Products.Admin
 {
-    public class InventoryViewModel
+    public class InventoryDto
     {
         public int Physical { get; set; }
         public int Reserved { get; set; }

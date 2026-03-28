@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Products.DTOs.Guest
+namespace NoName.Shared.DTOs.Products.Guest
 {
-    public class ProductTranslationViewModel
+    public class ProductTranslationDto
     {
         public string Name { set; get; }
         public string Description { set; get; }

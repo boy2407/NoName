@@ -1,7 +1,7 @@
 using MediatR;
 using NoName.Application.Common;
-using NoName.Application.Features.Products.DTOs.Admin;
-using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Shared.DTOs.Products.Admin;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 using System;
 
-namespace NoName.Application.Features.Carts.DTOs
+namespace NoName.Shared.DTOs.Carts
 {
     public class CartItemDto
     {

@@ -1,4 +1,4 @@
-namespace NoName.Application.Features.Orders.DTOs
+namespace NoName.Shared.DTOs.Orders
 {
     public class OrderDetailDto
     {

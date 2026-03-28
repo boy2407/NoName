@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Languages.DTOs
+namespace NoName.Shared.DTOs.Languages
 {
-    public class LanguageViewModel
+    public class LanguageDto
     {
         public string Id { get; set; }
         public string Name { get; set; }

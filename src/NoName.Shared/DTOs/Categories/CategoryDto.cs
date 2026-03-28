@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Categories.DTOs
+namespace NoName.Shared.DTOs.Categories
 {
-    public class CategoryViewModel
+    public class CategoryDto
     {
         public int Id { get; set; }
         public int? ParentId { get; set; }
@@ -19,6 +19,6 @@ namespace NoName.Application.Features.Categories.DTOs
         public string SeoAlias { get; set; }
         public string SeoDescription { get; set; }
         public string SeoTitle { get; set; }
-        public List<CategoryViewModel> ChildCategories { get; set; } = new List<CategoryViewModel>();
+        public List<CategoryDto> ChildCategories { get; set; } = new List<CategoryDto>();
     }
 }

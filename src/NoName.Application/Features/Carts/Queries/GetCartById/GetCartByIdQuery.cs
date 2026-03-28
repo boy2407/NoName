@@ -1,6 +1,6 @@
 using MediatR;
 using NoName.Application.Common;
-using NoName.Application.Features.Carts.DTOs;
+using NoName.Shared.DTOs.Carts;
 using System;
 using System.Text.Json.Serialization;
 

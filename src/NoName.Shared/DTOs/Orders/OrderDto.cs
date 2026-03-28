@@ -2,7 +2,7 @@ using NoName.Domain.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace NoName.Application.Features.Orders.DTOs
+namespace NoName.Shared.DTOs.Orders
 {
     public class OrderDto
     {

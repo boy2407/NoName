@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Products.DTOs.Guest
+namespace NoName.Shared.DTOs.Products.Guest
 {
-    public class ProductVariantViewModel
+    public class ProductVariantDto
     {
         public int Id { get; set; }
         public string SKU { get; set; }

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using NoName.Application.Features.Categories.Commands.CreateCategory;
 using NoName.Application.Features.Categories.Commands.UpdateCategory;
-using NoName.Application.Features.Categories.DTOs;
+
 using NoName.Domain.Entities;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,8 @@ namespace NoName.Application.Mapping
 
 
             // ---query
-            CreateMap<CategoryTranslation, CategoryTranslationViewModel>();
-            CreateMap<Category, CategoryViewModel>()
+            CreateMap<CategoryTranslation, CategoryTranslationDto>();
+            CreateMap<Category, CategoryDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.CategoryTranslations.FirstOrDefault() != null ? src.CategoryTranslations.FirstOrDefault().Name : "NoName" +
                 "" +
                 ""))

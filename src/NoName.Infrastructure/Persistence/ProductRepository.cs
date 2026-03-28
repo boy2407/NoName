@@ -5,11 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
-using NoName.Application.Features.Chatbot.DTOs;
 using NoName.Application.Features.Products.Queries.GetProductsPaging;
-using NoName.Application.Features.Products.Commands.Create;
-using NoName.Application.Features.Products.DTOs;
-using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using System;
@@ -18,7 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using NoName.Shared.DTOs.Chatbot;
+using NoName.Shared.DTOs.Products.Guest;
 
 namespace NoName.Infrastructure.Persistence
 {
@@ -96,7 +93,7 @@ namespace NoName.Infrastructure.Persistence
                 .FirstOrDefaultAsync(x => x.Id == id, ct);
         }
   
-        public async Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default)
+        public async Task<PagedResult<ProductViewDto>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default)
         {
             var query = _context.Products.AsNoTracking();
 
@@ -119,10 +116,10 @@ namespace NoName.Infrastructure.Persistence
                 .OrderByDescending(p => p.DateCreated)
                 .Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize)
-                .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider, new { lang = request.LanguageId })
+                .ProjectTo<ProductViewDto>(_mapper.ConfigurationProvider, new { lang = request.LanguageId })
                 .ToListAsync(ct);
 
-            return new PagedResult<ProductViewModel>
+            return new PagedResult<ProductViewDto>
             {
                 Items = items,
                 TotalRecords = totalRecords,

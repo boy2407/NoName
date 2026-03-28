@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using NoName.Application.Abstractions.Persistence;
-using NoName.Application.Features.Languages.DTOs;
+using NoName.Shared.DTOs.Languages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Languages.Queries.GetLanguageById
 {
-    public class GetLanguageByIdQueryHandler : IRequestHandler<GetLanguageByIdQuery, LanguageViewModel>
+    public class GetLanguageByIdQueryHandler : IRequestHandler<GetLanguageByIdQuery, LanguageDto>
     {
         private readonly ILanguageRepository _repo;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace NoName.Application.Features.Languages.Queries.GetLanguageById
             _mapper = mapper;
         }
 
-        public async Task<LanguageViewModel> Handle(GetLanguageByIdQuery request, CancellationToken ct)
+        public async Task<LanguageDto> Handle(GetLanguageByIdQuery request, CancellationToken ct)
         {
             var language = await _repo.GetByIdAsync(request.Id, ct);
 
@@ -32,7 +32,7 @@ namespace NoName.Application.Features.Languages.Queries.GetLanguageById
                 throw new KeyNotFoundException($"Don't find this language with Id: {request.Id}");
             }
 
-            return _mapper.Map<LanguageViewModel>(language);
+            return _mapper.Map<LanguageDto>(language);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Chatbot.DTOs
+namespace NoName.Shared.DTOs.Chatbot
 {
     public class AiSearchCriteria
     {

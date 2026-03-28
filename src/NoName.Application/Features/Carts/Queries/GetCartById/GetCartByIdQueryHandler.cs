@@ -1,7 +1,7 @@
 using MediatR;
 using NoName.Application.Abstractions;
 using NoName.Application.Common;
-using NoName.Application.Features.Carts.DTOs;
+using NoName.Shared.DTOs.Carts;
 using System.Threading;
 using System.Threading.Tasks;
 

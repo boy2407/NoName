@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoName.Application.Features.Categories.DTOs
+namespace NoName.Shared.DTOs.Categories
 {
-    public class CategoryTranslationViewModel
+    public class CategoryTranslationDto
     {
         public int Id { set; get; }
         public int CategoryId { set; get; }

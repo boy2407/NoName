@@ -1,6 +1,5 @@
-﻿using NoName.Application.Features.Categories.Commands.UpdateCategory;
-using NoName.Application.Features.Categories.DTOs;
-using NoName.Domain.Entities;
+﻿using NoName.Domain.Entities;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace NoName.Application.Abstractions.Persistence
         Task<bool> ExistsAsync(int id, CancellationToken ct);
         Task<int> SaveChangesAsync(CancellationToken ct = default);
         Task<Category> GetByIdWithTranslationsAsync(int id, CancellationToken ct);
-        Task<CategoryViewModel> GetByIdWithLanguageAsync(int id, string languageId, CancellationToken ct);
+        Task<CategoryDto> GetByIdWithLanguageAsync(int id, string languageId, CancellationToken ct);
         Task<List<Category>> GetAllAsync(string languageId, CancellationToken ct = default);
         Task<Category> GetByIdAsync(int id, CancellationToken ct = default);
         Task<List<Category>> GetByParentIdAsync(int? parentId, string languageId, CancellationToken ct);

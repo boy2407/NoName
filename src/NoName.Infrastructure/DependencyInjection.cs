@@ -35,8 +35,8 @@ namespace NoName.Infrastructure
         {
             //Database
             services.AddDbContext<NoNameDbContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
+            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
@@ -46,7 +46,9 @@ namespace NoName.Infrastructure
 
 
 
-            var redisConnectionString = configuration.GetConnectionString("Redis");
+            //var redisConnectionString = configuration.GetConnectionString("Redis");
+            var redisConnectionString = "localhost:6379"; 
+
             services.AddSingleton<IConnectionMultiplexer>(sp =>
                 ConnectionMultiplexer.Connect(redisConnectionString));
             services.AddStackExchangeRedisCache(options =>

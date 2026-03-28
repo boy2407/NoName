@@ -11,8 +11,6 @@ using NoName.Application.Features.Products.Commands.Delete;
 using NoName.Application.Features.Products.Commands.Options;
 using NoName.Application.Features.Products.Commands.Update.common;
 using NoName.Application.Features.Products.Commands.Update.Variants;
-using NoName.Application.Features.Products.DTOs.Admin;
-using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Application.Features.Products.Queries.GetProductsById;
 using NoName.Application.Features.Products.Queries.GetProductsPaging;
 

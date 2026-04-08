@@ -38,6 +38,7 @@ namespace NoName.Infrastructure.Services
                 return "Cấu hình AI chưa hợp lệ. Vui lòng kiểm tra OpenRouter ApiKey.";
             }
 
+
             builder.AddOpenAIChatCompletion(
                 modelId: _modelId,
                 apiKey: apiKey,

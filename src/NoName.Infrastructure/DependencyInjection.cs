@@ -73,17 +73,7 @@ namespace NoName.Infrastructure
 
 
             services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
-            services.AddKeyedScoped<IAIService, OpenRouterFreeService>(OpenRouterKey, (sp, key) =>
-            {
-                var apiKey = configuration["AI:OpenRouter:ApiKey"];
-
-                if (string.IsNullOrWhiteSpace(apiKey))
-                {
-                    throw new InvalidOperationException("Missing configuration: AI:OpenRouter:ApiKey");
-                }
-
-                return new OpenRouterFreeService(apiKey);
-            });
+           
 
 
             services.AddIdentity<User, Domain.Entities.Role>(options =>

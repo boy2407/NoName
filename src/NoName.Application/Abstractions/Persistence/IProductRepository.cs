@@ -32,6 +32,7 @@ namespace NoName.Application.Abstractions.Persistence
 
         //-------------- AI 
         Task<List<Product>> SearchByAiCriteriaAsync(AiSearchCriteria criteria);
+        Task<List<Product>> SearchByAiCriteriaBySPAsync(AiSearchCriteria criteria, CancellationToken ct);
         Task<Product?> GetByNameAsync(string productName);
     }
 }

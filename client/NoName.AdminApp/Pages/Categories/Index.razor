@@ -1,0 +1,213 @@
+@page "/categories"
+@using MudBlazor
+@using NoName.AdminApp.Services
+@using NoName.Shared.DTOs.Categories
+@inject ICategoryService CategoryService
+@inject ISnackbar Snackbar
+
+<PageTitle>Quản Lý Danh Mục</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    @if (showForm)
+    {
+        <MudCard Class="mb-6">
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@(editingId == 0 ? "Thêm Danh Mục Mới" : "Chỉnh Sửa Danh Mục")</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudForm @ref="form" @bind-IsValid="@success">
+                    <MudTextField @bind-Value="formModel.Name" Label="Tên Danh Mục" Required="true" FullWidth Class="mb-4" />
+                    <MudTextField @bind-Value="formModel.SeoDescription" Label="Mô Tả SEO" FullWidth Class="mb-4" Lines="3" />
+                    <MudTextField @bind-Value="formModel.SeoTitle" Label="SEO Title" FullWidth Class="mb-4" />
+                    <MudTextField @bind-Value="formModel.SeoAlias" Label="SEO Alias" FullWidth Class="mb-4" />
+                    <div Class="d-flex gap-3">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveCategory">
+                            @(editingId == 0 ? "Thêm Mới" : "Cập Nhật")
+                        </MudButton>
+                        <MudButton Variant="Variant.Text" OnClick="CancelEdit">Hủy</MudButton>
+                    </div>
+                </MudForm>
+            </MudCardContent>
+        </MudCard>
+    }
+
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Danh Sách Danh Mục</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" OnClick="@(() => ShowForm())">
+                            Thêm Danh Mục
+                        </MudButton>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" />
+                    }
+                    else if (categories?.Count > 0)
+                    {
+                        <MudTable Items="categories" Striped="true" Bordered="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>ID</MudTh>
+                                <MudTh>Tên</MudTh>
+                                <MudTh>Mô Tả</MudTh>
+                                <MudTh>Danh Mục Cha</MudTh>
+                                <MudTh>Hành Động</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="ID">@context.Id</MudTd>
+                                <MudTd DataLabel="Tên">@context.Name</MudTd>
+                                <MudTd DataLabel="Mô Tả">@(context.SeoDescription?.Length > 50 ? context.SeoDescription.Substring(0, 50) + "..." : context.SeoDescription)</MudTd>
+                                <MudTd DataLabel="Danh Mục Cha">@(context.ParentId?.ToString() ?? "Không")</MudTd>
+                                <MudTd DataLabel="Hành Động">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => EditCategory(context.Id))" />
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteCategoryConfirm(context.Id))" />
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudText>Không có danh mục nào</MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private List<CategoryDto> categories = new();
+    private bool showForm = false;
+    private bool isLoading = true;
+    private bool success = false;
+    private int editingId = 0;
+
+    private CategoryTranslationDto formModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCategories();
+    }
+
+    private async Task LoadCategories()
+    {
+        try
+        {
+            isLoading = true;
+            categories = await CategoryService.GetAll();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi khi tải danh mục: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowForm()
+    {
+        editingId = 0;
+        formModel = new();
+        showForm = true;
+    }
+
+    private async Task EditCategory(int id)
+    {
+        try
+        {
+            var category = await CategoryService.GetById(id);
+            editingId = id;
+            formModel = new()
+            {
+                Name = category.Name,
+                SeoDescription = category.SeoDescription,
+                SeoTitle = category.SeoTitle,
+                SeoAlias = category.SeoAlias
+            };
+            showForm = true;
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void CancelEdit()
+    {
+        showForm = false;
+        formModel = new();
+        editingId = 0;
+    }
+
+    private async Task SaveCategory()
+    {
+        if (!success) return;
+
+        try
+        {
+            if (editingId == 0)
+            {
+                var request = new CreateCategoryRequest
+                {
+                    Translations = new() { formModel }
+                };
+                await CategoryService.Create(request);
+                Snackbar.Add("Thêm danh mục thành công", Severity.Success);
+            }
+            else
+            {
+                var request = new UpdateCategoryRequest
+                {
+                    Translations = new() { formModel }
+                };
+                await CategoryService.Update(editingId, request);
+                Snackbar.Add("Cập nhật danh mục thành công", Severity.Success);
+            }
+            CancelEdit();
+            await LoadCategories();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task DeleteCategoryConfirm(int id)
+    {
+        if (await Confirmed())
+        {
+            await DeleteCategory(id);
+        }
+    }
+
+    private async Task DeleteCategory(int id)
+    {
+        try
+        {
+            await CategoryService.Delete(id);
+            Snackbar.Add("Xóa danh mục thành công", Severity.Success);
+            await LoadCategories();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task<bool> Confirmed()
+    {
+        return true; // TODO: Implement confirmation dialog
+    }
+}
+

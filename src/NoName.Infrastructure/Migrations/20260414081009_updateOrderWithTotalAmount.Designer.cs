@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoName.Infrastructure.EF;
 
@@ -11,9 +12,11 @@ using NoName.Infrastructure.EF;
 namespace NoName.Infrastructure.Migrations
 {
     [DbContext(typeof(NoNameDbContext))]
-    partial class NoNameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260414081009_updateOrderWithTotalAmount")]
+    partial class updateOrderWithTotalAmount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29136,11 +29139,6 @@ namespace NoName.Infrastructure.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PayUrl")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
-
                     b.Property<string>("Provider")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -29269,7 +29267,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@NONAME.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHABFBCZxknl+JtSyv/eFnWS9Fyoh1VbTDvEtDDsphL90byajkinTNyt6ak0m+yadg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMdaPSdJMBZU2/FPpP9DefJ4oUyrzLWTDRWUqK9MA0ZlswgdB2+S44zp83m2HhVyEw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "D60A807D-A3EF-4A9C-BA73-B6FFB21CAE11",
                             TwoFactorEnabled = false,
@@ -29288,7 +29286,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER01@NONAME.COM",
                             NormalizedUserName = "CUSTOMER01",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPwtDnFV/Ks2bcRvhygBMMgBWqhX5coMaSk05luuWpVPKwq8py2fu+95P79jJYOpXA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGMutr4+Ty5X9qyvTSVLEr8wNGMs/qyOBX0BbygFerAyPLediiLYg/1Y5ycHc0PXaQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEC-CUSTOMER-0001",
                             TwoFactorEnabled = false,
@@ -29307,7 +29305,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER02@NONAME.COM",
                             NormalizedUserName = "CUSTOMER02",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPpOZC0hCJNU8xrvM14xKltGYKYG+vdKXOWC0fRpA6L3tmzY+TrxV1QOLEIThXJvVw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH/9tnVggZpqbu+KMSdI1kR5SryeB2dB9jBHuy//kKSdcg940nZtpEuBwPECBAQVTg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEC-CUSTOMER-0002",
                             TwoFactorEnabled = false,

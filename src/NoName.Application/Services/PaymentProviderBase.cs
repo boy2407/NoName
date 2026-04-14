@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using NoName.Application.Abstractions;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
+using NoName.Application.Common;
 using NoName.Domain.Entities;
 using NoName.Domain.Enums;
 using System;
@@ -36,7 +37,7 @@ namespace NoName.Application.Services
 
             try
             {
-                var paymentUrl = await BuildProviderSpecificUrl(order);
+                var result = await BuildProviderSpecificUrl(order);
                 await _unitOfWork.Transactions.AddAsync(new Transaction
                 {
                     OrderId = order.Id,
@@ -44,11 +45,17 @@ namespace NoName.Application.Services
                     Amount = order.TotalAmount,
                     Provider = this.ProviderName, 
                     Status = TransactionStatus.Pending,
-                    TransactionDate = DateTime.UtcNow
+                    TransactionDate = DateTime.UtcNow,
+                    PayUrl = result.PayUrl,
+                    Message = result.Message,
+                    ExternalTransactionId = result.RequestId,
+                    Result = result.ResultCode == 0 ? "Success" : "Failed",
+                    Fee = 0 
+
                 });
 
                 await _unitOfWork.SaveChangesAsync();
-                return paymentUrl;
+                return result.PayUrl;
             }
             catch (Exception ex)
             {
@@ -56,7 +63,7 @@ namespace NoName.Application.Services
                 throw;
             }
         }
-        protected abstract Task<string> BuildProviderSpecificUrl(Order order);
+        protected abstract Task<MomoResponse> BuildProviderSpecificUrl(Order order);
 
         public abstract Task<bool> ValidateCallback(IDictionary<string, string> queryParams);
 

@@ -22,6 +22,7 @@ namespace NoName.Infrastructure.Configuration
             builder.Property(x => x.Message).HasMaxLength(500);
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.Provider).HasMaxLength(100);
+            builder.Property(x => x.PayUrl).HasMaxLength(2000);
             builder.Property(x => x.UserId).IsRequired();
 
             builder.HasIndex(x => x.OrderId);

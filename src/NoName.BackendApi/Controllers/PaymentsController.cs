@@ -32,7 +32,7 @@ namespace NoName.BackendApi.Controllers
 
         [AllowAnonymous]
         [HttpGet("momo-callback")]
-        public IActionResult MomoCallback()
+        public async Task<IActionResult> MomoCallback()
         {
             try
             {
@@ -47,14 +47,24 @@ namespace NoName.BackendApi.Controllers
                     return BadRequest(ApiResult<string>.Failure("Missing orderId in callback"));
                 }
 
+                var command = new UpdatePaymentStatusCommand(callbackData, "MoMo");
+                var updateResult = await mediator.Send(command);
+
+                if (!updateResult.Processed)
+                {
+                    return BadRequest(ApiResult<string>.Failure(updateResult.Message ?? "Callback processing failed"));
+                }
+
                 var uiMessage = resultCode == "0"
-                    ? $"Đang xác nhận thanh toán cho đơn {orderId}. Vui lòng chờ IPN cập nhật trạng thái."
-                    : $"Đã nhận callback cho đơn {orderId} (resultCode: {resultCode}). Đang chờ IPN xác thực cuối cùng.";
+                    ? $"Thanh toán đơn {orderId} đã được cập nhật từ callback. Hệ thống vẫn nhận IPN để đối soát idempotent."
+                    : $"Đã xử lý callback cho đơn {orderId} (resultCode: {resultCode}). Nếu IPN đến sau sẽ tự bỏ qua khi trạng thái đã chốt.";
 
                 return Ok(ApiResult<object>.Success(new
                 {
                     orderId,
                     resultCode,
+                    processed = updateResult.Processed,
+                    isSuccess = updateResult.IsSuccess,
                     waitingForIpn = true,
                     signalRHub = "/hubs/payment-status",
                     signalREvent = "PaymentStatusUpdated"

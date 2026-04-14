@@ -8,6 +8,18 @@ Chuẩn dùng Swagger:
 2) API `POST/PUT` thì bật `Try it out` và dán JSON bên dưới.
 3) API có path/query params thì nhập đúng giá trị mẫu đã ghi.
 
+
+==================================================
+0) AI
+==================================================
+
+GET /api/ai/ask
+Query param:
+- question: Sản phẩm nào đang giảm giá?
+
+GET /api/ai/ask (đã xác thực Admin)
+Query param:
+- question: Doanh quý 1 năm nay bao nhiêu rồi 
 ==================================================
 1) AUTH
 ==================================================
@@ -372,13 +384,7 @@ GET /api/languages/{id}
 Path param:
 - id: vi
 
-==================================================
-8) AI
-==================================================
 
-GET /api/ai/ask
-Query param:
-- question: Sản phẩm nào đang giảm giá?
 
 ==================================================
 Payment flow test nhanh (copy làm lần lượt) * kết quả mong đợi

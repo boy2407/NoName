@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using NoName.Application.Features.Languages.DTOs;
+using NoName.Shared.DTOs.Languages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Languages.Queries.GetLanguageById
 {
-    public class GetLanguageByIdQuery : IRequest<LanguageViewModel>
+    public class GetLanguageByIdQuery : IRequest<LanguageDto>
     {
         public string Id { get; set; }
         public GetLanguageByIdQuery(string id) => Id = id;

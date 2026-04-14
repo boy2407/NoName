@@ -1,6 +1,6 @@
 using MediatR;
-using NoName.Application.Features.Categories.DTOs;
 using NoName.Domain.Enums;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

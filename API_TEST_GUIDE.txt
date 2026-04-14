@@ -1,0 +1,395 @@
+NoName API Test Guide - Swagger Copy/Paste
+
+Base URL:
+- https://localhost:<port>
+
+Chuẩn dùng Swagger:
+1) Bấm `Authorize` và dán `Bearer <access_token>` cho API cần auth.
+2) API `POST/PUT` thì bật `Try it out` và dán JSON bên dưới.
+3) API có path/query params thì nhập đúng giá trị mẫu đã ghi.
+
+==================================================
+1) AUTH
+==================================================
+
+POST /api/auth/register
+Body JSON:
+{
+  "firstName": "Boy",
+  "lastName": "Nguyen",
+  "email": "boy2407@gmail.com",
+  "userName": "boy2407",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "dob": "2000-01-01T00:00:00Z"
+}
+
+GET /api/auth/confirm-email
+Query params:
+- userId: <guid>
+- token: <token>
+
+POST /api/auth/login
+Body JSON:
+{
+  "username": "boy2407",
+  "password": "123456"
+}
+
+POST /api/auth/refresh-token
+Body JSON:
+{
+  "accessToken": "<access_token_hien_tai>"
+}
+Lưu ý: cần cookie `refreshToken`.
+
+POST /api/auth/logout
+Không body.
+
+==================================================
+2) ORDERS
+==================================================
+
+POST /api/orders
+Body JSON:
+{
+  "shipName": "Nguyen Van A",
+  "shipAddress": "123 Le Loi, Q1, HCM",
+  "shipEmail": "nghia7949@gmail.com",
+  "shipPhoneNumber": "0900000000",
+  "items": [
+    {
+      "productVariantId": 1,
+      "quantity": 1
+    }
+  ]
+}
+
+GET /api/orders/mine
+Không body.
+
+GET /api/orders/{id}
+Path param:
+- id: 100
+
+PUT /api/orders/{id}
+Path param:
+- id: 100
+Body JSON:
+{
+  "shipName": "Nguyen Van B",
+  "shipAddress": "456 Tran Hung Dao, Q1, HCM",
+  "shipEmail": "b@gmail.com",
+  "shipPhoneNumber": "0911111111"
+}
+
+PUT /api/orders/{id}/status
+Path param:
+- id: 100
+Body JSON:
+{
+  "status": 1
+}
+Gợi ý enum `OrderStatus`: 0=InProgress, 1=Confirmed, 2=Shipping, 3=Success, 4=Canceled
+
+DELETE /api/orders/{id}
+Path param:
+- id: 100
+
+==================================================
+3) PAYMENTS (MoMo)
+==================================================
+
+⚠️ IMPORTANT: Duplicate Prevention
+- Nếu gọi POST /api/payments/create/{orderId} 2 lần cho cùng 1 order:
+  • Lần 1: Tạo Transaction mới, trả về PayUrl ✓
+  • Lần 2: Phát hiện pending/success transaction, trả về PayUrl cũ (không gửi lại MoMo) ✓
+- Lý do: MoMo API từ chối duplicate orderId để ngăn chặn duplicate payment
+- Benefit: Có thể retry an toàn khi network error
+
+POST /api/payments/create/{orderId}
+Path param:
+- orderId: 100
+Query param:
+- provider: MoMo
+Expected Response (Lần 1):
+{
+  "statusCode": 200,
+  "message": "Payment created successfully",
+  "data": "https://test-payment.momo.vn/..."
+}
+Expected Response (Lần 2 - Same OrderId):
+{
+  "statusCode": 200,
+  "message": "Payment created successfully",
+  "data": "https://test-payment.momo.vn/..."  ← Trả về URL cũ
+}
+
+GET /api/payments/momo-callback
+Query params:
+- orderId: 100
+- resultCode: 0
+- transactionId: MOMO-100
+- message: Success
+
+POST /api/payments/momo-ipn
+Body JSON:
+{
+  "orderId": "100",
+  "resultCode": "0",
+  "transactionId": "MOMO-100",
+  "message": "Success"
+}
+
+==================================================
+4) CARTS
+==================================================
+
+GET /api/carts
+Không body.
+
+GET /api/carts/{id}
+Path param:
+- id: 1
+
+POST /api/carts
+Body JSON:
+{
+  "productVariantId": 1,
+  "quantity": 1
+}
+
+PUT /api/carts/{id}
+Path param:
+- id: 1
+Body JSON:
+{
+  "quantity": 2
+}
+
+DELETE /api/carts/{id}
+Path param:
+- id: 1
+
+==================================================
+5) PRODUCTS
+==================================================
+
+POST /api/products
+Body JSON:
+{
+  "categoryIds": [1],
+  "translations": [
+    {
+      "name": "Sample Product",
+      "description": "Description",
+      "details": "Details",
+      "seoDescription": "SEO Desc",
+      "seoTitle": "SEO Title",
+      "seoAlias": "sample-product",
+      "languageId": "vi"
+    }
+  ],
+  "isActive": true
+}
+
+POST /api/products/{id}/variants
+Path param:
+- id: 1
+Body JSON:
+{
+  "sku": "SP-001",
+  "price": 100000,
+  "originalPrice": 120000,
+  "stock": 10,
+  "optionValueIds": [1]
+}
+
+POST /api/products/{id}/images
+Path param:
+- id: 1
+Content-Type: multipart/form-data
+Form fields:
+- thumbnailImage: <file>
+- galleryImages: <file> (có thể nhiều file)
+
+POST /api/products/{id}/options
+Path param:
+- id: 1
+Body JSON:
+{
+  "name": "Color",
+  "values": ["Red", "Blue"]
+}
+
+PUT /api/products/{productId}/options/{optionId}
+Path params:
+- productId: 1
+- optionId: 1
+Body JSON:
+{
+  "name": "Color",
+  "values": ["Red", "Blue", "Black"]
+}
+
+DELETE /api/products/{productId}/options/{optionId}
+Path params:
+- productId: 1
+- optionId: 1
+
+PUT /api/products/{id}
+Path param:
+- id: 1
+Body JSON:
+{
+  "id": 1,
+  "translations": [
+    {
+      "name": "Updated Product",
+      "description": "Description",
+      "details": "Details",
+      "seoDescription": "SEO Desc",
+      "seoTitle": "SEO Title",
+      "seoAlias": "updated-product",
+      "languageId": "vi"
+    }
+  ],
+  "categoryIds": [1],
+  "isActive": true
+}
+
+PUT /api/products/{productId}/variants
+Path param:
+- productId: 1
+Body JSON:
+[
+  {
+    "id": 1,
+    "sku": "SP-001",
+    "price": 110000,
+    "originalPrice": 120000,
+    "physicalStock": 15
+  }
+]
+
+GET /api/products/{id}
+Path param:
+- id: 1
+
+GET /api/products
+Query params: dùng theo schema Swagger (GetProductsPagingQuery).
+
+DELETE /api/products/{id}
+Path param:
+- id: 1
+
+==================================================
+6) CATEGORIES
+==================================================
+
+POST /api/categories
+Body JSON:
+{
+  "sortOrder": 1,
+  "isShowOnHome": true,
+  "parentId": null,
+  "status": 1,
+  "translations": [
+    {
+      "name": "Do an",
+      "seoDescription": "Seo desc",
+      "seoTitle": "Seo title",
+      "seoAlias": "do-an",
+      "languageId": "vi"
+    }
+  ]
+}
+
+PUT /api/categories/{id}
+Path param:
+- id: 1
+Body JSON:
+{
+  "id": 1,
+  "sortOrder": 1,
+  "parentId": null,
+  "isShowOnHome": true,
+  "status": 1,
+  "translations": [
+    {
+      "name": "Do an updated",
+      "seoDescription": "Seo desc",
+      "seoTitle": "Seo title",
+      "seoAlias": "do-an-updated",
+      "languageId": "vi"
+    }
+  ]
+}
+
+DELETE /api/categories/{id}
+Path param:
+- id: 1
+
+GET /api/categories
+Không body.
+
+GET /api/categories/{id}/translations
+Path param:
+- id: 1
+
+GET /api/categories/parents
+Query params: dùng theo schema Swagger (GetCategoriesByParentIdQuery).
+
+==================================================
+7) LANGUAGES
+==================================================
+
+POST /api/languages
+Body JSON:
+{
+  "id": "vi",
+  "name": "Tiếng Việt",
+  "isDefault": true
+}
+
+PUT /api/languages/{id}
+Path param:
+- id: vi
+Body JSON:
+{
+  "name": "Vietnamese",
+  "isDefault": true
+}
+
+DELETE /api/languages/{id}
+Path param:
+- id: vi
+
+GET /api/languages
+Không body.
+
+GET /api/languages/{id}
+Path param:
+- id: vi
+
+==================================================
+8) AI
+==================================================
+
+GET /api/ai/ask
+Query param:
+- question: Sản phẩm nào đang giảm giá?
+
+==================================================
+Payment flow test nhanh (copy làm lần lượt) * kết quả mong đợi
+==================================================
+1) `POST /api/orders` -> lấy `orderId`.
+2) `POST /api/payments/create/{orderId}?provider=MoMo`.
+3) `GET /api/payments/momo-callback?orderId=<orderId>&resultCode=0&transactionId=MOMO-<orderId>&message=Success`.
+4) `POST /api/payments/momo-ipn` body:
+{
+  "orderId": "<orderId>",
+  "resultCode": "0",
+  "transactionId": "MOMO-<orderId>",
+  "message": "Success"
+}

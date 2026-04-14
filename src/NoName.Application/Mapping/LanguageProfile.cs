@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using NoName.Application.Features.Languages.Commands.CreateLanguage;
 using NoName.Application.Features.Languages.Commands.UpdateLanguage;
-using NoName.Application.Features.Languages.DTOs;
 using NoName.Domain.Entities;
+using NoName.Shared.DTOs.Languages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace NoName.Application.Mapping
     {
         public LanguageProfile()
         {
-            CreateMap<Language, LanguageViewModel>();
+            CreateMap<Language, LanguageDto>();
 
             CreateMap<CreateLanguageCommand, Language>();
 

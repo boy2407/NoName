@@ -1,10 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using NoName.Application.Features.Products.Commands.Create;
-using NoName.Application.Features.Products.DTOs;
-using NoName.Application.Features.Products.DTOs.Admin;
-using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
+using NoName.Shared.DTOs.Products;
+using NoName.Shared.DTOs.Products.Admin;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +25,13 @@ namespace NoName.Application.Mapping
                 .ForMember(dest => dest.ProductImages, opt => opt.Ignore())
                 .ForMember(dest => dest.ProductVariants, opt => opt.Ignore());
 
-            CreateMap<ProductTranslationViewModel, ProductTranslation>().ReverseMap();
+            CreateMap<ProductTranslationDto, ProductTranslation>().ReverseMap();
 
             ///-----------------Query Mapping
 
             string lang = null;
 
-            CreateMap<ProductVariant, ProductVariantViewModel>()
+            CreateMap<ProductVariant, ProductVariantDto>()
                 .ForMember(dest => dest.Stock, opt => opt.MapFrom(src =>
                     src.Inventory != null ? (src.Inventory.PhysicalQuantity - src.Inventory.ReservedQuantity) : 0))
                 .ForMember(dest => dest.OptionValueNames, opt => opt.MapFrom(src =>
@@ -46,11 +46,11 @@ namespace NoName.Application.Mapping
                             .Select(t => t.Name)
                             .FirstOrDefault())));
 
-            CreateMap<ProductVariant, ProductVariantAdminViewModel>()
-                    .IncludeBase<ProductVariant, ProductVariantViewModel>()
+            CreateMap<ProductVariant, ProductVariantAdminDto>()
+                    .IncludeBase<ProductVariant, ProductVariantDto>()
                     .ForMember(d => d.Inventory, o => o.MapFrom(src => src.Inventory));
 
-            CreateMap<Inventory, InventoryViewModel>()
+            CreateMap<Inventory, InventoryDto>()
               .ForMember(dest => dest.Physical, opt => opt.MapFrom(src => src.PhysicalQuantity))
               .ForMember(dest => dest.Reserved, opt => opt.MapFrom(src => src.ReservedQuantity))
               .ForMember(dest => dest.ActualAvailable, opt => opt.MapFrom(src => src.PhysicalQuantity - src.ReservedQuantity));
@@ -82,7 +82,7 @@ namespace NoName.Application.Mapping
             //Shadowing Property Mapping Issue
             //fix shawdowing , tránh lỗi .IncludeBase
             void MapProductBase<TDest, TVariant>(IMappingExpression<Product, TDest> map)
-            where TDest : BaseProductViewModel<TVariant>
+            where TDest : BaseProductDto<TVariant>
             {
                 map.ForMember(d => d.Price, o => o.MapFrom(src => src.ProductVariants.Any() ? src.ProductVariants.Min(v => v.Price) : 0))
                    .ForMember(d => d.Stock, o => o.MapFrom(src => src.ProductVariants.Where(v => v.Inventory != null).Sum(v => v.Inventory.PhysicalQuantity - v.Inventory.ReservedQuantity)))
@@ -94,13 +94,13 @@ namespace NoName.Application.Mapping
             }
 
 
-            var guestMap = CreateMap<Product, ProductViewModel>();
-            MapProductBase<ProductViewModel, ProductVariantViewModel>(guestMap);
+            var guestMap = CreateMap<Product, ProductViewDto>();
+            MapProductBase<ProductViewDto, ProductVariantDto>(guestMap);
 
-            var adminMap = CreateMap<Product, ProductAdminViewModel>();
-            MapProductBase<ProductAdminViewModel, ProductVariantAdminViewModel>(adminMap);
+            var adminMap = CreateMap<Product, ProductAdminDto>();
+            MapProductBase<ProductAdminDto, ProductVariantAdminDto>(adminMap);
 
-            CreateMap<ProductTranslation, ProductTranslationViewModel>();
+            CreateMap<ProductTranslation, ProductTranslationDto>();
         }
     }
 

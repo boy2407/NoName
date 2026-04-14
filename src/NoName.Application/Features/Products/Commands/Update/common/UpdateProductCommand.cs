@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
-using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,7 +14,7 @@ namespace NoName.Application.Features.Products.Commands.Update.common
     {
         public int Id { get; set; }
       
-        public List<ProductTranslationViewModel> Translations { get; set; } = new();
+        public List<ProductTranslationDto> Translations { get; set; } = new();
         public List<int> CategoryIds { get; set; } = new();
         public bool IsActive { get; set; }
     }

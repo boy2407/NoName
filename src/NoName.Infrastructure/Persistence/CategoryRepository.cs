@@ -3,9 +3,9 @@ using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Features.Categories.Commands.UpdateCategory;
-using NoName.Application.Features.Categories.DTOs;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,13 +81,13 @@ namespace NoName.Infrastructure.Persistence
           return await _context.Categories.Include(x => x.CategoryTranslations).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
    
         }
-        public async Task<CategoryViewModel> GetByIdWithLanguageAsync(int id, string languageId, CancellationToken ct)
+        public async Task<CategoryDto> GetByIdWithLanguageAsync(int id, string languageId, CancellationToken ct)
         {
             var category = await _context.Categories
                 .Include(x => x.CategoryTranslations)
                 .AsNoTracking() 
                 .FirstOrDefaultAsync(x => x.Id == id, ct);
-            return _mapper.Map<CategoryViewModel>(category, opt => opt.Items["LanguageId"] = languageId);
+            return _mapper.Map<CategoryDto>(category, opt => opt.Items["LanguageId"] = languageId);
         }
 
         public async Task<List<int>> GetExistingIdsAsync(List<int> ids, CancellationToken ct)

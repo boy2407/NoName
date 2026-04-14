@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
-using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Products.Queries.GetProductsPaging
 {
-    public class GetProductsPagingQueryHandler : IRequestHandler<GetProductsPagingQuery, PagedResult<ProductViewModel>>
+    public class GetProductsPagingQueryHandler : IRequestHandler<GetProductsPagingQuery, PagedResult<ProductViewDto>>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper; 
@@ -27,7 +27,7 @@ namespace NoName.Application.Features.Products.Queries.GetProductsPaging
         }
 
 
-        public async Task<PagedResult<ProductViewModel>> Handle(GetProductsPagingQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<ProductViewDto>> Handle(GetProductsPagingQuery request, CancellationToken cancellationToken)
         {
   
             var currentLang = await _languageService.GetCurrentLanguage();

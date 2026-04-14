@@ -2,9 +2,10 @@ using System.ComponentModel;
 using System.Text.Json;
 using Microsoft.SemanticKernel;
 using NoName.Application.Abstractions;
-using NoName.Application.Features.Chatbot.DTOs;
+
 using System.Linq;
 using System.Threading.Tasks;
+using NoName.Shared.DTOs.Chatbot;
 
 namespace NoName.Infrastructure.AIPlugins
 {

@@ -6214,6 +6214,11 @@ namespace NoName.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("TotalAmount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
@@ -6233,6 +6238,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Minh Anh",
                             ShipPhoneNumber = "0901000001",
                             Status = 0,
+                            TotalAmount = 3341000m,
                             UserId = new Guid("e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8091")
                         },
                         new
@@ -6244,6 +6250,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Minh Anh",
                             ShipPhoneNumber = "0901000001",
                             Status = 0,
+                            TotalAmount = 3960000m,
                             UserId = new Guid("e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8091")
                         },
                         new
@@ -6255,6 +6262,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Minh Anh",
                             ShipPhoneNumber = "0901000001",
                             Status = 0,
+                            TotalAmount = 7613000m,
                             UserId = new Guid("e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8091")
                         },
                         new
@@ -6266,6 +6274,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Minh Anh",
                             ShipPhoneNumber = "0901000001",
                             Status = 0,
+                            TotalAmount = 9034000m,
                             UserId = new Guid("e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8091")
                         },
                         new
@@ -6277,6 +6286,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Minh Anh",
                             ShipPhoneNumber = "0901000001",
                             Status = 0,
+                            TotalAmount = 7338000m,
                             UserId = new Guid("e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8091")
                         },
                         new
@@ -6288,6 +6298,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Lan Chi",
                             ShipPhoneNumber = "0901000002",
                             Status = 0,
+                            TotalAmount = 1250000m,
                             UserId = new Guid("f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8091a2")
                         },
                         new
@@ -6299,6 +6310,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Lan Chi",
                             ShipPhoneNumber = "0901000002",
                             Status = 0,
+                            TotalAmount = 4397000m,
                             UserId = new Guid("f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8091a2")
                         },
                         new
@@ -6310,6 +6322,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Lan Chi",
                             ShipPhoneNumber = "0901000002",
                             Status = 0,
+                            TotalAmount = 3542000m,
                             UserId = new Guid("f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8091a2")
                         },
                         new
@@ -6321,6 +6334,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Lan Chi",
                             ShipPhoneNumber = "0901000002",
                             Status = 0,
+                            TotalAmount = 5423000m,
                             UserId = new Guid("f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8091a2")
                         },
                         new
@@ -6332,6 +6346,7 @@ namespace NoName.Infrastructure.Migrations
                             ShipName = "Lan Chi",
                             ShipPhoneNumber = "0901000002",
                             Status = 0,
+                            TotalAmount = 3938000m,
                             UserId = new Guid("f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8091a2")
                         });
                 });
@@ -6370,7 +6385,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 1,
                             OrderId = 1,
-                            Price = 343000m,
+                            Price = 344000m,
                             ProductVariantId = 124,
                             Quantity = 3
                         },
@@ -6378,7 +6393,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 2,
                             OrderId = 1,
-                            Price = 584000m,
+                            Price = 585000m,
                             ProductVariantId = 532,
                             Quantity = 1
                         },
@@ -6386,7 +6401,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 3,
                             OrderId = 1,
-                            Price = 861000m,
+                            Price = 862000m,
                             ProductVariantId = 404,
                             Quantity = 2
                         },
@@ -6394,7 +6409,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 4,
                             OrderId = 2,
-                            Price = 426000m,
+                            Price = 427000m,
                             ProductVariantId = 26,
                             Quantity = 3
                         },
@@ -6402,7 +6417,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 5,
                             OrderId = 2,
-                            Price = 618000m,
+                            Price = 619000m,
                             ProductVariantId = 175,
                             Quantity = 3
                         },
@@ -6410,7 +6425,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 6,
                             OrderId = 2,
-                            Price = 218000m,
+                            Price = 219000m,
                             ProductVariantId = 475,
                             Quantity = 1
                         },
@@ -6418,7 +6433,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 7,
                             OrderId = 2,
-                            Price = 200000m,
+                            Price = 201000m,
                             ProductVariantId = 422,
                             Quantity = 3
                         },
@@ -6426,7 +6441,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 8,
                             OrderId = 3,
-                            Price = 925000m,
+                            Price = 926000m,
                             ProductVariantId = 240,
                             Quantity = 2
                         },
@@ -6434,7 +6449,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 9,
                             OrderId = 3,
-                            Price = 490000m,
+                            Price = 491000m,
                             ProductVariantId = 330,
                             Quantity = 2
                         },
@@ -6442,7 +6457,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 10,
                             OrderId = 3,
-                            Price = 589000m,
+                            Price = 590000m,
                             ProductVariantId = 59,
                             Quantity = 3
                         },
@@ -6450,7 +6465,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 11,
                             OrderId = 3,
-                            Price = 1002000m,
+                            Price = 1003000m,
                             ProductVariantId = 432,
                             Quantity = 3
                         },
@@ -6458,7 +6473,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 12,
                             OrderId = 4,
-                            Price = 926000m,
+                            Price = 927000m,
                             ProductVariantId = 54,
                             Quantity = 3
                         },
@@ -6466,7 +6481,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 13,
                             OrderId = 4,
-                            Price = 859000m,
+                            Price = 860000m,
                             ProductVariantId = 320,
                             Quantity = 3
                         },
@@ -6474,7 +6489,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 14,
                             OrderId = 4,
-                            Price = 279000m,
+                            Price = 280000m,
                             ProductVariantId = 464,
                             Quantity = 1
                         },
@@ -6482,7 +6497,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 15,
                             OrderId = 4,
-                            Price = 529000m,
+                            Price = 530000m,
                             ProductVariantId = 589,
                             Quantity = 3
                         },
@@ -6490,7 +6505,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 16,
                             OrderId = 4,
-                            Price = 600000m,
+                            Price = 601000m,
                             ProductVariantId = 403,
                             Quantity = 3
                         },
@@ -6498,7 +6513,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 17,
                             OrderId = 5,
-                            Price = 658000m,
+                            Price = 659000m,
                             ProductVariantId = 122,
                             Quantity = 3
                         },
@@ -6506,7 +6521,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 18,
                             OrderId = 5,
-                            Price = 282000m,
+                            Price = 283000m,
                             ProductVariantId = 373,
                             Quantity = 3
                         },
@@ -6514,7 +6529,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 19,
                             OrderId = 5,
-                            Price = 584000m,
+                            Price = 585000m,
                             ProductVariantId = 532,
                             Quantity = 3
                         },
@@ -6522,7 +6537,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 20,
                             OrderId = 5,
-                            Price = 875000m,
+                            Price = 876000m,
                             ProductVariantId = 160,
                             Quantity = 1
                         },
@@ -6530,7 +6545,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 21,
                             OrderId = 5,
-                            Price = 626000m,
+                            Price = 627000m,
                             ProductVariantId = 370,
                             Quantity = 3
                         },
@@ -6538,7 +6553,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 22,
                             OrderId = 6,
-                            Price = 350000m,
+                            Price = 351000m,
                             ProductVariantId = 35,
                             Quantity = 1
                         },
@@ -6546,7 +6561,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 23,
                             OrderId = 6,
-                            Price = 200000m,
+                            Price = 201000m,
                             ProductVariantId = 422,
                             Quantity = 2
                         },
@@ -6554,7 +6569,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 24,
                             OrderId = 6,
-                            Price = 273000m,
+                            Price = 274000m,
                             ProductVariantId = 275,
                             Quantity = 1
                         },
@@ -6562,7 +6577,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 25,
                             OrderId = 6,
-                            Price = 222000m,
+                            Price = 223000m,
                             ProductVariantId = 277,
                             Quantity = 1
                         },
@@ -6570,7 +6585,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 26,
                             OrderId = 7,
-                            Price = 763000m,
+                            Price = 764000m,
                             ProductVariantId = 90,
                             Quantity = 3
                         },
@@ -6578,7 +6593,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 27,
                             OrderId = 7,
-                            Price = 222000m,
+                            Price = 223000m,
                             ProductVariantId = 277,
                             Quantity = 2
                         },
@@ -6586,7 +6601,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 28,
                             OrderId = 7,
-                            Price = 418000m,
+                            Price = 419000m,
                             ProductVariantId = 364,
                             Quantity = 3
                         },
@@ -6594,7 +6609,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 29,
                             OrderId = 7,
-                            Price = 401000m,
+                            Price = 402000m,
                             ProductVariantId = 83,
                             Quantity = 1
                         },
@@ -6602,7 +6617,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 30,
                             OrderId = 8,
-                            Price = 516000m,
+                            Price = 517000m,
                             ProductVariantId = 500,
                             Quantity = 3
                         },
@@ -6610,7 +6625,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 31,
                             OrderId = 8,
-                            Price = 432000m,
+                            Price = 433000m,
                             ProductVariantId = 367,
                             Quantity = 3
                         },
@@ -6618,7 +6633,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 32,
                             OrderId = 8,
-                            Price = 345000m,
+                            Price = 346000m,
                             ProductVariantId = 619,
                             Quantity = 2
                         },
@@ -6626,7 +6641,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 33,
                             OrderId = 9,
-                            Price = 741000m,
+                            Price = 742000m,
                             ProductVariantId = 502,
                             Quantity = 3
                         },
@@ -6634,7 +6649,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 34,
                             OrderId = 9,
-                            Price = 478000m,
+                            Price = 479000m,
                             ProductVariantId = 455,
                             Quantity = 1
                         },
@@ -6642,7 +6657,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 35,
                             OrderId = 9,
-                            Price = 515000m,
+                            Price = 516000m,
                             ProductVariantId = 313,
                             Quantity = 2
                         },
@@ -6650,7 +6665,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 36,
                             OrderId = 9,
-                            Price = 561000m,
+                            Price = 562000m,
                             ProductVariantId = 205,
                             Quantity = 3
                         },
@@ -6658,7 +6673,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 37,
                             OrderId = 10,
-                            Price = 465000m,
+                            Price = 466000m,
                             ProductVariantId = 496,
                             Quantity = 2
                         },
@@ -6666,7 +6681,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 38,
                             OrderId = 10,
-                            Price = 520000m,
+                            Price = 521000m,
                             ProductVariantId = 149,
                             Quantity = 1
                         },
@@ -6674,7 +6689,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 39,
                             OrderId = 10,
-                            Price = 390000m,
+                            Price = 391000m,
                             ProductVariantId = 492,
                             Quantity = 3
                         },
@@ -6682,7 +6697,7 @@ namespace NoName.Infrastructure.Migrations
                         {
                             Id = 40,
                             OrderId = 10,
-                            Price = 655000m,
+                            Price = 656000m,
                             ProductVariantId = 268,
                             Quantity = 2
                         });
@@ -23203,7 +23218,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 1,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 376000m,
+                            Price = 377000m,
                             ProductId = 1,
                             SKU = "SKU-1-1"
                         },
@@ -23212,7 +23227,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 2,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 960000m,
+                            Price = 961000m,
                             ProductId = 1,
                             SKU = "SKU-1-2"
                         },
@@ -23221,7 +23236,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 3,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1054000m,
+                            Price = 1055000m,
                             ProductId = 1,
                             SKU = "SKU-1-3"
                         },
@@ -23230,7 +23245,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 4,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 885000m,
+                            Price = 886000m,
                             ProductId = 1,
                             SKU = "SKU-1-4"
                         },
@@ -23239,7 +23254,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 5,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 698000m,
+                            Price = 699000m,
                             ProductId = 1,
                             SKU = "SKU-1-5"
                         },
@@ -23248,7 +23263,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 6,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 631000m,
+                            Price = 632000m,
                             ProductId = 1,
                             SKU = "SKU-1-6"
                         },
@@ -23257,7 +23272,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 7,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 703000m,
+                            Price = 704000m,
                             ProductId = 1,
                             SKU = "SKU-1-7"
                         },
@@ -23266,7 +23281,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 8,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 375000m,
+                            Price = 376000m,
                             ProductId = 1,
                             SKU = "SKU-1-8"
                         },
@@ -23275,7 +23290,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 9,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 307000m,
+                            Price = 308000m,
                             ProductId = 1,
                             SKU = "SKU-1-9"
                         },
@@ -23284,7 +23299,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 10,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 610000m,
+                            Price = 611000m,
                             ProductId = 2,
                             SKU = "SKU-2-10"
                         },
@@ -23293,7 +23308,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 11,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 487000m,
+                            Price = 488000m,
                             ProductId = 2,
                             SKU = "SKU-2-11"
                         },
@@ -23302,7 +23317,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 12,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 941000m,
+                            Price = 942000m,
                             ProductId = 2,
                             SKU = "SKU-2-12"
                         },
@@ -23311,7 +23326,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 13,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 920000m,
+                            Price = 921000m,
                             ProductId = 2,
                             SKU = "SKU-2-13"
                         },
@@ -23320,7 +23335,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 14,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 437000m,
+                            Price = 438000m,
                             ProductId = 2,
                             SKU = "SKU-2-14"
                         },
@@ -23329,7 +23344,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 15,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 513000m,
+                            Price = 514000m,
                             ProductId = 2,
                             SKU = "SKU-2-15"
                         },
@@ -23338,7 +23353,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 16,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 180000m,
+                            Price = 181000m,
                             ProductId = 3,
                             SKU = "SKU-3-16"
                         },
@@ -23347,7 +23362,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 17,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 820000m,
+                            Price = 821000m,
                             ProductId = 3,
                             SKU = "SKU-3-17"
                         },
@@ -23356,7 +23371,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 18,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 701000m,
+                            Price = 702000m,
                             ProductId = 3,
                             SKU = "SKU-3-18"
                         },
@@ -23365,7 +23380,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 19,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 664000m,
+                            Price = 665000m,
                             ProductId = 3,
                             SKU = "SKU-3-19"
                         },
@@ -23374,7 +23389,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 20,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 594000m,
+                            Price = 595000m,
                             ProductId = 3,
                             SKU = "SKU-3-20"
                         },
@@ -23383,7 +23398,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 21,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1064000m,
+                            Price = 1065000m,
                             ProductId = 3,
                             SKU = "SKU-3-21"
                         },
@@ -23392,7 +23407,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 22,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 769000m,
+                            Price = 770000m,
                             ProductId = 4,
                             SKU = "SKU-4-22"
                         },
@@ -23401,7 +23416,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 23,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 217000m,
+                            Price = 218000m,
                             ProductId = 4,
                             SKU = "SKU-4-23"
                         },
@@ -23410,7 +23425,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 24,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 325000m,
+                            Price = 326000m,
                             ProductId = 4,
                             SKU = "SKU-4-24"
                         },
@@ -23419,7 +23434,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 25,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 708000m,
+                            Price = 709000m,
                             ProductId = 4,
                             SKU = "SKU-4-25"
                         },
@@ -23428,7 +23443,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 26,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 426000m,
+                            Price = 427000m,
                             ProductId = 4,
                             SKU = "SKU-4-26"
                         },
@@ -23437,7 +23452,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 27,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 934000m,
+                            Price = 935000m,
                             ProductId = 4,
                             SKU = "SKU-4-27"
                         },
@@ -23446,7 +23461,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 28,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 646000m,
+                            Price = 647000m,
                             ProductId = 4,
                             SKU = "SKU-4-28"
                         },
@@ -23455,7 +23470,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 29,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 379000m,
+                            Price = 380000m,
                             ProductId = 4,
                             SKU = "SKU-4-29"
                         },
@@ -23464,7 +23479,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 30,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 939000m,
+                            Price = 940000m,
                             ProductId = 4,
                             SKU = "SKU-4-30"
                         },
@@ -23473,7 +23488,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 31,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 741000m,
+                            Price = 742000m,
                             ProductId = 5,
                             SKU = "SKU-5-31"
                         },
@@ -23482,7 +23497,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 32,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1101000m,
+                            Price = 1102000m,
                             ProductId = 5,
                             SKU = "SKU-5-32"
                         },
@@ -23491,7 +23506,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 33,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 831000m,
+                            Price = 832000m,
                             ProductId = 5,
                             SKU = "SKU-5-33"
                         },
@@ -23500,7 +23515,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 34,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 682000m,
+                            Price = 683000m,
                             ProductId = 5,
                             SKU = "SKU-5-34"
                         },
@@ -23509,7 +23524,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 35,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 350000m,
+                            Price = 351000m,
                             ProductId = 5,
                             SKU = "SKU-5-35"
                         },
@@ -23518,7 +23533,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 36,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 744000m,
+                            Price = 745000m,
                             ProductId = 5,
                             SKU = "SKU-5-36"
                         },
@@ -23527,7 +23542,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 37,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 547000m,
+                            Price = 548000m,
                             ProductId = 6,
                             SKU = "SKU-6-37"
                         },
@@ -23536,7 +23551,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 38,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 226000m,
+                            Price = 227000m,
                             ProductId = 6,
                             SKU = "SKU-6-38"
                         },
@@ -23545,7 +23560,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 39,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 707000m,
+                            Price = 708000m,
                             ProductId = 6,
                             SKU = "SKU-6-39"
                         },
@@ -23554,7 +23569,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 40,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 245000m,
+                            Price = 246000m,
                             ProductId = 6,
                             SKU = "SKU-6-40"
                         },
@@ -23563,7 +23578,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 41,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 328000m,
+                            Price = 329000m,
                             ProductId = 6,
                             SKU = "SKU-6-41"
                         },
@@ -23572,7 +23587,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 42,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 841000m,
+                            Price = 842000m,
                             ProductId = 6,
                             SKU = "SKU-6-42"
                         },
@@ -23581,7 +23596,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 43,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 1025000m,
+                            Price = 1026000m,
                             ProductId = 7,
                             SKU = "SKU-7-43"
                         },
@@ -23590,7 +23605,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 44,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1048000m,
+                            Price = 1049000m,
                             ProductId = 7,
                             SKU = "SKU-7-44"
                         },
@@ -23599,7 +23614,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 45,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 888000m,
+                            Price = 889000m,
                             ProductId = 7,
                             SKU = "SKU-7-45"
                         },
@@ -23608,7 +23623,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 46,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 439000m,
+                            Price = 440000m,
                             ProductId = 7,
                             SKU = "SKU-7-46"
                         },
@@ -23617,7 +23632,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 47,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 966000m,
+                            Price = 967000m,
                             ProductId = 7,
                             SKU = "SKU-7-47"
                         },
@@ -23626,7 +23641,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 48,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 292000m,
+                            Price = 293000m,
                             ProductId = 7,
                             SKU = "SKU-7-48"
                         },
@@ -23635,7 +23650,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 49,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 596000m,
+                            Price = 597000m,
                             ProductId = 8,
                             SKU = "SKU-8-49"
                         },
@@ -23644,7 +23659,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 50,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 235000m,
+                            Price = 236000m,
                             ProductId = 8,
                             SKU = "SKU-8-50"
                         },
@@ -23653,7 +23668,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 51,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 254000m,
+                            Price = 255000m,
                             ProductId = 8,
                             SKU = "SKU-8-51"
                         },
@@ -23662,7 +23677,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 52,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 730000m,
+                            Price = 731000m,
                             ProductId = 8,
                             SKU = "SKU-8-52"
                         },
@@ -23671,7 +23686,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 53,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1029000m,
+                            Price = 1030000m,
                             ProductId = 8,
                             SKU = "SKU-8-53"
                         },
@@ -23680,7 +23695,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 54,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 926000m,
+                            Price = 927000m,
                             ProductId = 8,
                             SKU = "SKU-8-54"
                         },
@@ -23689,7 +23704,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 55,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 449000m,
+                            Price = 450000m,
                             ProductId = 8,
                             SKU = "SKU-8-55"
                         },
@@ -23698,7 +23713,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 56,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 627000m,
+                            Price = 628000m,
                             ProductId = 8,
                             SKU = "SKU-8-56"
                         },
@@ -23707,7 +23722,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 57,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 840000m,
+                            Price = 841000m,
                             ProductId = 8,
                             SKU = "SKU-8-57"
                         },
@@ -23716,7 +23731,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 58,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 447000m,
+                            Price = 448000m,
                             ProductId = 9,
                             SKU = "SKU-9-58"
                         },
@@ -23725,7 +23740,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 59,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 589000m,
+                            Price = 590000m,
                             ProductId = 9,
                             SKU = "SKU-9-59"
                         },
@@ -23734,7 +23749,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 60,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 569000m,
+                            Price = 570000m,
                             ProductId = 9,
                             SKU = "SKU-9-60"
                         },
@@ -23743,7 +23758,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 61,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 817000m,
+                            Price = 818000m,
                             ProductId = 9,
                             SKU = "SKU-9-61"
                         },
@@ -23752,7 +23767,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 62,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 234000m,
+                            Price = 235000m,
                             ProductId = 9,
                             SKU = "SKU-9-62"
                         },
@@ -23761,7 +23776,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 63,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 660000m,
+                            Price = 661000m,
                             ProductId = 9,
                             SKU = "SKU-9-63"
                         },
@@ -23770,7 +23785,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 64,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 449000m,
+                            Price = 450000m,
                             ProductId = 10,
                             SKU = "SKU-10-64"
                         },
@@ -23779,7 +23794,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 65,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 490000m,
+                            Price = 491000m,
                             ProductId = 10,
                             SKU = "SKU-10-65"
                         },
@@ -23788,7 +23803,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 66,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 1026000m,
+                            Price = 1027000m,
                             ProductId = 10,
                             SKU = "SKU-10-66"
                         },
@@ -23797,7 +23812,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 67,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 982000m,
+                            Price = 983000m,
                             ProductId = 10,
                             SKU = "SKU-10-67"
                         },
@@ -23806,7 +23821,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 68,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 297000m,
+                            Price = 298000m,
                             ProductId = 10,
                             SKU = "SKU-10-68"
                         },
@@ -23815,7 +23830,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 69,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 929000m,
+                            Price = 930000m,
                             ProductId = 10,
                             SKU = "SKU-10-69"
                         },
@@ -23824,7 +23839,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 70,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 361000m,
+                            Price = 362000m,
                             ProductId = 10,
                             SKU = "SKU-10-70"
                         },
@@ -23833,7 +23848,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 71,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 619000m,
+                            Price = 620000m,
                             ProductId = 10,
                             SKU = "SKU-10-71"
                         },
@@ -23842,7 +23857,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 72,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 408000m,
+                            Price = 409000m,
                             ProductId = 10,
                             SKU = "SKU-10-72"
                         },
@@ -23851,7 +23866,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 73,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 451000m,
+                            Price = 452000m,
                             ProductId = 11,
                             SKU = "SKU-11-73"
                         },
@@ -23860,7 +23875,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 74,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 641000m,
+                            Price = 642000m,
                             ProductId = 11,
                             SKU = "SKU-11-74"
                         },
@@ -23869,7 +23884,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 75,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 712000m,
+                            Price = 713000m,
                             ProductId = 11,
                             SKU = "SKU-11-75"
                         },
@@ -23878,7 +23893,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 76,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 339000m,
+                            Price = 340000m,
                             ProductId = 11,
                             SKU = "SKU-11-76"
                         },
@@ -23887,7 +23902,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 77,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 448000m,
+                            Price = 449000m,
                             ProductId = 11,
                             SKU = "SKU-11-77"
                         },
@@ -23896,7 +23911,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 78,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 755000m,
+                            Price = 756000m,
                             ProductId = 11,
                             SKU = "SKU-11-78"
                         },
@@ -23905,7 +23920,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 79,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 570000.0m,
-                            Price = 846000m,
+                            Price = 847000m,
                             ProductId = 11,
                             SKU = "SKU-11-79"
                         },
@@ -23914,7 +23929,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 80,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 836000m,
+                            Price = 837000m,
                             ProductId = 11,
                             SKU = "SKU-11-80"
                         },
@@ -23923,7 +23938,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 81,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 763000m,
+                            Price = 764000m,
                             ProductId = 11,
                             SKU = "SKU-11-81"
                         },
@@ -23932,7 +23947,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 82,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 802000m,
+                            Price = 803000m,
                             ProductId = 12,
                             SKU = "SKU-12-82"
                         },
@@ -23941,7 +23956,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 83,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 401000m,
+                            Price = 402000m,
                             ProductId = 12,
                             SKU = "SKU-12-83"
                         },
@@ -23950,7 +23965,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 84,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 241000m,
+                            Price = 242000m,
                             ProductId = 12,
                             SKU = "SKU-12-84"
                         },
@@ -23959,7 +23974,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 85,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 581000m,
+                            Price = 582000m,
                             ProductId = 12,
                             SKU = "SKU-12-85"
                         },
@@ -23968,7 +23983,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 86,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1091000m,
+                            Price = 1092000m,
                             ProductId = 12,
                             SKU = "SKU-12-86"
                         },
@@ -23977,7 +23992,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 87,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 935000m,
+                            Price = 936000m,
                             ProductId = 12,
                             SKU = "SKU-12-87"
                         },
@@ -23986,7 +24001,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 88,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 714000m,
+                            Price = 715000m,
                             ProductId = 13,
                             SKU = "SKU-13-88"
                         },
@@ -23995,7 +24010,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 89,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 784000m,
+                            Price = 785000m,
                             ProductId = 13,
                             SKU = "SKU-13-89"
                         },
@@ -24004,7 +24019,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 90,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 763000m,
+                            Price = 764000m,
                             ProductId = 13,
                             SKU = "SKU-13-90"
                         },
@@ -24013,7 +24028,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 91,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 749000m,
+                            Price = 750000m,
                             ProductId = 13,
                             SKU = "SKU-13-91"
                         },
@@ -24022,7 +24037,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 92,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 615000m,
+                            Price = 616000m,
                             ProductId = 13,
                             SKU = "SKU-13-92"
                         },
@@ -24031,7 +24046,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 93,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 954000m,
+                            Price = 955000m,
                             ProductId = 13,
                             SKU = "SKU-13-93"
                         },
@@ -24040,7 +24055,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 94,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 391000m,
+                            Price = 392000m,
                             ProductId = 14,
                             SKU = "SKU-14-94"
                         },
@@ -24049,7 +24064,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 95,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 581000m,
+                            Price = 582000m,
                             ProductId = 14,
                             SKU = "SKU-14-95"
                         },
@@ -24058,7 +24073,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 96,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 444000m,
+                            Price = 445000m,
                             ProductId = 14,
                             SKU = "SKU-14-96"
                         },
@@ -24067,7 +24082,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 97,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 565000m,
+                            Price = 566000m,
                             ProductId = 14,
                             SKU = "SKU-14-97"
                         },
@@ -24076,7 +24091,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 98,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 966000m,
+                            Price = 967000m,
                             ProductId = 14,
                             SKU = "SKU-14-98"
                         },
@@ -24085,7 +24100,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 99,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 1005000m,
+                            Price = 1006000m,
                             ProductId = 14,
                             SKU = "SKU-14-99"
                         },
@@ -24094,7 +24109,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 100,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 597000m,
+                            Price = 598000m,
                             ProductId = 15,
                             SKU = "SKU-15-100"
                         },
@@ -24103,7 +24118,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 101,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 689000m,
+                            Price = 690000m,
                             ProductId = 15,
                             SKU = "SKU-15-101"
                         },
@@ -24112,7 +24127,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 102,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 903000m,
+                            Price = 904000m,
                             ProductId = 15,
                             SKU = "SKU-15-102"
                         },
@@ -24121,7 +24136,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 103,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1011000m,
+                            Price = 1012000m,
                             ProductId = 15,
                             SKU = "SKU-15-103"
                         },
@@ -24130,7 +24145,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 104,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 241000m,
+                            Price = 242000m,
                             ProductId = 15,
                             SKU = "SKU-15-104"
                         },
@@ -24139,7 +24154,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 105,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 502000m,
+                            Price = 503000m,
                             ProductId = 15,
                             SKU = "SKU-15-105"
                         },
@@ -24148,7 +24163,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 106,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 944000m,
+                            Price = 945000m,
                             ProductId = 15,
                             SKU = "SKU-15-106"
                         },
@@ -24157,7 +24172,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 107,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 535000m,
+                            Price = 536000m,
                             ProductId = 15,
                             SKU = "SKU-15-107"
                         },
@@ -24166,7 +24181,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 108,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 975000m,
+                            Price = 976000m,
                             ProductId = 15,
                             SKU = "SKU-15-108"
                         },
@@ -24175,7 +24190,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 109,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 816000m,
+                            Price = 817000m,
                             ProductId = 16,
                             SKU = "SKU-16-109"
                         },
@@ -24184,7 +24199,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 110,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 863000m,
+                            Price = 864000m,
                             ProductId = 16,
                             SKU = "SKU-16-110"
                         },
@@ -24193,7 +24208,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 111,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 904000m,
+                            Price = 905000m,
                             ProductId = 16,
                             SKU = "SKU-16-111"
                         },
@@ -24202,7 +24217,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 112,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 401000m,
+                            Price = 402000m,
                             ProductId = 16,
                             SKU = "SKU-16-112"
                         },
@@ -24211,7 +24226,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 113,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 624000m,
+                            Price = 625000m,
                             ProductId = 16,
                             SKU = "SKU-16-113"
                         },
@@ -24220,7 +24235,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 114,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 557000m,
+                            Price = 558000m,
                             ProductId = 16,
                             SKU = "SKU-16-114"
                         },
@@ -24229,7 +24244,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 115,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 599000m,
+                            Price = 600000m,
                             ProductId = 17,
                             SKU = "SKU-17-115"
                         },
@@ -24238,7 +24253,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 116,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 196000m,
+                            Price = 197000m,
                             ProductId = 17,
                             SKU = "SKU-17-116"
                         },
@@ -24247,7 +24262,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 117,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 705000m,
+                            Price = 706000m,
                             ProductId = 17,
                             SKU = "SKU-17-117"
                         },
@@ -24256,7 +24271,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 118,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 343000m,
+                            Price = 344000m,
                             ProductId = 17,
                             SKU = "SKU-17-118"
                         },
@@ -24265,7 +24280,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 119,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 643000m,
+                            Price = 644000m,
                             ProductId = 17,
                             SKU = "SKU-17-119"
                         },
@@ -24274,7 +24289,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 120,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 868000m,
+                            Price = 869000m,
                             ProductId = 17,
                             SKU = "SKU-17-120"
                         },
@@ -24283,7 +24298,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 121,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 975000m,
+                            Price = 976000m,
                             ProductId = 17,
                             SKU = "SKU-17-121"
                         },
@@ -24292,7 +24307,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 122,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 658000m,
+                            Price = 659000m,
                             ProductId = 17,
                             SKU = "SKU-17-122"
                         },
@@ -24301,7 +24316,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 123,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 274000m,
+                            Price = 275000m,
                             ProductId = 17,
                             SKU = "SKU-17-123"
                         },
@@ -24310,7 +24325,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 124,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 343000m,
+                            Price = 344000m,
                             ProductId = 18,
                             SKU = "SKU-18-124"
                         },
@@ -24319,7 +24334,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 125,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 793000m,
+                            Price = 794000m,
                             ProductId = 18,
                             SKU = "SKU-18-125"
                         },
@@ -24328,7 +24343,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 126,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 662000m,
+                            Price = 663000m,
                             ProductId = 18,
                             SKU = "SKU-18-126"
                         },
@@ -24337,7 +24352,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 127,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 461000m,
+                            Price = 462000m,
                             ProductId = 18,
                             SKU = "SKU-18-127"
                         },
@@ -24346,7 +24361,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 128,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 495000m,
+                            Price = 496000m,
                             ProductId = 18,
                             SKU = "SKU-18-128"
                         },
@@ -24355,7 +24370,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 129,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 422000m,
+                            Price = 423000m,
                             ProductId = 18,
                             SKU = "SKU-18-129"
                         },
@@ -24364,7 +24379,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 130,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 200000m,
+                            Price = 201000m,
                             ProductId = 19,
                             SKU = "SKU-19-130"
                         },
@@ -24373,7 +24388,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 131,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 216000m,
+                            Price = 217000m,
                             ProductId = 19,
                             SKU = "SKU-19-131"
                         },
@@ -24382,7 +24397,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 132,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1097000m,
+                            Price = 1098000m,
                             ProductId = 19,
                             SKU = "SKU-19-132"
                         },
@@ -24391,7 +24406,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 133,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 411000m,
+                            Price = 412000m,
                             ProductId = 19,
                             SKU = "SKU-19-133"
                         },
@@ -24400,7 +24415,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 134,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 632000m,
+                            Price = 633000m,
                             ProductId = 19,
                             SKU = "SKU-19-134"
                         },
@@ -24409,7 +24424,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 135,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 649000m,
+                            Price = 650000m,
                             ProductId = 19,
                             SKU = "SKU-19-135"
                         },
@@ -24418,7 +24433,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 136,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 894000m,
+                            Price = 895000m,
                             ProductId = 19,
                             SKU = "SKU-19-136"
                         },
@@ -24427,7 +24442,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 137,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 325000m,
+                            Price = 326000m,
                             ProductId = 19,
                             SKU = "SKU-19-137"
                         },
@@ -24436,7 +24451,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 138,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 495000m,
+                            Price = 496000m,
                             ProductId = 19,
                             SKU = "SKU-19-138"
                         },
@@ -24445,7 +24460,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 139,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 498000m,
+                            Price = 499000m,
                             ProductId = 20,
                             SKU = "SKU-20-139"
                         },
@@ -24454,7 +24469,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 140,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 781000m,
+                            Price = 782000m,
                             ProductId = 20,
                             SKU = "SKU-20-140"
                         },
@@ -24463,7 +24478,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 141,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 999000m,
+                            Price = 1000000m,
                             ProductId = 20,
                             SKU = "SKU-20-141"
                         },
@@ -24472,7 +24487,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 142,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 840000m,
+                            Price = 841000m,
                             ProductId = 20,
                             SKU = "SKU-20-142"
                         },
@@ -24481,7 +24496,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 143,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 409000m,
+                            Price = 410000m,
                             ProductId = 20,
                             SKU = "SKU-20-143"
                         },
@@ -24490,7 +24505,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 144,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 952000m,
+                            Price = 953000m,
                             ProductId = 20,
                             SKU = "SKU-20-144"
                         },
@@ -24499,7 +24514,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 145,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 681000m,
+                            Price = 682000m,
                             ProductId = 21,
                             SKU = "SKU-21-145"
                         },
@@ -24508,7 +24523,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 146,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 405000m,
+                            Price = 406000m,
                             ProductId = 21,
                             SKU = "SKU-21-146"
                         },
@@ -24517,7 +24532,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 147,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 873000m,
+                            Price = 874000m,
                             ProductId = 21,
                             SKU = "SKU-21-147"
                         },
@@ -24526,7 +24541,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 148,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 640000m,
+                            Price = 641000m,
                             ProductId = 21,
                             SKU = "SKU-21-148"
                         },
@@ -24535,7 +24550,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 149,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 520000m,
+                            Price = 521000m,
                             ProductId = 21,
                             SKU = "SKU-21-149"
                         },
@@ -24544,7 +24559,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 150,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 942000m,
+                            Price = 943000m,
                             ProductId = 21,
                             SKU = "SKU-21-150"
                         },
@@ -24553,7 +24568,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 151,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 743000m,
+                            Price = 744000m,
                             ProductId = 21,
                             SKU = "SKU-21-151"
                         },
@@ -24562,7 +24577,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 152,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 800000m,
+                            Price = 801000m,
                             ProductId = 21,
                             SKU = "SKU-21-152"
                         },
@@ -24571,7 +24586,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 153,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 897000m,
+                            Price = 898000m,
                             ProductId = 21,
                             SKU = "SKU-21-153"
                         },
@@ -24580,7 +24595,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 154,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 600000m,
+                            Price = 601000m,
                             ProductId = 22,
                             SKU = "SKU-22-154"
                         },
@@ -24589,7 +24604,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 155,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 765000m,
+                            Price = 766000m,
                             ProductId = 22,
                             SKU = "SKU-22-155"
                         },
@@ -24598,7 +24613,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 156,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 884000m,
+                            Price = 885000m,
                             ProductId = 22,
                             SKU = "SKU-22-156"
                         },
@@ -24607,7 +24622,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 157,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 240000m,
+                            Price = 241000m,
                             ProductId = 22,
                             SKU = "SKU-22-157"
                         },
@@ -24616,7 +24631,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 158,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 622000m,
+                            Price = 623000m,
                             ProductId = 22,
                             SKU = "SKU-22-158"
                         },
@@ -24625,7 +24640,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 159,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 939000m,
+                            Price = 940000m,
                             ProductId = 22,
                             SKU = "SKU-22-159"
                         },
@@ -24634,7 +24649,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 160,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 875000m,
+                            Price = 876000m,
                             ProductId = 23,
                             SKU = "SKU-23-160"
                         },
@@ -24643,7 +24658,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 161,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 388000m,
+                            Price = 389000m,
                             ProductId = 23,
                             SKU = "SKU-23-161"
                         },
@@ -24652,7 +24667,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 162,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 549000m,
+                            Price = 550000m,
                             ProductId = 23,
                             SKU = "SKU-23-162"
                         },
@@ -24661,7 +24676,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 163,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 423000m,
+                            Price = 424000m,
                             ProductId = 23,
                             SKU = "SKU-23-163"
                         },
@@ -24670,7 +24685,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 164,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 276000m,
+                            Price = 277000m,
                             ProductId = 23,
                             SKU = "SKU-23-164"
                         },
@@ -24679,7 +24694,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 165,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 582000m,
+                            Price = 583000m,
                             ProductId = 23,
                             SKU = "SKU-23-165"
                         },
@@ -24688,7 +24703,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 166,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 376000m,
+                            Price = 377000m,
                             ProductId = 23,
                             SKU = "SKU-23-166"
                         },
@@ -24697,7 +24712,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 167,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 832000m,
+                            Price = 833000m,
                             ProductId = 23,
                             SKU = "SKU-23-167"
                         },
@@ -24706,7 +24721,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 168,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 312000m,
+                            Price = 313000m,
                             ProductId = 23,
                             SKU = "SKU-23-168"
                         },
@@ -24715,7 +24730,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 169,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 756000m,
+                            Price = 757000m,
                             ProductId = 24,
                             SKU = "SKU-24-169"
                         },
@@ -24724,7 +24739,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 170,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 974000m,
+                            Price = 975000m,
                             ProductId = 24,
                             SKU = "SKU-24-170"
                         },
@@ -24733,7 +24748,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 171,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 656000m,
+                            Price = 657000m,
                             ProductId = 24,
                             SKU = "SKU-24-171"
                         },
@@ -24742,7 +24757,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 172,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1082000m,
+                            Price = 1083000m,
                             ProductId = 24,
                             SKU = "SKU-24-172"
                         },
@@ -24751,7 +24766,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 173,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 1028000m,
+                            Price = 1029000m,
                             ProductId = 24,
                             SKU = "SKU-24-173"
                         },
@@ -24760,7 +24775,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 174,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 862000m,
+                            Price = 863000m,
                             ProductId = 24,
                             SKU = "SKU-24-174"
                         },
@@ -24769,7 +24784,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 175,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 618000m,
+                            Price = 619000m,
                             ProductId = 25,
                             SKU = "SKU-25-175"
                         },
@@ -24778,7 +24793,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 176,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 522000m,
+                            Price = 523000m,
                             ProductId = 25,
                             SKU = "SKU-25-176"
                         },
@@ -24787,7 +24802,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 177,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 275000m,
+                            Price = 276000m,
                             ProductId = 25,
                             SKU = "SKU-25-177"
                         },
@@ -24796,7 +24811,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 178,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 340000m,
+                            Price = 341000m,
                             ProductId = 25,
                             SKU = "SKU-25-178"
                         },
@@ -24805,7 +24820,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 179,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 353000m,
+                            Price = 354000m,
                             ProductId = 25,
                             SKU = "SKU-25-179"
                         },
@@ -24814,7 +24829,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 180,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 930000m,
+                            Price = 931000m,
                             ProductId = 25,
                             SKU = "SKU-25-180"
                         },
@@ -24823,7 +24838,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 181,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1096000m,
+                            Price = 1097000m,
                             ProductId = 25,
                             SKU = "SKU-25-181"
                         },
@@ -24832,7 +24847,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 182,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 251000m,
+                            Price = 252000m,
                             ProductId = 25,
                             SKU = "SKU-25-182"
                         },
@@ -24841,7 +24856,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 183,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 746000m,
+                            Price = 747000m,
                             ProductId = 25,
                             SKU = "SKU-25-183"
                         },
@@ -24850,7 +24865,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 184,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 957000m,
+                            Price = 958000m,
                             ProductId = 26,
                             SKU = "SKU-26-184"
                         },
@@ -24859,7 +24874,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 185,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 630000m,
+                            Price = 631000m,
                             ProductId = 26,
                             SKU = "SKU-26-185"
                         },
@@ -24868,7 +24883,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 186,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1074000m,
+                            Price = 1075000m,
                             ProductId = 26,
                             SKU = "SKU-26-186"
                         },
@@ -24877,7 +24892,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 187,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 1023000m,
+                            Price = 1024000m,
                             ProductId = 26,
                             SKU = "SKU-26-187"
                         },
@@ -24886,7 +24901,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 188,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 751000m,
+                            Price = 752000m,
                             ProductId = 26,
                             SKU = "SKU-26-188"
                         },
@@ -24895,7 +24910,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 189,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 885000m,
+                            Price = 886000m,
                             ProductId = 26,
                             SKU = "SKU-26-189"
                         },
@@ -24904,7 +24919,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 190,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 958000m,
+                            Price = 959000m,
                             ProductId = 26,
                             SKU = "SKU-26-190"
                         },
@@ -24913,7 +24928,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 191,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 947000m,
+                            Price = 948000m,
                             ProductId = 26,
                             SKU = "SKU-26-191"
                         },
@@ -24922,7 +24937,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 192,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 879000m,
+                            Price = 880000m,
                             ProductId = 26,
                             SKU = "SKU-26-192"
                         },
@@ -24931,7 +24946,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 193,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 946000m,
+                            Price = 947000m,
                             ProductId = 27,
                             SKU = "SKU-27-193"
                         },
@@ -24940,7 +24955,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 194,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 944000m,
+                            Price = 945000m,
                             ProductId = 27,
                             SKU = "SKU-27-194"
                         },
@@ -24949,7 +24964,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 195,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 544000m,
+                            Price = 545000m,
                             ProductId = 27,
                             SKU = "SKU-27-195"
                         },
@@ -24958,7 +24973,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 196,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 615000m,
+                            Price = 616000m,
                             ProductId = 27,
                             SKU = "SKU-27-196"
                         },
@@ -24967,7 +24982,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 197,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 290000m,
+                            Price = 291000m,
                             ProductId = 27,
                             SKU = "SKU-27-197"
                         },
@@ -24976,7 +24991,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 198,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 427000m,
+                            Price = 428000m,
                             ProductId = 27,
                             SKU = "SKU-27-198"
                         },
@@ -24985,7 +25000,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 199,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 1026000m,
+                            Price = 1027000m,
                             ProductId = 27,
                             SKU = "SKU-27-199"
                         },
@@ -24994,7 +25009,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 200,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 849000m,
+                            Price = 850000m,
                             ProductId = 27,
                             SKU = "SKU-27-200"
                         },
@@ -25003,7 +25018,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 201,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 479000m,
+                            Price = 480000m,
                             ProductId = 27,
                             SKU = "SKU-27-201"
                         },
@@ -25012,7 +25027,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 202,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 583000m,
+                            Price = 584000m,
                             ProductId = 28,
                             SKU = "SKU-28-202"
                         },
@@ -25021,7 +25036,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 203,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 476000m,
+                            Price = 477000m,
                             ProductId = 28,
                             SKU = "SKU-28-203"
                         },
@@ -25030,7 +25045,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 204,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 1022000m,
+                            Price = 1023000m,
                             ProductId = 28,
                             SKU = "SKU-28-204"
                         },
@@ -25039,7 +25054,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 205,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 561000m,
+                            Price = 562000m,
                             ProductId = 28,
                             SKU = "SKU-28-205"
                         },
@@ -25048,7 +25063,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 206,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 442000m,
+                            Price = 443000m,
                             ProductId = 28,
                             SKU = "SKU-28-206"
                         },
@@ -25057,7 +25072,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 207,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 843000m,
+                            Price = 844000m,
                             ProductId = 28,
                             SKU = "SKU-28-207"
                         },
@@ -25066,7 +25081,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 208,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 448000m,
+                            Price = 449000m,
                             ProductId = 29,
                             SKU = "SKU-29-208"
                         },
@@ -25075,7 +25090,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 209,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 467000m,
+                            Price = 468000m,
                             ProductId = 29,
                             SKU = "SKU-29-209"
                         },
@@ -25084,7 +25099,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 210,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 531000m,
+                            Price = 532000m,
                             ProductId = 29,
                             SKU = "SKU-29-210"
                         },
@@ -25093,7 +25108,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 211,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 908000m,
+                            Price = 909000m,
                             ProductId = 29,
                             SKU = "SKU-29-211"
                         },
@@ -25102,7 +25117,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 212,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 486000m,
+                            Price = 487000m,
                             ProductId = 29,
                             SKU = "SKU-29-212"
                         },
@@ -25111,7 +25126,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 213,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 854000m,
+                            Price = 855000m,
                             ProductId = 29,
                             SKU = "SKU-29-213"
                         },
@@ -25120,7 +25135,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 214,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 606000m,
+                            Price = 607000m,
                             ProductId = 29,
                             SKU = "SKU-29-214"
                         },
@@ -25129,7 +25144,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 215,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 768000m,
+                            Price = 769000m,
                             ProductId = 29,
                             SKU = "SKU-29-215"
                         },
@@ -25138,7 +25153,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 216,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 415000m,
+                            Price = 416000m,
                             ProductId = 29,
                             SKU = "SKU-29-216"
                         },
@@ -25147,7 +25162,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 217,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 940000m,
+                            Price = 941000m,
                             ProductId = 30,
                             SKU = "SKU-30-217"
                         },
@@ -25156,7 +25171,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 218,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 713000m,
+                            Price = 714000m,
                             ProductId = 30,
                             SKU = "SKU-30-218"
                         },
@@ -25165,7 +25180,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 219,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 694000m,
+                            Price = 695000m,
                             ProductId = 30,
                             SKU = "SKU-30-219"
                         },
@@ -25174,7 +25189,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 220,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 685000m,
+                            Price = 686000m,
                             ProductId = 30,
                             SKU = "SKU-30-220"
                         },
@@ -25183,7 +25198,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 221,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 292000m,
+                            Price = 293000m,
                             ProductId = 30,
                             SKU = "SKU-30-221"
                         },
@@ -25192,7 +25207,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 222,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 417000m,
+                            Price = 418000m,
                             ProductId = 30,
                             SKU = "SKU-30-222"
                         },
@@ -25201,7 +25216,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 223,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 312000m,
+                            Price = 313000m,
                             ProductId = 31,
                             SKU = "SKU-31-223"
                         },
@@ -25210,7 +25225,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 224,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 713000m,
+                            Price = 714000m,
                             ProductId = 31,
                             SKU = "SKU-31-224"
                         },
@@ -25219,7 +25234,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 225,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 890000m,
+                            Price = 891000m,
                             ProductId = 31,
                             SKU = "SKU-31-225"
                         },
@@ -25228,7 +25243,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 226,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 209000m,
+                            Price = 210000m,
                             ProductId = 31,
                             SKU = "SKU-31-226"
                         },
@@ -25237,7 +25252,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 227,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 525000m,
+                            Price = 526000m,
                             ProductId = 31,
                             SKU = "SKU-31-227"
                         },
@@ -25246,7 +25261,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 228,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 978000m,
+                            Price = 979000m,
                             ProductId = 31,
                             SKU = "SKU-31-228"
                         },
@@ -25255,7 +25270,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 229,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 278000m,
+                            Price = 279000m,
                             ProductId = 31,
                             SKU = "SKU-31-229"
                         },
@@ -25264,7 +25279,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 230,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 437000m,
+                            Price = 438000m,
                             ProductId = 31,
                             SKU = "SKU-31-230"
                         },
@@ -25273,7 +25288,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 231,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 404000m,
+                            Price = 405000m,
                             ProductId = 31,
                             SKU = "SKU-31-231"
                         },
@@ -25282,7 +25297,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 232,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 481000m,
+                            Price = 482000m,
                             ProductId = 32,
                             SKU = "SKU-32-232"
                         },
@@ -25291,7 +25306,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 233,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 718000m,
+                            Price = 719000m,
                             ProductId = 32,
                             SKU = "SKU-32-233"
                         },
@@ -25300,7 +25315,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 234,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 551000m,
+                            Price = 552000m,
                             ProductId = 32,
                             SKU = "SKU-32-234"
                         },
@@ -25309,7 +25324,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 235,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 655000m,
+                            Price = 656000m,
                             ProductId = 32,
                             SKU = "SKU-32-235"
                         },
@@ -25318,7 +25333,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 236,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 545000m,
+                            Price = 546000m,
                             ProductId = 32,
                             SKU = "SKU-32-236"
                         },
@@ -25327,7 +25342,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 237,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 216000m,
+                            Price = 217000m,
                             ProductId = 32,
                             SKU = "SKU-32-237"
                         },
@@ -25336,7 +25351,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 238,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 966000m,
+                            Price = 967000m,
                             ProductId = 33,
                             SKU = "SKU-33-238"
                         },
@@ -25345,7 +25360,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 239,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 574000m,
+                            Price = 575000m,
                             ProductId = 33,
                             SKU = "SKU-33-239"
                         },
@@ -25354,7 +25369,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 240,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 925000m,
+                            Price = 926000m,
                             ProductId = 33,
                             SKU = "SKU-33-240"
                         },
@@ -25363,7 +25378,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 241,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 728000m,
+                            Price = 729000m,
                             ProductId = 33,
                             SKU = "SKU-33-241"
                         },
@@ -25372,7 +25387,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 242,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1042000m,
+                            Price = 1043000m,
                             ProductId = 33,
                             SKU = "SKU-33-242"
                         },
@@ -25381,7 +25396,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 243,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 640000m,
+                            Price = 641000m,
                             ProductId = 33,
                             SKU = "SKU-33-243"
                         },
@@ -25390,7 +25405,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 244,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 688000m,
+                            Price = 689000m,
                             ProductId = 34,
                             SKU = "SKU-34-244"
                         },
@@ -25399,7 +25414,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 245,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 603000m,
+                            Price = 604000m,
                             ProductId = 34,
                             SKU = "SKU-34-245"
                         },
@@ -25408,7 +25423,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 246,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 698000m,
+                            Price = 699000m,
                             ProductId = 34,
                             SKU = "SKU-34-246"
                         },
@@ -25417,7 +25432,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 247,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 356000m,
+                            Price = 357000m,
                             ProductId = 34,
                             SKU = "SKU-34-247"
                         },
@@ -25426,7 +25441,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 248,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 619000m,
+                            Price = 620000m,
                             ProductId = 34,
                             SKU = "SKU-34-248"
                         },
@@ -25435,7 +25450,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 249,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 875000m,
+                            Price = 876000m,
                             ProductId = 34,
                             SKU = "SKU-34-249"
                         },
@@ -25444,7 +25459,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 250,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 583000m,
+                            Price = 584000m,
                             ProductId = 34,
                             SKU = "SKU-34-250"
                         },
@@ -25453,7 +25468,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 251,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 504000m,
+                            Price = 505000m,
                             ProductId = 34,
                             SKU = "SKU-34-251"
                         },
@@ -25462,7 +25477,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 252,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 610000m,
+                            Price = 611000m,
                             ProductId = 34,
                             SKU = "SKU-34-252"
                         },
@@ -25471,7 +25486,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 253,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 328000m,
+                            Price = 329000m,
                             ProductId = 35,
                             SKU = "SKU-35-253"
                         },
@@ -25480,7 +25495,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 254,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 350000m,
+                            Price = 351000m,
                             ProductId = 35,
                             SKU = "SKU-35-254"
                         },
@@ -25489,7 +25504,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 255,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 445000m,
+                            Price = 446000m,
                             ProductId = 35,
                             SKU = "SKU-35-255"
                         },
@@ -25498,7 +25513,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 256,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 324000m,
+                            Price = 325000m,
                             ProductId = 35,
                             SKU = "SKU-35-256"
                         },
@@ -25507,7 +25522,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 257,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 905000m,
+                            Price = 906000m,
                             ProductId = 35,
                             SKU = "SKU-35-257"
                         },
@@ -25516,7 +25531,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 258,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 658000m,
+                            Price = 659000m,
                             ProductId = 35,
                             SKU = "SKU-35-258"
                         },
@@ -25525,7 +25540,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 259,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 806000m,
+                            Price = 807000m,
                             ProductId = 35,
                             SKU = "SKU-35-259"
                         },
@@ -25534,7 +25549,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 260,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 785000m,
+                            Price = 786000m,
                             ProductId = 35,
                             SKU = "SKU-35-260"
                         },
@@ -25543,7 +25558,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 261,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 827000m,
+                            Price = 828000m,
                             ProductId = 35,
                             SKU = "SKU-35-261"
                         },
@@ -25552,7 +25567,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 262,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 519000m,
+                            Price = 520000m,
                             ProductId = 36,
                             SKU = "SKU-36-262"
                         },
@@ -25561,7 +25576,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 263,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 739000m,
+                            Price = 740000m,
                             ProductId = 36,
                             SKU = "SKU-36-263"
                         },
@@ -25570,7 +25585,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 264,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 763000m,
+                            Price = 764000m,
                             ProductId = 36,
                             SKU = "SKU-36-264"
                         },
@@ -25579,7 +25594,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 265,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 484000m,
+                            Price = 485000m,
                             ProductId = 36,
                             SKU = "SKU-36-265"
                         },
@@ -25588,7 +25603,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 266,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 238000m,
+                            Price = 239000m,
                             ProductId = 36,
                             SKU = "SKU-36-266"
                         },
@@ -25597,7 +25612,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 267,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 441000m,
+                            Price = 442000m,
                             ProductId = 36,
                             SKU = "SKU-36-267"
                         },
@@ -25606,7 +25621,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 268,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 655000m,
+                            Price = 656000m,
                             ProductId = 37,
                             SKU = "SKU-37-268"
                         },
@@ -25615,7 +25630,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 269,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 443000m,
+                            Price = 444000m,
                             ProductId = 37,
                             SKU = "SKU-37-269"
                         },
@@ -25624,7 +25639,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 270,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 833000m,
+                            Price = 834000m,
                             ProductId = 37,
                             SKU = "SKU-37-270"
                         },
@@ -25633,7 +25648,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 271,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 312000m,
+                            Price = 313000m,
                             ProductId = 37,
                             SKU = "SKU-37-271"
                         },
@@ -25642,7 +25657,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 272,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 717000m,
+                            Price = 718000m,
                             ProductId = 37,
                             SKU = "SKU-37-272"
                         },
@@ -25651,7 +25666,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 273,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 772000m,
+                            Price = 773000m,
                             ProductId = 37,
                             SKU = "SKU-37-273"
                         },
@@ -25660,7 +25675,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 274,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1080000m,
+                            Price = 1081000m,
                             ProductId = 37,
                             SKU = "SKU-37-274"
                         },
@@ -25669,7 +25684,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 275,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 273000m,
+                            Price = 274000m,
                             ProductId = 37,
                             SKU = "SKU-37-275"
                         },
@@ -25678,7 +25693,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 276,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 598000m,
+                            Price = 599000m,
                             ProductId = 37,
                             SKU = "SKU-37-276"
                         },
@@ -25687,7 +25702,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 277,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 222000m,
+                            Price = 223000m,
                             ProductId = 38,
                             SKU = "SKU-38-277"
                         },
@@ -25696,7 +25711,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 278,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 329000m,
+                            Price = 330000m,
                             ProductId = 38,
                             SKU = "SKU-38-278"
                         },
@@ -25705,7 +25720,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 279,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 648000m,
+                            Price = 649000m,
                             ProductId = 38,
                             SKU = "SKU-38-279"
                         },
@@ -25714,7 +25729,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 280,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 554000m,
+                            Price = 555000m,
                             ProductId = 38,
                             SKU = "SKU-38-280"
                         },
@@ -25723,7 +25738,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 281,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 507000m,
+                            Price = 508000m,
                             ProductId = 38,
                             SKU = "SKU-38-281"
                         },
@@ -25732,7 +25747,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 282,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1051000m,
+                            Price = 1052000m,
                             ProductId = 38,
                             SKU = "SKU-38-282"
                         },
@@ -25741,7 +25756,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 283,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 617000m,
+                            Price = 618000m,
                             ProductId = 38,
                             SKU = "SKU-38-283"
                         },
@@ -25750,7 +25765,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 284,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 264000m,
+                            Price = 265000m,
                             ProductId = 38,
                             SKU = "SKU-38-284"
                         },
@@ -25759,7 +25774,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 285,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 986000m,
+                            Price = 987000m,
                             ProductId = 38,
                             SKU = "SKU-38-285"
                         },
@@ -25768,7 +25783,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 286,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 582000m,
+                            Price = 583000m,
                             ProductId = 39,
                             SKU = "SKU-39-286"
                         },
@@ -25777,7 +25792,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 287,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 628000m,
+                            Price = 629000m,
                             ProductId = 39,
                             SKU = "SKU-39-287"
                         },
@@ -25786,7 +25801,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 288,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 484000m,
+                            Price = 485000m,
                             ProductId = 39,
                             SKU = "SKU-39-288"
                         },
@@ -25795,7 +25810,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 289,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 468000m,
+                            Price = 469000m,
                             ProductId = 39,
                             SKU = "SKU-39-289"
                         },
@@ -25804,7 +25819,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 290,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 838000m,
+                            Price = 839000m,
                             ProductId = 39,
                             SKU = "SKU-39-290"
                         },
@@ -25813,7 +25828,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 291,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 835000m,
+                            Price = 836000m,
                             ProductId = 39,
                             SKU = "SKU-39-291"
                         },
@@ -25822,7 +25837,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 292,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 957000m,
+                            Price = 958000m,
                             ProductId = 40,
                             SKU = "SKU-40-292"
                         },
@@ -25831,7 +25846,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 293,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 439000m,
+                            Price = 440000m,
                             ProductId = 40,
                             SKU = "SKU-40-293"
                         },
@@ -25840,7 +25855,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 294,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 720000m,
+                            Price = 721000m,
                             ProductId = 40,
                             SKU = "SKU-40-294"
                         },
@@ -25849,7 +25864,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 295,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 496000m,
+                            Price = 497000m,
                             ProductId = 40,
                             SKU = "SKU-40-295"
                         },
@@ -25858,7 +25873,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 296,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 310000m,
+                            Price = 311000m,
                             ProductId = 40,
                             SKU = "SKU-40-296"
                         },
@@ -25867,7 +25882,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 297,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 318000m,
+                            Price = 319000m,
                             ProductId = 40,
                             SKU = "SKU-40-297"
                         },
@@ -25876,7 +25891,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 298,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 386000m,
+                            Price = 387000m,
                             ProductId = 41,
                             SKU = "SKU-41-298"
                         },
@@ -25885,7 +25900,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 299,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 892000m,
+                            Price = 893000m,
                             ProductId = 41,
                             SKU = "SKU-41-299"
                         },
@@ -25894,7 +25909,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 300,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 378000m,
+                            Price = 379000m,
                             ProductId = 41,
                             SKU = "SKU-41-300"
                         },
@@ -25903,7 +25918,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 301,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 274000m,
+                            Price = 275000m,
                             ProductId = 41,
                             SKU = "SKU-41-301"
                         },
@@ -25912,7 +25927,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 302,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 545000m,
+                            Price = 546000m,
                             ProductId = 41,
                             SKU = "SKU-41-302"
                         },
@@ -25921,7 +25936,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 303,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1041000m,
+                            Price = 1042000m,
                             ProductId = 41,
                             SKU = "SKU-41-303"
                         },
@@ -25930,7 +25945,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 304,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 989000m,
+                            Price = 990000m,
                             ProductId = 41,
                             SKU = "SKU-41-304"
                         },
@@ -25939,7 +25954,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 305,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 574000m,
+                            Price = 575000m,
                             ProductId = 41,
                             SKU = "SKU-41-305"
                         },
@@ -25948,7 +25963,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 306,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 887000m,
+                            Price = 888000m,
                             ProductId = 41,
                             SKU = "SKU-41-306"
                         },
@@ -25957,7 +25972,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 307,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 647000m,
+                            Price = 648000m,
                             ProductId = 42,
                             SKU = "SKU-42-307"
                         },
@@ -25966,7 +25981,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 308,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 1024000m,
+                            Price = 1025000m,
                             ProductId = 42,
                             SKU = "SKU-42-308"
                         },
@@ -25975,7 +25990,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 309,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 221000m,
+                            Price = 222000m,
                             ProductId = 42,
                             SKU = "SKU-42-309"
                         },
@@ -25984,7 +25999,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 310,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 570000m,
+                            Price = 571000m,
                             ProductId = 42,
                             SKU = "SKU-42-310"
                         },
@@ -25993,7 +26008,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 311,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 338000m,
+                            Price = 339000m,
                             ProductId = 42,
                             SKU = "SKU-42-311"
                         },
@@ -26002,7 +26017,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 312,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 859000m,
+                            Price = 860000m,
                             ProductId = 42,
                             SKU = "SKU-42-312"
                         },
@@ -26011,7 +26026,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 313,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 515000m,
+                            Price = 516000m,
                             ProductId = 42,
                             SKU = "SKU-42-313"
                         },
@@ -26020,7 +26035,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 314,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 885000m,
+                            Price = 886000m,
                             ProductId = 42,
                             SKU = "SKU-42-314"
                         },
@@ -26029,7 +26044,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 315,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 223000m,
+                            Price = 224000m,
                             ProductId = 42,
                             SKU = "SKU-42-315"
                         },
@@ -26038,7 +26053,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 316,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 871000m,
+                            Price = 872000m,
                             ProductId = 43,
                             SKU = "SKU-43-316"
                         },
@@ -26047,7 +26062,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 317,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 226000m,
+                            Price = 227000m,
                             ProductId = 43,
                             SKU = "SKU-43-317"
                         },
@@ -26056,7 +26071,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 318,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 877000m,
+                            Price = 878000m,
                             ProductId = 43,
                             SKU = "SKU-43-318"
                         },
@@ -26065,7 +26080,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 319,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 456000m,
+                            Price = 457000m,
                             ProductId = 43,
                             SKU = "SKU-43-319"
                         },
@@ -26074,7 +26089,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 320,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 859000m,
+                            Price = 860000m,
                             ProductId = 43,
                             SKU = "SKU-43-320"
                         },
@@ -26083,7 +26098,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 321,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 759000m,
+                            Price = 760000m,
                             ProductId = 43,
                             SKU = "SKU-43-321"
                         },
@@ -26092,7 +26107,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 322,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 872000m,
+                            Price = 873000m,
                             ProductId = 44,
                             SKU = "SKU-44-322"
                         },
@@ -26101,7 +26116,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 323,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 1005000m,
+                            Price = 1006000m,
                             ProductId = 44,
                             SKU = "SKU-44-323"
                         },
@@ -26110,7 +26125,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 324,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 334000m,
+                            Price = 335000m,
                             ProductId = 44,
                             SKU = "SKU-44-324"
                         },
@@ -26119,7 +26134,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 325,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 801000m,
+                            Price = 802000m,
                             ProductId = 44,
                             SKU = "SKU-44-325"
                         },
@@ -26128,7 +26143,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 326,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 875000m,
+                            Price = 876000m,
                             ProductId = 44,
                             SKU = "SKU-44-326"
                         },
@@ -26137,7 +26152,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 327,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 652000m,
+                            Price = 653000m,
                             ProductId = 44,
                             SKU = "SKU-44-327"
                         },
@@ -26146,7 +26161,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 328,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 225000m,
+                            Price = 226000m,
                             ProductId = 45,
                             SKU = "SKU-45-328"
                         },
@@ -26155,7 +26170,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 329,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 404000m,
+                            Price = 405000m,
                             ProductId = 45,
                             SKU = "SKU-45-329"
                         },
@@ -26164,7 +26179,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 330,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 490000m,
+                            Price = 491000m,
                             ProductId = 45,
                             SKU = "SKU-45-330"
                         },
@@ -26173,7 +26188,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 331,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 244000m,
+                            Price = 245000m,
                             ProductId = 45,
                             SKU = "SKU-45-331"
                         },
@@ -26182,7 +26197,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 332,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 810000m,
+                            Price = 811000m,
                             ProductId = 45,
                             SKU = "SKU-45-332"
                         },
@@ -26191,7 +26206,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 333,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 199000m,
+                            Price = 200000m,
                             ProductId = 45,
                             SKU = "SKU-45-333"
                         },
@@ -26200,7 +26215,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 334,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 1060000m,
+                            Price = 1061000m,
                             ProductId = 46,
                             SKU = "SKU-46-334"
                         },
@@ -26209,7 +26224,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 335,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 217000m,
+                            Price = 218000m,
                             ProductId = 46,
                             SKU = "SKU-46-335"
                         },
@@ -26218,7 +26233,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 336,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 967000m,
+                            Price = 968000m,
                             ProductId = 46,
                             SKU = "SKU-46-336"
                         },
@@ -26227,7 +26242,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 337,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 943000m,
+                            Price = 944000m,
                             ProductId = 46,
                             SKU = "SKU-46-337"
                         },
@@ -26236,7 +26251,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 338,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 472000m,
+                            Price = 473000m,
                             ProductId = 46,
                             SKU = "SKU-46-338"
                         },
@@ -26245,7 +26260,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 339,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 612000m,
+                            Price = 613000m,
                             ProductId = 46,
                             SKU = "SKU-46-339"
                         },
@@ -26254,7 +26269,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 340,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 295000m,
+                            Price = 296000m,
                             ProductId = 47,
                             SKU = "SKU-47-340"
                         },
@@ -26263,7 +26278,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 341,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 428000m,
+                            Price = 429000m,
                             ProductId = 47,
                             SKU = "SKU-47-341"
                         },
@@ -26272,7 +26287,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 342,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 904000m,
+                            Price = 905000m,
                             ProductId = 47,
                             SKU = "SKU-47-342"
                         },
@@ -26281,7 +26296,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 343,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 874000m,
+                            Price = 875000m,
                             ProductId = 47,
                             SKU = "SKU-47-343"
                         },
@@ -26290,7 +26305,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 344,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 468000m,
+                            Price = 469000m,
                             ProductId = 47,
                             SKU = "SKU-47-344"
                         },
@@ -26299,7 +26314,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 345,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 676000m,
+                            Price = 677000m,
                             ProductId = 47,
                             SKU = "SKU-47-345"
                         },
@@ -26308,7 +26323,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 346,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 880000m,
+                            Price = 881000m,
                             ProductId = 48,
                             SKU = "SKU-48-346"
                         },
@@ -26317,7 +26332,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 347,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 399000m,
+                            Price = 400000m,
                             ProductId = 48,
                             SKU = "SKU-48-347"
                         },
@@ -26326,7 +26341,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 348,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 513000m,
+                            Price = 514000m,
                             ProductId = 48,
                             SKU = "SKU-48-348"
                         },
@@ -26335,7 +26350,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 349,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 434000m,
+                            Price = 435000m,
                             ProductId = 48,
                             SKU = "SKU-48-349"
                         },
@@ -26344,7 +26359,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 350,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 883000m,
+                            Price = 884000m,
                             ProductId = 48,
                             SKU = "SKU-48-350"
                         },
@@ -26353,7 +26368,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 351,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 277000m,
+                            Price = 278000m,
                             ProductId = 48,
                             SKU = "SKU-48-351"
                         },
@@ -26362,7 +26377,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 352,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 924000m,
+                            Price = 925000m,
                             ProductId = 49,
                             SKU = "SKU-49-352"
                         },
@@ -26371,7 +26386,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 353,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 314000m,
+                            Price = 315000m,
                             ProductId = 49,
                             SKU = "SKU-49-353"
                         },
@@ -26380,7 +26395,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 354,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 653000m,
+                            Price = 654000m,
                             ProductId = 49,
                             SKU = "SKU-49-354"
                         },
@@ -26389,7 +26404,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 355,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 629000m,
+                            Price = 630000m,
                             ProductId = 49,
                             SKU = "SKU-49-355"
                         },
@@ -26398,7 +26413,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 356,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 870000m,
+                            Price = 871000m,
                             ProductId = 49,
                             SKU = "SKU-49-356"
                         },
@@ -26407,7 +26422,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 357,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 883000m,
+                            Price = 884000m,
                             ProductId = 49,
                             SKU = "SKU-49-357"
                         },
@@ -26416,7 +26431,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 358,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 336000m,
+                            Price = 337000m,
                             ProductId = 49,
                             SKU = "SKU-49-358"
                         },
@@ -26425,7 +26440,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 359,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 586000m,
+                            Price = 587000m,
                             ProductId = 49,
                             SKU = "SKU-49-359"
                         },
@@ -26434,7 +26449,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 360,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 449000m,
+                            Price = 450000m,
                             ProductId = 49,
                             SKU = "SKU-49-360"
                         },
@@ -26443,7 +26458,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 361,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 699000m,
+                            Price = 700000m,
                             ProductId = 50,
                             SKU = "SKU-50-361"
                         },
@@ -26452,7 +26467,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 362,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 348000m,
+                            Price = 349000m,
                             ProductId = 50,
                             SKU = "SKU-50-362"
                         },
@@ -26461,7 +26476,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 363,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 744000m,
+                            Price = 745000m,
                             ProductId = 50,
                             SKU = "SKU-50-363"
                         },
@@ -26470,7 +26485,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 364,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 418000m,
+                            Price = 419000m,
                             ProductId = 50,
                             SKU = "SKU-50-364"
                         },
@@ -26479,7 +26494,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 365,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 517000m,
+                            Price = 518000m,
                             ProductId = 50,
                             SKU = "SKU-50-365"
                         },
@@ -26488,7 +26503,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 366,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 758000m,
+                            Price = 759000m,
                             ProductId = 50,
                             SKU = "SKU-50-366"
                         },
@@ -26497,7 +26512,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 367,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 432000m,
+                            Price = 433000m,
                             ProductId = 50,
                             SKU = "SKU-50-367"
                         },
@@ -26506,7 +26521,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 368,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 941000m,
+                            Price = 942000m,
                             ProductId = 50,
                             SKU = "SKU-50-368"
                         },
@@ -26515,7 +26530,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 369,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 755000m,
+                            Price = 756000m,
                             ProductId = 50,
                             SKU = "SKU-50-369"
                         },
@@ -26524,7 +26539,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 370,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 626000m,
+                            Price = 627000m,
                             ProductId = 51,
                             SKU = "SKU-51-370"
                         },
@@ -26533,7 +26548,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 371,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 502000m,
+                            Price = 503000m,
                             ProductId = 51,
                             SKU = "SKU-51-371"
                         },
@@ -26542,7 +26557,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 372,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 446000m,
+                            Price = 447000m,
                             ProductId = 51,
                             SKU = "SKU-51-372"
                         },
@@ -26551,7 +26566,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 373,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 282000m,
+                            Price = 283000m,
                             ProductId = 51,
                             SKU = "SKU-51-373"
                         },
@@ -26560,7 +26575,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 374,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 242000m,
+                            Price = 243000m,
                             ProductId = 51,
                             SKU = "SKU-51-374"
                         },
@@ -26569,7 +26584,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 375,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 586000m,
+                            Price = 587000m,
                             ProductId = 51,
                             SKU = "SKU-51-375"
                         },
@@ -26578,7 +26593,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 376,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 704000m,
+                            Price = 705000m,
                             ProductId = 51,
                             SKU = "SKU-51-376"
                         },
@@ -26587,7 +26602,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 377,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 212000m,
+                            Price = 213000m,
                             ProductId = 51,
                             SKU = "SKU-51-377"
                         },
@@ -26596,7 +26611,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 378,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 515000m,
+                            Price = 516000m,
                             ProductId = 51,
                             SKU = "SKU-51-378"
                         },
@@ -26605,7 +26620,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 379,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 691000m,
+                            Price = 692000m,
                             ProductId = 52,
                             SKU = "SKU-52-379"
                         },
@@ -26614,7 +26629,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 380,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 198000m,
+                            Price = 199000m,
                             ProductId = 52,
                             SKU = "SKU-52-380"
                         },
@@ -26623,7 +26638,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 381,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 408000m,
+                            Price = 409000m,
                             ProductId = 52,
                             SKU = "SKU-52-381"
                         },
@@ -26632,7 +26647,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 382,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 221000m,
+                            Price = 222000m,
                             ProductId = 52,
                             SKU = "SKU-52-382"
                         },
@@ -26641,7 +26656,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 383,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 423000m,
+                            Price = 424000m,
                             ProductId = 52,
                             SKU = "SKU-52-383"
                         },
@@ -26650,7 +26665,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 384,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 875000m,
+                            Price = 876000m,
                             ProductId = 52,
                             SKU = "SKU-52-384"
                         },
@@ -26659,7 +26674,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 385,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 665000m,
+                            Price = 666000m,
                             ProductId = 53,
                             SKU = "SKU-53-385"
                         },
@@ -26668,7 +26683,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 386,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 897000m,
+                            Price = 898000m,
                             ProductId = 53,
                             SKU = "SKU-53-386"
                         },
@@ -26677,7 +26692,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 387,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 356000m,
+                            Price = 357000m,
                             ProductId = 53,
                             SKU = "SKU-53-387"
                         },
@@ -26686,7 +26701,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 388,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 740000m,
+                            Price = 741000m,
                             ProductId = 53,
                             SKU = "SKU-53-388"
                         },
@@ -26695,7 +26710,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 389,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 456000m,
+                            Price = 457000m,
                             ProductId = 53,
                             SKU = "SKU-53-389"
                         },
@@ -26704,7 +26719,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 390,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 534000m,
+                            Price = 535000m,
                             ProductId = 53,
                             SKU = "SKU-53-390"
                         },
@@ -26713,7 +26728,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 391,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 736000m,
+                            Price = 737000m,
                             ProductId = 54,
                             SKU = "SKU-54-391"
                         },
@@ -26722,7 +26737,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 392,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 764000m,
+                            Price = 765000m,
                             ProductId = 54,
                             SKU = "SKU-54-392"
                         },
@@ -26731,7 +26746,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 393,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 279000m,
+                            Price = 280000m,
                             ProductId = 54,
                             SKU = "SKU-54-393"
                         },
@@ -26740,7 +26755,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 394,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 263000m,
+                            Price = 264000m,
                             ProductId = 54,
                             SKU = "SKU-54-394"
                         },
@@ -26749,7 +26764,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 395,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 577000m,
+                            Price = 578000m,
                             ProductId = 54,
                             SKU = "SKU-54-395"
                         },
@@ -26758,7 +26773,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 396,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 391000m,
+                            Price = 392000m,
                             ProductId = 54,
                             SKU = "SKU-54-396"
                         },
@@ -26767,7 +26782,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 397,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 390000m,
+                            Price = 391000m,
                             ProductId = 55,
                             SKU = "SKU-55-397"
                         },
@@ -26776,7 +26791,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 398,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 589000m,
+                            Price = 590000m,
                             ProductId = 55,
                             SKU = "SKU-55-398"
                         },
@@ -26785,7 +26800,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 399,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 779000m,
+                            Price = 780000m,
                             ProductId = 55,
                             SKU = "SKU-55-399"
                         },
@@ -26794,7 +26809,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 400,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 753000m,
+                            Price = 754000m,
                             ProductId = 55,
                             SKU = "SKU-55-400"
                         },
@@ -26803,7 +26818,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 401,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 384000m,
+                            Price = 385000m,
                             ProductId = 55,
                             SKU = "SKU-55-401"
                         },
@@ -26812,7 +26827,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 402,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 465000m,
+                            Price = 466000m,
                             ProductId = 55,
                             SKU = "SKU-55-402"
                         },
@@ -26821,7 +26836,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 403,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 600000m,
+                            Price = 601000m,
                             ProductId = 56,
                             SKU = "SKU-56-403"
                         },
@@ -26830,7 +26845,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 404,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 861000m,
+                            Price = 862000m,
                             ProductId = 56,
                             SKU = "SKU-56-404"
                         },
@@ -26839,7 +26854,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 405,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 907000m,
+                            Price = 908000m,
                             ProductId = 56,
                             SKU = "SKU-56-405"
                         },
@@ -26848,7 +26863,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 406,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 341000m,
+                            Price = 342000m,
                             ProductId = 56,
                             SKU = "SKU-56-406"
                         },
@@ -26857,7 +26872,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 407,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 883000m,
+                            Price = 884000m,
                             ProductId = 56,
                             SKU = "SKU-56-407"
                         },
@@ -26866,7 +26881,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 408,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 232000m,
+                            Price = 233000m,
                             ProductId = 56,
                             SKU = "SKU-56-408"
                         },
@@ -26875,7 +26890,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 409,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 334000m,
+                            Price = 335000m,
                             ProductId = 57,
                             SKU = "SKU-57-409"
                         },
@@ -26884,7 +26899,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 410,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 481000m,
+                            Price = 482000m,
                             ProductId = 57,
                             SKU = "SKU-57-410"
                         },
@@ -26893,7 +26908,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 411,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 754000m,
+                            Price = 755000m,
                             ProductId = 57,
                             SKU = "SKU-57-411"
                         },
@@ -26902,7 +26917,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 412,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 230000m,
+                            Price = 231000m,
                             ProductId = 57,
                             SKU = "SKU-57-412"
                         },
@@ -26911,7 +26926,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 413,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 445000m,
+                            Price = 446000m,
                             ProductId = 57,
                             SKU = "SKU-57-413"
                         },
@@ -26920,7 +26935,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 414,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 670000m,
+                            Price = 671000m,
                             ProductId = 57,
                             SKU = "SKU-57-414"
                         },
@@ -26929,7 +26944,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 415,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 776000m,
+                            Price = 777000m,
                             ProductId = 57,
                             SKU = "SKU-57-415"
                         },
@@ -26938,7 +26953,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 416,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 373000m,
+                            Price = 374000m,
                             ProductId = 57,
                             SKU = "SKU-57-416"
                         },
@@ -26947,7 +26962,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 417,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 851000m,
+                            Price = 852000m,
                             ProductId = 57,
                             SKU = "SKU-57-417"
                         },
@@ -26956,7 +26971,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 418,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 952000m,
+                            Price = 953000m,
                             ProductId = 58,
                             SKU = "SKU-58-418"
                         },
@@ -26965,7 +26980,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 419,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 377000m,
+                            Price = 378000m,
                             ProductId = 58,
                             SKU = "SKU-58-419"
                         },
@@ -26974,7 +26989,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 420,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 868000m,
+                            Price = 869000m,
                             ProductId = 58,
                             SKU = "SKU-58-420"
                         },
@@ -26983,7 +26998,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 421,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 742000m,
+                            Price = 743000m,
                             ProductId = 58,
                             SKU = "SKU-58-421"
                         },
@@ -26992,7 +27007,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 422,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 200000m,
+                            Price = 201000m,
                             ProductId = 58,
                             SKU = "SKU-58-422"
                         },
@@ -27001,7 +27016,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 423,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 980000m,
+                            Price = 981000m,
                             ProductId = 58,
                             SKU = "SKU-58-423"
                         },
@@ -27010,7 +27025,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 424,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 930000m,
+                            Price = 931000m,
                             ProductId = 59,
                             SKU = "SKU-59-424"
                         },
@@ -27019,7 +27034,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 425,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 599000m,
+                            Price = 600000m,
                             ProductId = 59,
                             SKU = "SKU-59-425"
                         },
@@ -27028,7 +27043,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 426,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 252000m,
+                            Price = 253000m,
                             ProductId = 59,
                             SKU = "SKU-59-426"
                         },
@@ -27037,7 +27052,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 427,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 847000m,
+                            Price = 848000m,
                             ProductId = 59,
                             SKU = "SKU-59-427"
                         },
@@ -27046,7 +27061,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 428,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 540000m,
+                            Price = 541000m,
                             ProductId = 59,
                             SKU = "SKU-59-428"
                         },
@@ -27055,7 +27070,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 429,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 426000m,
+                            Price = 427000m,
                             ProductId = 59,
                             SKU = "SKU-59-429"
                         },
@@ -27064,7 +27079,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 430,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 715000m,
+                            Price = 716000m,
                             ProductId = 60,
                             SKU = "SKU-60-430"
                         },
@@ -27073,7 +27088,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 431,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 753000m,
+                            Price = 754000m,
                             ProductId = 60,
                             SKU = "SKU-60-431"
                         },
@@ -27082,7 +27097,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 432,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 720000.0m,
-                            Price = 1002000m,
+                            Price = 1003000m,
                             ProductId = 60,
                             SKU = "SKU-60-432"
                         },
@@ -27091,7 +27106,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 433,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 581000m,
+                            Price = 582000m,
                             ProductId = 60,
                             SKU = "SKU-60-433"
                         },
@@ -27100,7 +27115,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 434,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 824000m,
+                            Price = 825000m,
                             ProductId = 60,
                             SKU = "SKU-60-434"
                         },
@@ -27109,7 +27124,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 435,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 833000m,
+                            Price = 834000m,
                             ProductId = 60,
                             SKU = "SKU-60-435"
                         },
@@ -27118,7 +27133,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 436,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 937000m,
+                            Price = 938000m,
                             ProductId = 61,
                             SKU = "SKU-61-436"
                         },
@@ -27127,7 +27142,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 437,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 787000m,
+                            Price = 788000m,
                             ProductId = 61,
                             SKU = "SKU-61-437"
                         },
@@ -27136,7 +27151,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 438,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 747000m,
+                            Price = 748000m,
                             ProductId = 61,
                             SKU = "SKU-61-438"
                         },
@@ -27145,7 +27160,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 439,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 236000m,
+                            Price = 237000m,
                             ProductId = 61,
                             SKU = "SKU-61-439"
                         },
@@ -27154,7 +27169,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 440,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 324000m,
+                            Price = 325000m,
                             ProductId = 61,
                             SKU = "SKU-61-440"
                         },
@@ -27163,7 +27178,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 441,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 414000m,
+                            Price = 415000m,
                             ProductId = 61,
                             SKU = "SKU-61-441"
                         },
@@ -27172,7 +27187,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 442,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1055000m,
+                            Price = 1056000m,
                             ProductId = 61,
                             SKU = "SKU-61-442"
                         },
@@ -27181,7 +27196,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 443,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 633000m,
+                            Price = 634000m,
                             ProductId = 61,
                             SKU = "SKU-61-443"
                         },
@@ -27190,7 +27205,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 444,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 478000m,
+                            Price = 479000m,
                             ProductId = 61,
                             SKU = "SKU-61-444"
                         },
@@ -27199,7 +27214,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 445,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 727000m,
+                            Price = 728000m,
                             ProductId = 62,
                             SKU = "SKU-62-445"
                         },
@@ -27208,7 +27223,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 446,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 888000m,
+                            Price = 889000m,
                             ProductId = 62,
                             SKU = "SKU-62-446"
                         },
@@ -27217,7 +27232,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 447,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 823000m,
+                            Price = 824000m,
                             ProductId = 62,
                             SKU = "SKU-62-447"
                         },
@@ -27226,7 +27241,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 448,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 714000m,
+                            Price = 715000m,
                             ProductId = 62,
                             SKU = "SKU-62-448"
                         },
@@ -27235,7 +27250,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 449,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 763000m,
+                            Price = 764000m,
                             ProductId = 62,
                             SKU = "SKU-62-449"
                         },
@@ -27244,7 +27259,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 450,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 621000m,
+                            Price = 622000m,
                             ProductId = 62,
                             SKU = "SKU-62-450"
                         },
@@ -27253,7 +27268,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 451,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 785000m,
+                            Price = 786000m,
                             ProductId = 62,
                             SKU = "SKU-62-451"
                         },
@@ -27262,7 +27277,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 452,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 551000m,
+                            Price = 552000m,
                             ProductId = 62,
                             SKU = "SKU-62-452"
                         },
@@ -27271,7 +27286,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 453,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 412000m,
+                            Price = 413000m,
                             ProductId = 62,
                             SKU = "SKU-62-453"
                         },
@@ -27280,7 +27295,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 454,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 339000m,
+                            Price = 340000m,
                             ProductId = 63,
                             SKU = "SKU-63-454"
                         },
@@ -27289,7 +27304,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 455,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 478000m,
+                            Price = 479000m,
                             ProductId = 63,
                             SKU = "SKU-63-455"
                         },
@@ -27298,7 +27313,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 456,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 378000m,
+                            Price = 379000m,
                             ProductId = 63,
                             SKU = "SKU-63-456"
                         },
@@ -27307,7 +27322,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 457,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 268000m,
+                            Price = 269000m,
                             ProductId = 63,
                             SKU = "SKU-63-457"
                         },
@@ -27316,7 +27331,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 458,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 338000m,
+                            Price = 339000m,
                             ProductId = 63,
                             SKU = "SKU-63-458"
                         },
@@ -27325,7 +27340,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 459,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 709000m,
+                            Price = 710000m,
                             ProductId = 63,
                             SKU = "SKU-63-459"
                         },
@@ -27334,7 +27349,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 460,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 636000m,
+                            Price = 637000m,
                             ProductId = 64,
                             SKU = "SKU-64-460"
                         },
@@ -27343,7 +27358,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 461,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 821000m,
+                            Price = 822000m,
                             ProductId = 64,
                             SKU = "SKU-64-461"
                         },
@@ -27352,7 +27367,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 462,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 250000m,
+                            Price = 251000m,
                             ProductId = 64,
                             SKU = "SKU-64-462"
                         },
@@ -27361,7 +27376,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 463,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 283000m,
+                            Price = 284000m,
                             ProductId = 64,
                             SKU = "SKU-64-463"
                         },
@@ -27370,7 +27385,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 464,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 279000m,
+                            Price = 280000m,
                             ProductId = 64,
                             SKU = "SKU-64-464"
                         },
@@ -27379,7 +27394,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 465,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 570000.0m,
-                            Price = 779000m,
+                            Price = 780000m,
                             ProductId = 64,
                             SKU = "SKU-64-465"
                         },
@@ -27388,7 +27403,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 466,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 662000m,
+                            Price = 663000m,
                             ProductId = 64,
                             SKU = "SKU-64-466"
                         },
@@ -27397,7 +27412,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 467,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 633000m,
+                            Price = 634000m,
                             ProductId = 64,
                             SKU = "SKU-64-467"
                         },
@@ -27406,7 +27421,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 468,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 740000m,
+                            Price = 741000m,
                             ProductId = 64,
                             SKU = "SKU-64-468"
                         },
@@ -27415,7 +27430,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 469,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 645000m,
+                            Price = 646000m,
                             ProductId = 65,
                             SKU = "SKU-65-469"
                         },
@@ -27424,7 +27439,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 470,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 956000m,
+                            Price = 957000m,
                             ProductId = 65,
                             SKU = "SKU-65-470"
                         },
@@ -27433,7 +27448,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 471,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 839000m,
+                            Price = 840000m,
                             ProductId = 65,
                             SKU = "SKU-65-471"
                         },
@@ -27442,7 +27457,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 472,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1054000m,
+                            Price = 1055000m,
                             ProductId = 65,
                             SKU = "SKU-65-472"
                         },
@@ -27451,7 +27466,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 473,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 344000m,
+                            Price = 345000m,
                             ProductId = 65,
                             SKU = "SKU-65-473"
                         },
@@ -27460,7 +27475,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 474,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 589000m,
+                            Price = 590000m,
                             ProductId = 65,
                             SKU = "SKU-65-474"
                         },
@@ -27469,7 +27484,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 475,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 218000m,
+                            Price = 219000m,
                             ProductId = 66,
                             SKU = "SKU-66-475"
                         },
@@ -27478,7 +27493,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 476,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 349000m,
+                            Price = 350000m,
                             ProductId = 66,
                             SKU = "SKU-66-476"
                         },
@@ -27487,7 +27502,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 477,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 213000m,
+                            Price = 214000m,
                             ProductId = 66,
                             SKU = "SKU-66-477"
                         },
@@ -27496,7 +27511,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 478,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 523000m,
+                            Price = 524000m,
                             ProductId = 66,
                             SKU = "SKU-66-478"
                         },
@@ -27505,7 +27520,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 479,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 726000m,
+                            Price = 727000m,
                             ProductId = 66,
                             SKU = "SKU-66-479"
                         },
@@ -27514,7 +27529,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 480,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 929000m,
+                            Price = 930000m,
                             ProductId = 66,
                             SKU = "SKU-66-480"
                         },
@@ -27523,7 +27538,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 481,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 690000m,
+                            Price = 691000m,
                             ProductId = 67,
                             SKU = "SKU-67-481"
                         },
@@ -27532,7 +27547,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 482,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 528000m,
+                            Price = 529000m,
                             ProductId = 67,
                             SKU = "SKU-67-482"
                         },
@@ -27541,7 +27556,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 483,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 279000m,
+                            Price = 280000m,
                             ProductId = 67,
                             SKU = "SKU-67-483"
                         },
@@ -27550,7 +27565,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 484,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 386000m,
+                            Price = 387000m,
                             ProductId = 67,
                             SKU = "SKU-67-484"
                         },
@@ -27559,7 +27574,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 485,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1108000m,
+                            Price = 1109000m,
                             ProductId = 67,
                             SKU = "SKU-67-485"
                         },
@@ -27568,7 +27583,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 486,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 367000m,
+                            Price = 368000m,
                             ProductId = 67,
                             SKU = "SKU-67-486"
                         },
@@ -27577,7 +27592,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 487,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 824000m,
+                            Price = 825000m,
                             ProductId = 68,
                             SKU = "SKU-68-487"
                         },
@@ -27586,7 +27601,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 488,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 311000m,
+                            Price = 312000m,
                             ProductId = 68,
                             SKU = "SKU-68-488"
                         },
@@ -27595,7 +27610,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 489,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 750000.0m,
-                            Price = 1072000m,
+                            Price = 1073000m,
                             ProductId = 68,
                             SKU = "SKU-68-489"
                         },
@@ -27604,7 +27619,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 490,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 356000m,
+                            Price = 357000m,
                             ProductId = 68,
                             SKU = "SKU-68-490"
                         },
@@ -27613,7 +27628,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 491,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 586000m,
+                            Price = 587000m,
                             ProductId = 68,
                             SKU = "SKU-68-491"
                         },
@@ -27622,7 +27637,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 492,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 390000m,
+                            Price = 391000m,
                             ProductId = 68,
                             SKU = "SKU-68-492"
                         },
@@ -27631,7 +27646,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 493,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 377000m,
+                            Price = 378000m,
                             ProductId = 68,
                             SKU = "SKU-68-493"
                         },
@@ -27640,7 +27655,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 494,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 831000m,
+                            Price = 832000m,
                             ProductId = 68,
                             SKU = "SKU-68-494"
                         },
@@ -27649,7 +27664,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 495,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 250000m,
+                            Price = 251000m,
                             ProductId = 68,
                             SKU = "SKU-68-495"
                         },
@@ -27658,7 +27673,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 496,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 465000m,
+                            Price = 466000m,
                             ProductId = 69,
                             SKU = "SKU-69-496"
                         },
@@ -27667,7 +27682,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 497,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 625000m,
+                            Price = 626000m,
                             ProductId = 69,
                             SKU = "SKU-69-497"
                         },
@@ -27676,7 +27691,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 498,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 706000m,
+                            Price = 707000m,
                             ProductId = 69,
                             SKU = "SKU-69-498"
                         },
@@ -27685,7 +27700,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 499,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 729000m,
+                            Price = 730000m,
                             ProductId = 69,
                             SKU = "SKU-69-499"
                         },
@@ -27694,7 +27709,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 500,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 516000m,
+                            Price = 517000m,
                             ProductId = 69,
                             SKU = "SKU-69-500"
                         },
@@ -27703,7 +27718,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 501,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 876000m,
+                            Price = 877000m,
                             ProductId = 69,
                             SKU = "SKU-69-501"
                         },
@@ -27712,7 +27727,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 502,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 495000.0m,
-                            Price = 741000m,
+                            Price = 742000m,
                             ProductId = 69,
                             SKU = "SKU-69-502"
                         },
@@ -27721,7 +27736,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 503,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 712000m,
+                            Price = 713000m,
                             ProductId = 69,
                             SKU = "SKU-69-503"
                         },
@@ -27730,7 +27745,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 504,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 201000m,
+                            Price = 202000m,
                             ProductId = 69,
                             SKU = "SKU-69-504"
                         },
@@ -27739,7 +27754,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 505,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 759000m,
+                            Price = 760000m,
                             ProductId = 70,
                             SKU = "SKU-70-505"
                         },
@@ -27748,7 +27763,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 506,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 794000m,
+                            Price = 795000m,
                             ProductId = 70,
                             SKU = "SKU-70-506"
                         },
@@ -27757,7 +27772,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 507,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 961000m,
+                            Price = 962000m,
                             ProductId = 70,
                             SKU = "SKU-70-507"
                         },
@@ -27766,7 +27781,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 508,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 434000m,
+                            Price = 435000m,
                             ProductId = 70,
                             SKU = "SKU-70-508"
                         },
@@ -27775,7 +27790,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 509,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 444000m,
+                            Price = 445000m,
                             ProductId = 70,
                             SKU = "SKU-70-509"
                         },
@@ -27784,7 +27799,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 510,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 452000m,
+                            Price = 453000m,
                             ProductId = 70,
                             SKU = "SKU-70-510"
                         },
@@ -27793,7 +27808,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 511,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 524000m,
+                            Price = 525000m,
                             ProductId = 70,
                             SKU = "SKU-70-511"
                         },
@@ -27802,7 +27817,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 512,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 496000m,
+                            Price = 497000m,
                             ProductId = 70,
                             SKU = "SKU-70-512"
                         },
@@ -27811,7 +27826,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 513,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 895000m,
+                            Price = 896000m,
                             ProductId = 70,
                             SKU = "SKU-70-513"
                         },
@@ -27820,7 +27835,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 514,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 205000m,
+                            Price = 206000m,
                             ProductId = 71,
                             SKU = "SKU-71-514"
                         },
@@ -27829,7 +27844,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 515,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 528000m,
+                            Price = 529000m,
                             ProductId = 71,
                             SKU = "SKU-71-515"
                         },
@@ -27838,7 +27853,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 516,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 900000m,
+                            Price = 901000m,
                             ProductId = 71,
                             SKU = "SKU-71-516"
                         },
@@ -27847,7 +27862,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 517,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 413000m,
+                            Price = 414000m,
                             ProductId = 71,
                             SKU = "SKU-71-517"
                         },
@@ -27856,7 +27871,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 518,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 427000m,
+                            Price = 428000m,
                             ProductId = 71,
                             SKU = "SKU-71-518"
                         },
@@ -27865,7 +27880,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 519,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 943000m,
+                            Price = 944000m,
                             ProductId = 71,
                             SKU = "SKU-71-519"
                         },
@@ -27874,7 +27889,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 520,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 982000m,
+                            Price = 983000m,
                             ProductId = 71,
                             SKU = "SKU-71-520"
                         },
@@ -27883,7 +27898,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 521,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 457000m,
+                            Price = 458000m,
                             ProductId = 71,
                             SKU = "SKU-71-521"
                         },
@@ -27892,7 +27907,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 522,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 843000m,
+                            Price = 844000m,
                             ProductId = 71,
                             SKU = "SKU-71-522"
                         },
@@ -27901,7 +27916,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 523,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1087000m,
+                            Price = 1088000m,
                             ProductId = 72,
                             SKU = "SKU-72-523"
                         },
@@ -27910,7 +27925,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 524,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 282000m,
+                            Price = 283000m,
                             ProductId = 72,
                             SKU = "SKU-72-524"
                         },
@@ -27919,7 +27934,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 525,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 660000m,
+                            Price = 661000m,
                             ProductId = 72,
                             SKU = "SKU-72-525"
                         },
@@ -27928,7 +27943,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 526,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 986000m,
+                            Price = 987000m,
                             ProductId = 72,
                             SKU = "SKU-72-526"
                         },
@@ -27937,7 +27952,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 527,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 390000m,
+                            Price = 391000m,
                             ProductId = 72,
                             SKU = "SKU-72-527"
                         },
@@ -27946,7 +27961,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 528,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 748000m,
+                            Price = 749000m,
                             ProductId = 72,
                             SKU = "SKU-72-528"
                         },
@@ -27955,7 +27970,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 529,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 570000.0m,
-                            Price = 710000m,
+                            Price = 711000m,
                             ProductId = 73,
                             SKU = "SKU-73-529"
                         },
@@ -27964,7 +27979,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 530,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 783000m,
+                            Price = 784000m,
                             ProductId = 73,
                             SKU = "SKU-73-530"
                         },
@@ -27973,7 +27988,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 531,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 244000m,
+                            Price = 245000m,
                             ProductId = 73,
                             SKU = "SKU-73-531"
                         },
@@ -27982,7 +27997,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 532,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 584000m,
+                            Price = 585000m,
                             ProductId = 73,
                             SKU = "SKU-73-532"
                         },
@@ -27991,7 +28006,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 533,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 443000m,
+                            Price = 444000m,
                             ProductId = 73,
                             SKU = "SKU-73-533"
                         },
@@ -28000,7 +28015,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 534,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 638000m,
+                            Price = 639000m,
                             ProductId = 73,
                             SKU = "SKU-73-534"
                         },
@@ -28009,7 +28024,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 535,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 240000.0m,
-                            Price = 301000m,
+                            Price = 302000m,
                             ProductId = 74,
                             SKU = "SKU-74-535"
                         },
@@ -28018,7 +28033,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 536,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 414000m,
+                            Price = 415000m,
                             ProductId = 74,
                             SKU = "SKU-74-536"
                         },
@@ -28027,7 +28042,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 537,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 537000m,
+                            Price = 538000m,
                             ProductId = 74,
                             SKU = "SKU-74-537"
                         },
@@ -28036,7 +28051,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 538,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 205000m,
+                            Price = 206000m,
                             ProductId = 74,
                             SKU = "SKU-74-538"
                         },
@@ -28045,7 +28060,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 539,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 182000m,
+                            Price = 183000m,
                             ProductId = 74,
                             SKU = "SKU-74-539"
                         },
@@ -28054,7 +28069,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 540,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 914000m,
+                            Price = 915000m,
                             ProductId = 74,
                             SKU = "SKU-74-540"
                         },
@@ -28063,7 +28078,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 541,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 736000m,
+                            Price = 737000m,
                             ProductId = 74,
                             SKU = "SKU-74-541"
                         },
@@ -28072,7 +28087,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 542,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 714000m,
+                            Price = 715000m,
                             ProductId = 74,
                             SKU = "SKU-74-542"
                         },
@@ -28081,7 +28096,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 543,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 425000m,
+                            Price = 426000m,
                             ProductId = 74,
                             SKU = "SKU-74-543"
                         },
@@ -28090,7 +28105,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 544,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 675000.0m,
-                            Price = 933000m,
+                            Price = 934000m,
                             ProductId = 75,
                             SKU = "SKU-75-544"
                         },
@@ -28099,7 +28114,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 545,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 369000m,
+                            Price = 370000m,
                             ProductId = 75,
                             SKU = "SKU-75-545"
                         },
@@ -28108,7 +28123,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 546,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 690000.0m,
-                            Price = 1022000m,
+                            Price = 1023000m,
                             ProductId = 75,
                             SKU = "SKU-75-546"
                         },
@@ -28117,7 +28132,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 547,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 347000m,
+                            Price = 348000m,
                             ProductId = 75,
                             SKU = "SKU-75-547"
                         },
@@ -28126,7 +28141,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 548,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 435000m,
+                            Price = 436000m,
                             ProductId = 75,
                             SKU = "SKU-75-548"
                         },
@@ -28135,7 +28150,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 549,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 437000m,
+                            Price = 438000m,
                             ProductId = 75,
                             SKU = "SKU-75-549"
                         },
@@ -28144,7 +28159,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 550,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 361000m,
+                            Price = 362000m,
                             ProductId = 75,
                             SKU = "SKU-75-550"
                         },
@@ -28153,7 +28168,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 551,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 241000m,
+                            Price = 242000m,
                             ProductId = 75,
                             SKU = "SKU-75-551"
                         },
@@ -28162,7 +28177,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 552,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 673000m,
+                            Price = 674000m,
                             ProductId = 75,
                             SKU = "SKU-75-552"
                         },
@@ -28171,7 +28186,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 553,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 355000m,
+                            Price = 356000m,
                             ProductId = 76,
                             SKU = "SKU-76-553"
                         },
@@ -28180,7 +28195,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 554,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 531000m,
+                            Price = 532000m,
                             ProductId = 76,
                             SKU = "SKU-76-554"
                         },
@@ -28189,7 +28204,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 555,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 721000m,
+                            Price = 722000m,
                             ProductId = 76,
                             SKU = "SKU-76-555"
                         },
@@ -28198,7 +28213,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 556,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 600000.0m,
-                            Price = 810000m,
+                            Price = 811000m,
                             ProductId = 76,
                             SKU = "SKU-76-556"
                         },
@@ -28207,7 +28222,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 557,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 192000m,
+                            Price = 193000m,
                             ProductId = 76,
                             SKU = "SKU-76-557"
                         },
@@ -28216,7 +28231,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 558,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 509000m,
+                            Price = 510000m,
                             ProductId = 76,
                             SKU = "SKU-76-558"
                         },
@@ -28225,7 +28240,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 559,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 225000.0m,
-                            Price = 279000m,
+                            Price = 280000m,
                             ProductId = 77,
                             SKU = "SKU-77-559"
                         },
@@ -28234,7 +28249,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 560,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 879000m,
+                            Price = 880000m,
                             ProductId = 77,
                             SKU = "SKU-77-560"
                         },
@@ -28243,7 +28258,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 561,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 330000.0m,
-                            Price = 441000m,
+                            Price = 442000m,
                             ProductId = 77,
                             SKU = "SKU-77-561"
                         },
@@ -28252,7 +28267,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 562,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 484000m,
+                            Price = 485000m,
                             ProductId = 77,
                             SKU = "SKU-77-562"
                         },
@@ -28261,7 +28276,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 563,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 573000m,
+                            Price = 574000m,
                             ProductId = 77,
                             SKU = "SKU-77-563"
                         },
@@ -28270,7 +28285,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 564,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 480000.0m,
-                            Price = 599000m,
+                            Price = 600000m,
                             ProductId = 77,
                             SKU = "SKU-77-564"
                         },
@@ -28279,7 +28294,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 565,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 221000m,
+                            Price = 222000m,
                             ProductId = 77,
                             SKU = "SKU-77-565"
                         },
@@ -28288,7 +28303,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 566,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 220000m,
+                            Price = 221000m,
                             ProductId = 77,
                             SKU = "SKU-77-566"
                         },
@@ -28297,7 +28312,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 567,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 222000m,
+                            Price = 223000m,
                             ProductId = 77,
                             SKU = "SKU-77-567"
                         },
@@ -28306,7 +28321,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 568,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 444000m,
+                            Price = 445000m,
                             ProductId = 78,
                             SKU = "SKU-78-568"
                         },
@@ -28315,7 +28330,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 569,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 1064000m,
+                            Price = 1065000m,
                             ProductId = 78,
                             SKU = "SKU-78-569"
                         },
@@ -28324,7 +28339,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 570,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 816000m,
+                            Price = 817000m,
                             ProductId = 78,
                             SKU = "SKU-78-570"
                         },
@@ -28333,7 +28348,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 571,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 251000m,
+                            Price = 252000m,
                             ProductId = 78,
                             SKU = "SKU-78-571"
                         },
@@ -28342,7 +28357,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 572,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 971000m,
+                            Price = 972000m,
                             ProductId = 78,
                             SKU = "SKU-78-572"
                         },
@@ -28351,7 +28366,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 573,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 492000m,
+                            Price = 493000m,
                             ProductId = 78,
                             SKU = "SKU-78-573"
                         },
@@ -28360,7 +28375,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 574,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 150000.0m,
-                            Price = 207000m,
+                            Price = 208000m,
                             ProductId = 78,
                             SKU = "SKU-78-574"
                         },
@@ -28369,7 +28384,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 575,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 390000m,
+                            Price = 391000m,
                             ProductId = 78,
                             SKU = "SKU-78-575"
                         },
@@ -28378,7 +28393,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 576,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 650000m,
+                            Price = 651000m,
                             ProductId = 78,
                             SKU = "SKU-78-576"
                         },
@@ -28387,7 +28402,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 577,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 241000m,
+                            Price = 242000m,
                             ProductId = 79,
                             SKU = "SKU-79-577"
                         },
@@ -28396,7 +28411,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 578,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 226000m,
+                            Price = 227000m,
                             ProductId = 79,
                             SKU = "SKU-79-578"
                         },
@@ -28405,7 +28420,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 579,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 936000m,
+                            Price = 937000m,
                             ProductId = 79,
                             SKU = "SKU-79-579"
                         },
@@ -28414,7 +28429,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 580,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 668000m,
+                            Price = 669000m,
                             ProductId = 79,
                             SKU = "SKU-79-580"
                         },
@@ -28423,7 +28438,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 581,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 657000m,
+                            Price = 658000m,
                             ProductId = 79,
                             SKU = "SKU-79-581"
                         },
@@ -28432,7 +28447,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 582,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 405000.0m,
-                            Price = 575000m,
+                            Price = 576000m,
                             ProductId = 79,
                             SKU = "SKU-79-582"
                         },
@@ -28441,7 +28456,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 583,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 809000m,
+                            Price = 810000m,
                             ProductId = 79,
                             SKU = "SKU-79-583"
                         },
@@ -28450,7 +28465,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 584,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 783000m,
+                            Price = 784000m,
                             ProductId = 79,
                             SKU = "SKU-79-584"
                         },
@@ -28459,7 +28474,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 585,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 867000m,
+                            Price = 868000m,
                             ProductId = 79,
                             SKU = "SKU-79-585"
                         },
@@ -28468,7 +28483,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 586,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 420000.0m,
-                            Price = 568000m,
+                            Price = 569000m,
                             ProductId = 80,
                             SKU = "SKU-80-586"
                         },
@@ -28477,7 +28492,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 587,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 615000.0m,
-                            Price = 870000m,
+                            Price = 871000m,
                             ProductId = 80,
                             SKU = "SKU-80-587"
                         },
@@ -28486,7 +28501,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 588,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 715000m,
+                            Price = 716000m,
                             ProductId = 80,
                             SKU = "SKU-80-588"
                         },
@@ -28495,7 +28510,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 589,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 529000m,
+                            Price = 530000m,
                             ProductId = 80,
                             SKU = "SKU-80-589"
                         },
@@ -28504,7 +28519,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 590,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 307000m,
+                            Price = 308000m,
                             ProductId = 80,
                             SKU = "SKU-80-590"
                         },
@@ -28513,7 +28528,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 591,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 702000m,
+                            Price = 703000m,
                             ProductId = 80,
                             SKU = "SKU-80-591"
                         },
@@ -28522,7 +28537,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 592,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 238000m,
+                            Price = 239000m,
                             ProductId = 81,
                             SKU = "SKU-81-592"
                         },
@@ -28531,7 +28546,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 593,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 210000.0m,
-                            Price = 272000m,
+                            Price = 273000m,
                             ProductId = 81,
                             SKU = "SKU-81-593"
                         },
@@ -28540,7 +28555,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 594,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 165000.0m,
-                            Price = 209000m,
+                            Price = 210000m,
                             ProductId = 81,
                             SKU = "SKU-81-594"
                         },
@@ -28549,7 +28564,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 595,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 730000m,
+                            Price = 731000m,
                             ProductId = 81,
                             SKU = "SKU-81-595"
                         },
@@ -28558,7 +28573,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 596,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 564000m,
+                            Price = 565000m,
                             ProductId = 81,
                             SKU = "SKU-81-596"
                         },
@@ -28567,7 +28582,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 597,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 375000.0m,
-                            Price = 520000m,
+                            Price = 521000m,
                             ProductId = 81,
                             SKU = "SKU-81-597"
                         },
@@ -28576,7 +28591,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 598,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 248000m,
+                            Price = 249000m,
                             ProductId = 81,
                             SKU = "SKU-81-598"
                         },
@@ -28585,7 +28600,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 599,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 315000.0m,
-                            Price = 470000m,
+                            Price = 471000m,
                             ProductId = 81,
                             SKU = "SKU-81-599"
                         },
@@ -28594,7 +28609,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 600,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 510000.0m,
-                            Price = 666000m,
+                            Price = 667000m,
                             ProductId = 81,
                             SKU = "SKU-81-600"
                         },
@@ -28603,7 +28618,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 601,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 390000.0m,
-                            Price = 525000m,
+                            Price = 526000m,
                             ProductId = 82,
                             SKU = "SKU-82-601"
                         },
@@ -28612,7 +28627,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 602,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 657000m,
+                            Price = 658000m,
                             ProductId = 82,
                             SKU = "SKU-82-602"
                         },
@@ -28621,7 +28636,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 603,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 270000.0m,
-                            Price = 325000m,
+                            Price = 326000m,
                             ProductId = 82,
                             SKU = "SKU-82-603"
                         },
@@ -28630,7 +28645,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 604,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 435000.0m,
-                            Price = 562000m,
+                            Price = 563000m,
                             ProductId = 82,
                             SKU = "SKU-82-604"
                         },
@@ -28639,7 +28654,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 605,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 429000m,
+                            Price = 430000m,
                             ProductId = 82,
                             SKU = "SKU-82-605"
                         },
@@ -28648,7 +28663,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 606,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 465000.0m,
-                            Price = 616000m,
+                            Price = 617000m,
                             ProductId = 82,
                             SKU = "SKU-82-606"
                         },
@@ -28657,7 +28672,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 607,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 776000m,
+                            Price = 777000m,
                             ProductId = 83,
                             SKU = "SKU-83-607"
                         },
@@ -28666,7 +28681,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 608,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 450000.0m,
-                            Price = 671000m,
+                            Price = 672000m,
                             ProductId = 83,
                             SKU = "SKU-83-608"
                         },
@@ -28675,7 +28690,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 609,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 975000m,
+                            Price = 976000m,
                             ProductId = 83,
                             SKU = "SKU-83-609"
                         },
@@ -28684,7 +28699,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 610,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 180000.0m,
-                            Price = 240000m,
+                            Price = 241000m,
                             ProductId = 83,
                             SKU = "SKU-83-610"
                         },
@@ -28693,7 +28708,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 611,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 705000.0m,
-                            Price = 876000m,
+                            Price = 877000m,
                             ProductId = 83,
                             SKU = "SKU-83-611"
                         },
@@ -28702,7 +28717,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 612,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 313000m,
+                            Price = 314000m,
                             ProductId = 83,
                             SKU = "SKU-83-612"
                         },
@@ -28711,7 +28726,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 613,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 645000.0m,
-                            Price = 797000m,
+                            Price = 798000m,
                             ProductId = 84,
                             SKU = "SKU-84-613"
                         },
@@ -28720,7 +28735,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 614,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 540000.0m,
-                            Price = 769000m,
+                            Price = 770000m,
                             ProductId = 84,
                             SKU = "SKU-84-614"
                         },
@@ -28729,7 +28744,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 615,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 735000.0m,
-                            Price = 932000m,
+                            Price = 933000m,
                             ProductId = 84,
                             SKU = "SKU-84-615"
                         },
@@ -28738,7 +28753,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 616,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 345000.0m,
-                            Price = 504000m,
+                            Price = 505000m,
                             ProductId = 84,
                             SKU = "SKU-84-616"
                         },
@@ -28747,7 +28762,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 617,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 630000.0m,
-                            Price = 760000m,
+                            Price = 761000m,
                             ProductId = 84,
                             SKU = "SKU-84-617"
                         },
@@ -28756,7 +28771,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 618,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 525000.0m,
-                            Price = 685000m,
+                            Price = 686000m,
                             ProductId = 84,
                             SKU = "SKU-84-618"
                         },
@@ -28765,7 +28780,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 619,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 255000.0m,
-                            Price = 345000m,
+                            Price = 346000m,
                             ProductId = 84,
                             SKU = "SKU-84-619"
                         },
@@ -28774,7 +28789,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 620,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 252000m,
+                            Price = 253000m,
                             ProductId = 84,
                             SKU = "SKU-84-620"
                         },
@@ -28783,7 +28798,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 621,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 360000.0m,
-                            Price = 526000m,
+                            Price = 527000m,
                             ProductId = 84,
                             SKU = "SKU-84-621"
                         },
@@ -28792,7 +28807,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 622,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 585000.0m,
-                            Price = 847000m,
+                            Price = 848000m,
                             ProductId = 85,
                             SKU = "SKU-85-622"
                         },
@@ -28801,7 +28816,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 623,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 660000.0m,
-                            Price = 853000m,
+                            Price = 854000m,
                             ProductId = 85,
                             SKU = "SKU-85-623"
                         },
@@ -28810,7 +28825,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 624,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 555000.0m,
-                            Price = 809000m,
+                            Price = 810000m,
                             ProductId = 85,
                             SKU = "SKU-85-624"
                         },
@@ -28819,7 +28834,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 625,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 285000.0m,
-                            Price = 408000m,
+                            Price = 409000m,
                             ProductId = 85,
                             SKU = "SKU-85-625"
                         },
@@ -28828,7 +28843,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 626,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 300000.0m,
-                            Price = 409000m,
+                            Price = 410000m,
                             ProductId = 85,
                             SKU = "SKU-85-626"
                         },
@@ -28837,7 +28852,7 @@ namespace NoName.Infrastructure.Migrations
                             Id = 627,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginalPrice = 195000.0m,
-                            Price = 282000m,
+                            Price = 283000m,
                             ProductId = 85,
                             SKU = "SKU-85-627"
                         });
@@ -29107,22 +29122,34 @@ namespace NoName.Infrastructure.Migrations
 
                     b.Property<string>("ExternalTransactionId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<decimal>("Fee")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PayUrl")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<string>("Provider")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Result")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -29135,9 +29162,13 @@ namespace NoName.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExternalTransactionId");
+
+                    b.HasIndex("OrderId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("NoName.Domain.Entities.User", b =>
@@ -29238,7 +29269,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@NONAME.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMB/sorKd0Cg0OJuaGU55dRN+GJ3GLUvYyNi9ej2mURA/eL537kp9mW/lBcKMzfSwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHABFBCZxknl+JtSyv/eFnWS9Fyoh1VbTDvEtDDsphL90byajkinTNyt6ak0m+yadg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "D60A807D-A3EF-4A9C-BA73-B6FFB21CAE11",
                             TwoFactorEnabled = false,
@@ -29257,7 +29288,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER01@NONAME.COM",
                             NormalizedUserName = "CUSTOMER01",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHIKcvic3mSuAmOEVeqYntDUIBot9nTpbW8kCes1iRUzxK6AQJJkiH1AysP7Pp0gsQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPwtDnFV/Ks2bcRvhygBMMgBWqhX5coMaSk05luuWpVPKwq8py2fu+95P79jJYOpXA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEC-CUSTOMER-0001",
                             TwoFactorEnabled = false,
@@ -29276,7 +29307,7 @@ namespace NoName.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER02@NONAME.COM",
                             NormalizedUserName = "CUSTOMER02",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB0EEqoBh7JHpyMbD2WFmq4AZcdiktM9rV4ouryhC7mDDgDYE/U8ZM1Ftytpq1mdTQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPpOZC0hCJNU8xrvM14xKltGYKYG+vdKXOWC0fRpA6L3tmzY+TrxV1QOLEIThXJvVw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SEC-CUSTOMER-0002",
                             TwoFactorEnabled = false,
@@ -36959,7 +36990,7 @@ namespace NoName.Infrastructure.Migrations
                     b.HasOne("NoName.Domain.Entities.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -37147,11 +37178,19 @@ namespace NoName.Infrastructure.Migrations
 
             modelBuilder.Entity("NoName.Domain.Entities.Transaction", b =>
                 {
+                    b.HasOne("NoName.Domain.Entities.Order", "Order")
+                        .WithMany("Transactions")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NoName.Domain.Entities.User", "User")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("User");
                 });
@@ -37200,6 +37239,8 @@ namespace NoName.Infrastructure.Migrations
             modelBuilder.Entity("NoName.Domain.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("NoName.Domain.Entities.Product", b =>

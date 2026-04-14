@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using NoName.Application.Common;
-using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +8,7 @@ using System.Text;
 namespace NoName.Application.Features.Products.Queries.GetProductsPaging
 {
 
-    public record GetProductsPagingQuery : IRequest<PagedResult<ProductViewModel>>
+    public record GetProductsPagingQuery : IRequest<PagedResult<ProductViewDto>>
     {
         public string? Keyword { get; set; }
         public int? CategoryId { get; set; }

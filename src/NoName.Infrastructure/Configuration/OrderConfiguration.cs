@@ -18,7 +18,19 @@ namespace NoName.Infrastructure.Configuration
             builder.Property(x => x.ShipAddress).IsRequired().HasMaxLength(200);
             builder.Property(x => x.ShipEmail).IsRequired().HasMaxLength(50);
             builder.Property(x => x.ShipPhoneNumber).IsRequired().HasMaxLength(20);
-            builder.HasOne(x => x.User).WithMany(x => x.Orders).HasForeignKey(x => x.UserId);
+            builder.Property(x => x.TotalAmount).IsRequired().HasColumnType("decimal(18,2)").HasDefaultValue(0);
+
+            // Configure User relationship
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.Orders)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
+
+            // Configure OrderDetails relationship
+            builder.HasMany(x => x.OrderDetails)
+                .WithOne(x => x.Order)
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,0 +1,6 @@
+- **Vị trí**: Lưu tại thư mục `/Migrations` của `[[Infrastructure Layer]]`.
+- **Vai trò**: Lưu trữ toàn bộ lịch sử các lần thay đổi cấu trúc Database từ khi khởi tạo dự án.
+- **Quy tắc**:
+  - Khi có thay đổi trong `NoNameDbContext` tại `[[EF Core]]` hoặc các cấu hình Entity của `Fluent API`, tuyệt đối phải chạy lệnh tạo file Migration thay vì sửa trực tiếp database.
+  - Sau khi `Add-Migration`, kiểm tra log và cấu trúc sinh ra để chắc chắn EF Core tạo đúng schema như mong muốn.
+  - Quản lý phiên bản dữ liệu tự động cho quá trình CI/CD.

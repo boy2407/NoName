@@ -29,7 +29,7 @@ namespace NoName.Infrastructure.Persistence
 
         public async Task<string> CreateJwtToken(User user)
         {
-            var expirationMinutes = double.Parse(_config["Jwt:AccessTokenExpirationMinutes"] ?? "1");
+            var expirationMinutes = double.Parse(_config["Jwt:AccessTokenExpirationMinutes"] ?? "2000000");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

@@ -14,6 +14,7 @@ namespace NoName.Infrastructure.Configuration
             builder.ToTable("Transactions");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.TransactionDate).IsRequired();
+            builder.Property(x => x.OrderId).IsRequired();
             builder.Property(x => x.ExternalTransactionId).HasMaxLength(200);
             builder.Property(x => x.Amount).HasColumnType("decimal(18,2)");
             builder.Property(x => x.Fee).HasColumnType("decimal(18,2)");
@@ -21,8 +22,21 @@ namespace NoName.Infrastructure.Configuration
             builder.Property(x => x.Message).HasMaxLength(500);
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.Provider).HasMaxLength(100);
+            builder.Property(x => x.PayUrl).HasMaxLength(2000);
             builder.Property(x => x.UserId).IsRequired();
-            builder.HasOne(x => x.User).WithMany(x => x.Transactions).HasForeignKey(x => x.UserId);
+
+            builder.HasIndex(x => x.OrderId);
+            builder.HasIndex(x => x.ExternalTransactionId).IsUnique(false);
+
+            builder.HasOne(x => x.Order)
+                .WithMany(x => x.Transactions)
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.Transactions)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
          }
     }

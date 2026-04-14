@@ -14,8 +14,10 @@ namespace NoName.Domain.Entities
         public string ShipAddress { set; get; }
         public string ShipEmail { set; get; }
         public string ShipPhoneNumber { set; get; }
+        public decimal TotalAmount { get; set; }
         public OrderStatus Status { set; get; }
         public List<OrderDetail> OrderDetails { get; set; }
+        public List<Transaction> Transactions { get; set; }
         public User User { get; set; }
 
     }

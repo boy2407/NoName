@@ -1,5 +1,5 @@
 using MediatR;
-using NoName.Application.Features.Categories.DTOs;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetCategoriesByParentId
 {
-    public class GetCategoriesByParentIdQuery: IRequest<List<CategoryViewModel>>
+    public class GetCategoriesByParentIdQuery: IRequest<List<CategoryDto>>
     {
         public int? ParentId { get; set; }
         public string LanguageId { get; set; }

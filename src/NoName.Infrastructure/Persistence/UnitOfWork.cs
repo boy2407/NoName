@@ -12,11 +12,12 @@ public class UnitOfWork : IUnitOfWork
     public IOrderRepository Orders { get; }
     public ILanguageRepository Languages { get; }
     public ICategoryRepository Categories { get; }
+    public ITransactionRepository Transactions { get; }
     public IProductVariantRepository ProductVariants { get; }
 
 
     public UnitOfWork (NoNameDbContext context, IProductRepository products, ICartRepository carts, IOrderRepository orders, ILanguageRepository languages,
-                                              ICategoryRepository categories, IProductVariantRepository productVariants)
+                                               ICategoryRepository categories, ITransactionRepository transactions, IProductVariantRepository productVariants)
     {
         _context = context;
         Products = products;
@@ -24,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
         Orders = orders;
         Languages = languages;
         Categories = categories;
+        Transactions = transactions;
         ProductVariants = productVariants;
     }
 

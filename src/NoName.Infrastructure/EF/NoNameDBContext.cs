@@ -38,6 +38,7 @@ namespace NoName.Infrastructure.EF
             modelBuilder.ApplyConfiguration(new ProductOptionValueTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionProductConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguartion());
             modelBuilder.ApplyConfiguration(new SlideConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryTranslationConfiguration());
@@ -85,8 +86,7 @@ namespace NoName.Infrastructure.EF
         public DbSet<ProductOptionValue> ProductOptionValues { get; set; }
         public DbSet<ProductOptionValueTranslation> ProductOptionValueTranslations { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
-
-        //public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Slide> Slides { get; set; }
     }

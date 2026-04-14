@@ -1,0 +1,122 @@
+@page "/product-variants"
+@using MudBlazor
+@using NoName.AdminApp.Services
+@using NoName.Shared.DTOs.Products.Admin
+@inject IProductVariantService ProductVariantService
+@inject ISnackbar Snackbar
+
+<PageTitle>Quản Lý Biến Thể Sản Phẩm</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Danh Sách Biến Thể Sản Phẩm</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" />
+                    }
+                    else if (variants?.Count > 0)
+                    {
+                        <MudTable Items="variants" Striped="true" Bordered="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>ID</MudTh>
+                                <MudTh>Sản Phẩm</MudTh>
+                                <MudTh>SKU</MudTh>
+                                <MudTh>Giá</MudTh>
+                                <MudTh>Giá Gốc</MudTh>
+                                <MudTh>Tồn Kho</MudTh>
+                                <MudTh>Lợi Nhuận</MudTh>
+                                <MudTh>Hành Động</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="ID">@context.Id</MudTd>
+                                <MudTd DataLabel="Sản Phẩm">@context.OptionGroup</MudTd>
+                                <MudTd DataLabel="SKU">@context.SKU</MudTd>
+                                <MudTd DataLabel="Giá">@context.Price.ToString("C")</MudTd>
+                                <MudTd DataLabel="Giá Gốc">@context.OriginalPrice.ToString("C")</MudTd>
+                                <MudTd DataLabel="Tồn Kho">
+                                    <MudChip T="string" Color="@(context.Stock > 0 ? Color.Success : Color.Error)">
+                                        @context.Stock
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Lợi Nhuận">
+                                    <MudChip T="string" Color="@(context.Profit > 0 ? Color.Success : Color.Error)">
+                                        @context.Profit.ToString("C") (@context.ProfitMargin.ToString("F2")%)
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Hành Động">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteVariantConfirm(0, context.Id))" />
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudText>Không có biến thể nào</MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private List<ProductVariantAdminDto> variants = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadVariants();
+    }
+
+    private async Task LoadVariants()
+    {
+        try
+        {
+            isLoading = true;
+            variants = await ProductVariantService.GetAll();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi khi tải biến thể: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task DeleteVariantConfirm(int productId, int variantId)
+    {
+        if (await Confirmed())
+        {
+            await DeleteVariant(productId, variantId);
+        }
+    }
+
+    private async Task DeleteVariant(int productId, int variantId)
+    {
+        try
+        {
+            await ProductVariantService.Delete(productId, variantId);
+            Snackbar.Add("Xóa biến thể thành công", Severity.Success);
+            await LoadVariants();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task<bool> Confirmed()
+    {
+        return true; // TODO: Implement confirmation dialog
+    }
+}
+

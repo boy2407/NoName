@@ -1,0 +1,216 @@
+@page "/settings/languages"
+@using MudBlazor
+@using NoName.AdminApp.Services
+@using NoName.Shared.DTOs.Languages
+@inject ILanguageService LanguageService
+@inject ISnackbar Snackbar
+
+<PageTitle>Quản Lý Ngôn Ngữ</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    @if (showForm)
+    {
+        <MudCard Class="mb-6">
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@(editingId == "" ? "Thêm Ngôn Ngữ Mới" : "Chỉnh Sửa Ngôn Ngữ")</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudForm @ref="form" @bind-IsValid="@success">
+                    @if (editingId == "")
+                    {
+                        <MudTextField @bind-Value="formModel.Id" Label="Mã Ngôn Ngữ (VD: en, vi)" Required="true" FullWidth Class="mb-4" />
+                    }
+                    <MudTextField @bind-Value="formModel.Name" Label="Tên Ngôn Ngữ" Required="true" FullWidth Class="mb-4" />
+                    <div Class="d-flex gap-3">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLanguage">
+                            @(editingId == "" ? "Thêm Mới" : "Cập Nhật")
+                        </MudButton>
+                        <MudButton Variant="Variant.Text" OnClick="CancelEdit">Hủy</MudButton>
+                    </div>
+                </MudForm>
+            </MudCardContent>
+        </MudCard>
+    }
+
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Danh Sách Ngôn Ngữ</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" OnClick="@(() => ShowForm())">
+                            Thêm Ngôn Ngữ
+                        </MudButton>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" />
+                    }
+                    else if (languages?.Count > 0)
+                    {
+                        <MudTable Items="languages" Striped="true" Bordered="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>Mã</MudTh>
+                                <MudTh>Tên Ngôn Ngữ</MudTh>
+                                <MudTh>Mặc Định</MudTh>
+                                <MudTh>Hành Động</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Mã">@context.Id</MudTd>
+                                <MudTd DataLabel="Tên Ngôn Ngữ">@context.Name</MudTd>
+                                <MudTd DataLabel="Mặc Định">
+                                    <MudCheckBox T="bool" Checked="@context.IsDefault" Disabled="true" />
+                                </MudTd>
+                                <MudTd DataLabel="Hành Động">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => EditLanguage(context.Id))" />
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteLanguageConfirm(context.Id))" />
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudText>Không có ngôn ngữ nào</MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private List<LanguageDto> languages = new();
+    private bool showForm = false;
+    private bool isLoading = true;
+    private bool success = false;
+    private string editingId = "";
+
+    private LanguageCreateRequest formModel = new();
+
+    public class LanguageCreateRequest
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadLanguages();
+    }
+
+    private async Task LoadLanguages()
+    {
+        try
+        {
+            isLoading = true;
+            languages = await LanguageService.GetAll();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi khi tải ngôn ngữ: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowForm()
+    {
+        editingId = "";
+        formModel = new();
+        showForm = true;
+    }
+
+    private async Task EditLanguage(string id)
+    {
+        try
+        {
+            var language = await LanguageService.GetById(id);
+            editingId = id;
+            formModel = new()
+            {
+                Id = language.Id,
+                Name = language.Name
+            };
+            showForm = true;
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void CancelEdit()
+    {
+        showForm = false;
+        formModel = new();
+        editingId = "";
+    }
+
+    private async Task SaveLanguage()
+    {
+        if (!success) return;
+
+        try
+        {
+            if (editingId == "")
+            {
+                var createReq = new CreateLanguageRequest
+                {
+                    Id = formModel.Id,
+                    Name = formModel.Name
+                };
+                await LanguageService.Create(createReq);
+                Snackbar.Add("Thêm ngôn ngữ thành công", Severity.Success);
+            }
+            else
+            {
+                var updateReq = new UpdateLanguageRequest { Name = formModel.Name };
+                await LanguageService.Update(editingId, updateReq);
+                Snackbar.Add("Cập nhật ngôn ngữ thành công", Severity.Success);
+            }
+            CancelEdit();
+            await LoadLanguages();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task DeleteLanguageConfirm(string id)
+    {
+        if (await Confirmed())
+        {
+            await DeleteLanguage(id);
+        }
+    }
+
+    private async Task DeleteLanguage(string id)
+    {
+        try
+        {
+            await LanguageService.Delete(id);
+            Snackbar.Add("Xóa ngôn ngữ thành công", Severity.Success);
+            await LoadLanguages();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task<bool> Confirmed()
+    {
+        return true; // TODO: Implement confirmation dialog
+    }
+}
+

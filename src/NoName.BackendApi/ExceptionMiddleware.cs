@@ -2,16 +2,19 @@
 using NoName.Application.Common;
 using System.Net;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace NoName.BackendApi
 {
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -22,20 +25,12 @@ namespace NoName.BackendApi
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "An unhandled exception occurred: {Message}", ex.Message);
                 await HandleExceptionAsync(context, ex);
-
-                
-                 //context.Response.StatusCode = 500;
-                 //context.Response.ContentType = "application/json";
-                
-                 //var response = ApiResult<string>.Failure("Hệ thống gặp sự cố: " + ex.Message);
-                 //await context.Response.WriteAsJsonAsync(response);
-
-
-             }
+            }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
 
@@ -49,6 +44,17 @@ namespace NoName.BackendApi
                 statusCode = (int)HttpStatusCode.BadRequest;
                 var errors = validationException.Errors.Select(e => e.ErrorMessage);
                 result = JsonSerializer.Serialize(new { errors });
+            }
+            else if (exception is DbUpdateException dbException)
+            {
+                // Database update exception - provide more detailed error
+                statusCode = (int)HttpStatusCode.BadRequest;
+                var innerMessage = dbException.InnerException?.Message ?? dbException.Message;
+                result = JsonSerializer.Serialize(new 
+                { 
+                    error = "Database error occurred.",
+                    details = innerMessage
+                });
             }
             else
             {

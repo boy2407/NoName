@@ -1,6 +1,5 @@
 using MediatR;
-using NoName.Application.Features.Categories.DTOs;
-using NoName.Application.Features.Languages.DTOs;
+using NoName.Shared.DTOs.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoName.Application.Features.Categories.Queries.GetAllCategory
 {
-    public class GetAllCategoriesQuery : IRequest<List<CategoryViewModel>> {
+    public class GetAllCategoriesQuery : IRequest<List<CategoryDto>> {
         public string LanguageId { get; set; }
     }
 }

@@ -35,18 +35,21 @@ namespace NoName.Infrastructure
         {
             //Database
             services.AddDbContext<NoNameDbContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("NoNameDB")));
+            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            services.Configure<MomoSettings>(configuration.GetSection("PaymentSettings:Momo"));
             // Redis Configuration
             //var redisConnectionString = configuration.GetConnectionString("Redis") ;
             //var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
 
 
 
-            var redisConnectionString = configuration.GetConnectionString("Redis");
+            //var redisConnectionString = configuration.GetConnectionString("Redis");
+            var redisConnectionString = "localhost:6379"; 
+
             services.AddSingleton<IConnectionMultiplexer>(sp =>
                 ConnectionMultiplexer.Connect(redisConnectionString));
             services.AddStackExchangeRedisCache(options =>
@@ -71,17 +74,7 @@ namespace NoName.Infrastructure
 
 
             services.AddKeyedScoped<IAIService, SemanticKernelService>(SemanticKernelKey);
-            services.AddKeyedScoped<IAIService, OpenRouterFreeService>(OpenRouterKey, (sp, key) =>
-            {
-                var apiKey = configuration["AI:OpenRouter:ApiKey"];
-
-                if (string.IsNullOrWhiteSpace(apiKey))
-                {
-                    throw new InvalidOperationException("Missing configuration: AI:OpenRouter:ApiKey");
-                }
-
-                return new OpenRouterFreeService(apiKey);
-            });
+           
 
 
             services.AddIdentity<User, Domain.Entities.Role>(options =>
@@ -107,10 +100,17 @@ namespace NoName.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductVariantRepository, ProductVariantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Payment Services - Support Multiple Providers
+            services.AddHttpClient();
+            services.AddScoped<IPaymentService, MomoPaymentService>();
+            // Add more payment providers here in the future (VNPay, ZaloPay, etc.)
+            // services.AddScoped<IPaymentService, VNPayPaymentService>();
 
 
             services.AddAuthorization(options =>

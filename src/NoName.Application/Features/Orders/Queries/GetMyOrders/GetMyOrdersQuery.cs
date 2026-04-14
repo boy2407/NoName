@@ -1,6 +1,6 @@
 using MediatR;
 using NoName.Application.Common;
-using NoName.Application.Features.Orders.DTOs;
+using NoName.Shared.DTOs.Orders;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;

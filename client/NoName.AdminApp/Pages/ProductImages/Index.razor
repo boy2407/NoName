@@ -1,0 +1,118 @@
+@page "/product-images"
+@using MudBlazor
+@using NoName.AdminApp.Services
+@inject IProductImageService ProductImageService
+@inject ISnackbar Snackbar
+
+<PageTitle>Quản Lý Hình Ảnh Sản Phẩm</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Danh Sách Hình Ảnh Sản Phẩm</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" />
+                    }
+                    else if (images?.Count > 0)
+                    {
+                        <MudTable Items="images" Striped="true" Bordered="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>ID</MudTh>
+                                <MudTh>Sản Phẩm</MudTh>
+                                <MudTh>Hình Ảnh</MudTh>
+                                <MudTh>Loại</MudTh>
+                                <MudTh>Hành Động</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="ID">@context.Id</MudTd>
+                                <MudTd DataLabel="Sản Phẩm">@context.ProductName (ID: @context.ProductId)</MudTd>
+                                <MudTd DataLabel="Hình Ảnh">
+                                    <MudImage Src="@context.ImageUrl" Alt="@context.ProductName" Style="max-width: 100px;" />
+                                </MudTd>
+                                <MudTd DataLabel="Loại">
+                                    @if (context.IsThumbnail)
+                                    {
+                                        <MudChip T="string" Color="Color.Primary">Thumbnail</MudChip>
+                                    }
+                                    else
+                                    {
+                                        <MudChip T="string" Color="Color.Default">Gallery</MudChip>
+                                    }
+                                </MudTd>
+                                <MudTd DataLabel="Hành Động">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteImageConfirm(context.Id))" />
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudText>Không có hình ảnh nào</MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private List<ProductImageDto> images = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadImages();
+    }
+
+    private async Task LoadImages()
+    {
+        try
+        {
+            isLoading = true;
+            images = await ProductImageService.GetAll();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi khi tải hình ảnh: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task DeleteImageConfirm(int id)
+    {
+        if (await Confirmed())
+        {
+            await DeleteImage(id);
+        }
+    }
+
+    private async Task DeleteImage(int id)
+    {
+        try
+        {
+            await ProductImageService.Delete(id);
+            Snackbar.Add("Xóa hình ảnh thành công", Severity.Success);
+            await LoadImages();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task<bool> Confirmed()
+    {
+        return true; // TODO: Implement confirmation dialog
+    }
+}
+

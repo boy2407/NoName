@@ -8,6 +8,8 @@ using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
 using NoName.Application.Services;
 using NoName.BackendApi;
+using NoName.BackendApi.Hubs;
+using NoName.BackendApi.Services;
 using NoName.Infrastructure;
 using NoName.Infrastructure.EF;
 using NoName.Infrastructure.Persistence;
@@ -39,6 +41,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSignalR();
+builder.Services.AddScoped<IPaymentStatusNotifier, PaymentStatusNotifier>();
 
 
 // Resigter  MediatR 
@@ -167,5 +171,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<PaymentStatusHub>("/hubs/payment-status");
 
 app.Run();

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using NoName.Application.Features.Products.DTOs.Guest;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -11,7 +11,7 @@ namespace NoName.Application.Features.Products.Commands.Create
     public class CreateProductCommand : IRequest<int>
     {
         public List<int> CategoryIds { get; set; } = new List<int>();
-        public List<ProductTranslationViewModel> Translations { get; set; }
+        public List<ProductTranslationDto> Translations { get; set; }
         public bool IsActive { get; set; } = true;
     }
     public class AddProductVariantCommand : IRequest<bool>

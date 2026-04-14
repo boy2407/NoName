@@ -4,9 +4,9 @@ using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Abstractions.Services;
 using NoName.Application.Common;
 using NoName.Application.Features.Products.Commands.Update.common;
-using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Application.Features.Products.Events;
 using NoName.Domain.Entities;
+using NoName.Shared.DTOs.Products.Guest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,7 +78,7 @@ namespace NoName.Application.Features.Products.Commands.Update.common
             }
         }
 
-        private void UpdateProductTranslations(NoName.Domain.Entities.Product product, List<ProductTranslationViewModel> requestTranslations)
+        private void UpdateProductTranslations(NoName.Domain.Entities.Product product, List<ProductTranslationDto> requestTranslations)
         {
 
 

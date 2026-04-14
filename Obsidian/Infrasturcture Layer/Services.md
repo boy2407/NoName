@@ -1,0 +1,7 @@
+- **Vị trí**: Lưu tại thư mục `/Services`.
+- **Vai trò**: Chứa các class chức năng tiện ích khác của hạ tầng (Infrastructure) hệ thống, như Gửi Email, Storage File Hình Ảnh, hay Xử trí Thanh Toán (Momo, Stripe...).
+- **Quy tắc**:
+  - Không chứa Domain Rule/Logic.
+  - Gọi các API thứ 3 (Ví dụ **Gửi Email** -> `[[SendGrid]]`).
+  - Implements Interface cung cấp từ `Domain` hoặc `Application`.
+  - Service Caching `ICacheService` sẽ được thiết lập ở đây hoặc tự tạo thư mục riêng theo hướng dẫn `[[Concurrency Management]]`.

@@ -1,0 +1,7 @@
+- **Vị trí**: Lưu tại thư mục `/AIPlugins` của `[[Infrastructure Layer]]`.
+- **Vai trò**: Chứa các Service và Plugin thực thi tính năng AI (ví dụ `AdminPlugin.cs`).
+- **Thư viện / Frameworks**:
+  - Dùng cho Semantic Kernel hoặc API của Ollama để liên kết các Large Language Models (LLM) vào hệ thống Agent.
+- **Quy tắc Integration**:
+  - **Cross-Reference**: Bất kể thêm service nào trong thư mục này đều phải được tự động map chặt chẽ với cấu hình từ `appsettings.json` (Api Key, Endpoint của LLM, Model Name...).
+  - Mọi Plugin AI mới viết xong phải gọi đăng ký tại `[[Dependency Injection]]`.

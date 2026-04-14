@@ -3,22 +3,21 @@ using AutoMapper.QueryableExtensions;
 using Azure.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using NoName.Application.Abstractions.Persistence;
 using NoName.Application.Common;
-using NoName.Application.Features.Chatbot.DTOs;
 using NoName.Application.Features.Products.Queries.GetProductsPaging;
-using NoName.Application.Features.Products.Commands.Create;
-using NoName.Application.Features.Products.DTOs;
-using NoName.Application.Features.Products.DTOs.Guest;
 using NoName.Domain.Entities;
 using NoName.Infrastructure.EF;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using NoName.Shared.DTOs.Chatbot;
+using NoName.Shared.DTOs.Products.Guest;
 
 namespace NoName.Infrastructure.Persistence
 {
@@ -96,7 +95,7 @@ namespace NoName.Infrastructure.Persistence
                 .FirstOrDefaultAsync(x => x.Id == id, ct);
         }
   
-        public async Task<PagedResult<ProductViewModel>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default)
+        public async Task<PagedResult<ProductViewDto>> GetProductsPagingAsync(GetProductsPagingQuery request, CancellationToken ct = default)
         {
             var query = _context.Products.AsNoTracking();
 
@@ -119,10 +118,10 @@ namespace NoName.Infrastructure.Persistence
                 .OrderByDescending(p => p.DateCreated)
                 .Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize)
-                .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider, new { lang = request.LanguageId })
+                .ProjectTo<ProductViewDto>(_mapper.ConfigurationProvider, new { lang = request.LanguageId })
                 .ToListAsync(ct);
 
-            return new PagedResult<ProductViewModel>
+            return new PagedResult<ProductViewDto>
             {
                 Items = items,
                 TotalRecords = totalRecords,
@@ -248,6 +247,74 @@ namespace NoName.Infrastructure.Persistence
                 .Include(p => p.ProductTranslations)
                 .Include(p => p.ProductVariants)
                 .FirstOrDefaultAsync(p => p.ProductTranslations.Any(t => t.Name.Contains(productName)));
+        }
+
+        // --- STORED PROCEDURE ---
+
+        public async Task<List<Product>> SearchByAiCriteriaBySPAsync(AiSearchCriteria criteria, CancellationToken ct)
+        {
+            // Chuyển danh sách thành DataTable
+            var colorsTable = ConvertListToDataTable(criteria.Colors ?? new List<string>());
+            var materialsTable = ConvertListToDataTable(criteria.Materials ?? new List<string>());
+            var tagsTable = ConvertListToDataTable(criteria.Tags ?? new List<string>());
+
+            // Tạo SqlParameters
+            var languageIdParam = new SqlParameter("@LanguageId", criteria.LanguageId ?? "vi-VN");
+            var categoryParam = new SqlParameter("@Category", (object?)criteria.Category ?? DBNull.Value);
+            var maxPriceParam = new SqlParameter("@MaxPrice", (object?)criteria.MaxPrice ?? DBNull.Value);
+
+            var colorsParam = new SqlParameter("@Colors", SqlDbType.Structured)
+            {
+                TypeName = "[dbo].[StringTableType]",
+                Value = colorsTable
+            };
+
+            var materialsParam = new SqlParameter("@Materials", SqlDbType.Structured)
+            {
+                TypeName = "[dbo].[StringTableType]",
+                Value = materialsTable
+            };
+
+            var tagsParam = new SqlParameter("@Tags", SqlDbType.Structured)
+            {
+                TypeName = "[dbo].[StringTableType]",
+                Value = tagsTable
+            };
+
+            // Gọi Stored Procedure
+            var result = await _context.Products
+                .FromSqlInterpolated($"""
+                    EXEC sp_SearchProductsByAiCriteria
+                        @LanguageId = {languageIdParam},
+                        @Category = {categoryParam},
+                        @MaxPrice = {maxPriceParam},
+                        @Colors = {colorsParam},
+                        @Materials = {materialsParam},
+                        @Tags = {tagsParam}
+                    """)
+                .Include(p => p.ProductTranslations.Where(t => t.LanguageId == criteria.LanguageId))
+                .Include(p => p.ProductVariants)
+                .Include(p => p.Options)
+                    .ThenInclude(o => o.ProductOptionTranslations.Where(ot => ot.LanguageId == criteria.LanguageId))
+                .Include(p => p.Options)
+                    .ThenInclude(o => o.Values)
+                        .ThenInclude(v => v.ProductOptionValueTranslations.Where(vt => vt.LanguageId == criteria.LanguageId))
+                .AsNoTracking()
+                .ToListAsync(ct);
+
+            return result;
+        }
+        private DataTable ConvertListToDataTable(List<string> list)
+        {
+            var table = new DataTable();
+            table.Columns.Add("Value", typeof(string));
+
+            foreach (var item in list)
+            {
+                table.Rows.Add(item);
+            }
+
+            return table;
         }
 
     }

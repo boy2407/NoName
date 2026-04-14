@@ -92,6 +92,7 @@ namespace NoName.Application.Features.Orders.Commands.CreateOrder
                     ShipEmail = request.ShipEmail,
                     ShipPhoneNumber = request.ShipPhoneNumber,
                     Status = OrderStatus.InProgress,
+                    TotalAmount = items.Sum(x => x.Quantity * variantPriceMap[x.ProductVariantId]),
                     OrderDetails = items.Select(x => new OrderDetail
                     {
                         ProductVariantId = x.ProductVariantId,

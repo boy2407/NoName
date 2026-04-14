@@ -40,6 +40,7 @@ namespace NoName.Infrastructure
 
 
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            services.Configure<MomoSettings>(configuration.GetSection("PaymentSettings:Momo"));
             // Redis Configuration
             //var redisConnectionString = configuration.GetConnectionString("Redis") ;
             //var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
@@ -99,10 +100,17 @@ namespace NoName.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductVariantRepository, ProductVariantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Payment Services - Support Multiple Providers
+            services.AddHttpClient();
+            services.AddScoped<IPaymentService, MomoPaymentService>();
+            // Add more payment providers here in the future (VNPay, ZaloPay, etc.)
+            // services.AddScoped<IPaymentService, VNPayPaymentService>();
 
 
             services.AddAuthorization(options =>

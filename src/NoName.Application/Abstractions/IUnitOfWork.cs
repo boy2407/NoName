@@ -15,6 +15,7 @@ namespace NoName.Application.Abstractions
         IOrderRepository Orders { get; }
         ICategoryRepository Categories { get; }
         ILanguageRepository Languages { get; }
+        ITransactionRepository Transactions { get; }
         IProductVariantRepository ProductVariants { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

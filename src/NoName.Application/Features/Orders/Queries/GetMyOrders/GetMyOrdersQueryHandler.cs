@@ -31,6 +31,7 @@ namespace NoName.Application.Features.Orders.Queries.GetMyOrders
                 ShipEmail = order.ShipEmail,
                 ShipPhoneNumber = order.ShipPhoneNumber,
                 Status = order.Status,
+                TotalAmount = order.TotalAmount,
                 Details = order.OrderDetails.Select(d => new OrderDetailDto
                 {
                     ProductVariantId = d.ProductVariantId,

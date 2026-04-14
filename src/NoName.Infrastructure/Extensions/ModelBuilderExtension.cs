@@ -373,11 +373,13 @@ public static class ModelBuilderExtension
                     ShipAddress = customerId == customer1Id ? "123 Nguyen Trai, HCM" : "456 Le Loi, HCM",
                     ShipEmail = customerId == customer1Id ? "customer01@noname.com" : "customer02@noname.com",
                     ShipPhoneNumber = customerId == customer1Id ? "0901000001" : "0901000002",
-                    Status = OrderStatus.InProgress
+                    Status = OrderStatus.InProgress,
+                    TotalAmount = 0m
                 });
 
                 var detailsCount = orderRandom.Next(3, 6);
                 var usedVariantIds = new HashSet<int>();
+                decimal currentOrderTotal = 0;
 
                 while (usedVariantIds.Count < detailsCount)
                 {
@@ -387,13 +389,17 @@ public static class ModelBuilderExtension
                         continue;
                     }
 
+                    var quantity = orderRandom.Next(1, 4);
+                    var price = variantPriceMap[variantId];
+                    currentOrderTotal += quantity * price;
+
                     seededOrderDetails.Add(new OrderDetail
                     {
                         Id = orderDetailIdCounter++,
                         OrderId = orderId,
                         ProductVariantId = variantId,
-                        Quantity = orderRandom.Next(1, 4),
-                        Price = variantPriceMap[variantId]
+                        Quantity = quantity,
+                        Price = price
                     });
 
                     var lastOrderDetail = seededOrderDetails[^1];
@@ -414,6 +420,9 @@ public static class ModelBuilderExtension
                         });
                     }
                 }
+
+                // Update total amount for order after all details are added
+                seededOrders.First(o => o.Id == orderId).TotalAmount = currentOrderTotal;
             }
         }
 

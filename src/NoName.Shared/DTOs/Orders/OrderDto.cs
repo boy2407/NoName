@@ -13,6 +13,7 @@ namespace NoName.Shared.DTOs.Orders
         public string ShipEmail { get; set; }
         public string ShipPhoneNumber { get; set; }
         public OrderStatus Status { get; set; }
+        public decimal TotalAmount { get; set; }
         public List<OrderDetailDto> Details { get; set; } = new();
     }
 }

@@ -9,6 +9,7 @@ namespace NoName.Domain.Entities
     {
         public int Id { set; get; }
         public DateTime TransactionDate { set; get; }
+        public int OrderId { get; set; }
         public string ExternalTransactionId { set; get; }
         public decimal Amount { set; get; }
         public decimal Fee { set; get; }
@@ -19,6 +20,7 @@ namespace NoName.Domain.Entities
 
         public Guid UserId { get; set; }
 
+        public Order Order { get; set; }
         public User User { get; set; }
 
     }

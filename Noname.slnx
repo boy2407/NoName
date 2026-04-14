@@ -6,6 +6,8 @@
   <Folder Name="/client/">
     <Project Path="client/NoName.AdminApp/NoName.AdminApp.csproj" Id="ddcfb3dd-2c83-400f-979b-7e34d524d0a6" />
   </Folder>
+  
+  
   <Folder Name="/Solution Items/">
     <File Path="docker-compose.yml" />
     <File Path="README.md" />

@@ -1,14 +1,28 @@
 <Solution>
   <Folder Name="/.github/">
+    <File Path=".github/copilot-instructions.md" />
     <File Path="Directory.Build.props" />
   </Folder>
+  <Folder Name="/client/">
+    <Project Path="client/NoName.AdminApp/NoName.AdminApp.csproj" Id="ddcfb3dd-2c83-400f-979b-7e34d524d0a6" />
+  </Folder>
+  
+  
   <Folder Name="/Solution Items/">
     <File Path="docker-compose.yml" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="NoName.App/NoName.App.csproj" Id="ef10069f-89e6-4673-8ddb-5a46c5f17e10" />
-  <Project Path="NoName.Application/NoName.Application.csproj" />
-  <Project Path="NoName.BackendApi/NoName.BackendApi.csproj" Id="10dfa69f-521d-451b-b382-3cd8706970bf" />
-  <Project Path="NoName.Domain/NoName.Domain.csproj" Id="25b3713d-70cd-4a00-b2f0-1fab48c17051" />
-  <Project Path="NoName.Infrastructure/NoName.Infrastructure.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/NoName.Application/NoName.Application.csproj" />
+    <Project Path="src/NoName.BackendApi/NoName.BackendApi.csproj" Id="10dfa69f-521d-451b-b382-3cd8706970bf" />
+    <Project Path="src/NoName.Domain/NoName.Domain.csproj" Id="25b3713d-70cd-4a00-b2f0-1fab48c17051" />
+    <Project Path="src/NoName.Infrastructure/NoName.Infrastructure.csproj" />
+    <Project Path="src/NoName.Shared/NoName.Shared.csproj" Id="b58b7f73-2e83-4e86-ae4f-eb8f11f07276" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/NoName.Application.UnitTest/NoName.Application.UnitTest.csproj" Id="483076c8-e0d5-41e9-a8f6-9e9a43499012" />
+    <Project Path="test/NoName.BackEndApi.UnitTest/NoName.BackEndApi.UnitTest.csproj" Id="94e41a81-0618-4988-b83e-7deead7d2c13" />
+  </Folder>
+
+  
 </Solution>

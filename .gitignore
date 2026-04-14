@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+appsettings.json
+appsettings.Development.json
+/src/NoName.BackendApi/appsettings.Development.json
+/src/NoName.BackendApi/appsettings.json
+/src/NoName.Infrastructure/Persistence/Repositories
+/.github/copilot-instructions.md
+/Directory.Build.props
+Obsidian/

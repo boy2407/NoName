@@ -1,0 +1,258 @@
+@page "/products"
+@using MudBlazor
+@using NoName.AdminApp.Services
+@using NoName.Shared.DTOs.Products.Guest
+@using NoName.Shared.DTOs.Products.Admin
+@inject IProductService ProductService
+@inject ISnackbar Snackbar
+
+<PageTitle>Quản Lý Sản Phẩm</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    @if (showForm)
+    {
+        <MudCard Class="mb-6">
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@(editingId == 0 ? "Thêm Sản Phẩm Mới" : "Chỉnh Sửa Sản Phẩm")</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudForm @ref="form" @bind-IsValid="@success">
+                    <MudTextField @bind-Value="formModel.Name" Label="Tên Sản Phẩm" Required="true" FullWidth Class="mb-4" />
+                    <MudTextField @bind-Value="formModel.Description" Label="Mô Tả" FullWidth Class="mb-4" Lines="3" />
+                    <MudTextField @bind-Value="formModel.Details" Label="Chi Tiết" FullWidth Class="mb-4" Lines="4" />
+                    <MudTextField @bind-Value="formModel.SeoTitle" Label="SEO Title" FullWidth Class="mb-4" />
+                    <MudTextField @bind-Value="formModel.SeoDescription" Label="SEO Description" FullWidth Class="mb-4" />
+                    <MudTextField @bind-Value="formModel.SeoAlias" Label="SEO Alias" FullWidth Class="mb-4" />
+                    <div Class="d-flex gap-3">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveProduct">
+                            @(editingId == 0 ? "Thêm Mới" : "Cập Nhật")
+                        </MudButton>
+                        <MudButton Variant="Variant.Text" OnClick="CancelEdit">Hủy</MudButton>
+                    </div>
+                </MudForm>
+            </MudCardContent>
+        </MudCard>
+    }
+
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Danh Sách Sản Phẩm</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" OnClick="@(() => ShowForm())">
+                            Thêm Sản Phẩm
+                        </MudButton>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" />
+                    }
+                    else if (products?.Count > 0)
+                    {
+                        <MudTable Items="products" Striped="true" Bordered="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>ID</MudTh>
+                                <MudTh>Tên</MudTh>
+                                <MudTh>Giá</MudTh>
+                                <MudTh>Tồn Kho</MudTh>
+                                <MudTh>Trạng Thái</MudTh>
+                                <MudTh>Hành Động</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="ID">@context.Id</MudTd>
+                                <MudTd DataLabel="Tên">@context.ProductTranslation?.Name</MudTd>
+                                <MudTd DataLabel="Giá">@context.Price.ToString("C")</MudTd>
+                                <MudTd DataLabel="Tồn Kho">
+                                    <MudChip T="string" Color="@(context.Stock > 0 ? Color.Success : Color.Error)">
+                                        @context.Stock
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Trạng Thái">
+                                    <MudChip T="string" Color="@(context.IsActive ? Color.Success : Color.Error)" Icon="@Icons.Material.Filled.Check">
+                                        @(context.IsActive ? "Hoạt Động" : "Không Hoạt Động")
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Hành Động">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => EditProduct(context.Id))" />
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteProductConfirm(context.Id))" />
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+
+                        <div Class="d-flex justify-content-center mt-4 gap-2">
+                            <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="PreviousPage" Disabled="@(currentPage == 1)">
+                                Trang Trước
+                            </MudButton>
+                            <MudText Class="d-flex align-center">Trang @currentPage / @totalPages</MudText>
+                            <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="NextPage" Disabled="@(currentPage >= totalPages)">
+                                Trang Sau
+                            </MudButton>
+                        </div>
+                    }
+                    else
+                    {
+                        <MudText>Không có sản phẩm nào</MudText>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private List<NoName.Shared.DTOs.Products.Admin.ProductAdminDto> products = new();
+    private bool showForm = false;
+    private bool isLoading = true;
+    private bool success = false;
+    private int editingId = 0;
+    private int currentPage = 1;
+    private int totalPages = 1;
+    private const int PageSize = 10;
+
+    private ProductTranslationDto formModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadProducts();
+    }
+
+    private async Task LoadProducts()
+    {
+        try
+        {
+            isLoading = true;
+            var response = await ProductService.GetProductsPaging(currentPage, PageSize);
+            products = response.Items;
+            totalPages = (int)Math.Ceiling((double)response.TotalCount / PageSize);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi khi tải sản phẩm: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowForm()
+    {
+        editingId = 0;
+        formModel = new();
+        showForm = true;
+    }
+
+    private async Task EditProduct(int id)
+    {
+        try
+        {
+            var product = await ProductService.GetProductById(id);
+            editingId = id;
+            formModel = product?.ProductTranslation ?? new();
+            showForm = true;
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void CancelEdit()
+    {
+        showForm = false;
+        formModel = new();
+        editingId = 0;
+    }
+
+    private async Task SaveProduct()
+    {
+        if (!success) return;
+
+        try
+        {
+            if (editingId == 0)
+            {
+                var request = new CreateProductRequest
+                {
+                    Translations = new() { formModel },
+                    IsActive = true
+                };
+                await ProductService.CreateProduct(request);
+                Snackbar.Add("Thêm sản phẩm thành công", Severity.Success);
+            }
+            else
+            {
+                var request = new UpdateProductRequest
+                {
+                    Translations = new() { formModel },
+                    IsActive = true
+                };
+                await ProductService.UpdateProduct(editingId, request);
+                Snackbar.Add("Cập nhật sản phẩm thành công", Severity.Success);
+            }
+            CancelEdit();
+            await LoadProducts();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task DeleteProductConfirm(int id)
+    {
+        bool confirmed = await Confirmed();
+        if (confirmed)
+        {
+            await DeleteProduct(id);
+        }
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        try
+        {
+            await ProductService.DeleteProduct(id);
+            Snackbar.Add("Xóa sản phẩm thành công", Severity.Success);
+            await LoadProducts();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Lỗi: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task<bool> Confirmed()
+    {
+        return true; // TODO: Implement confirmation dialog
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            LoadProducts();
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            LoadProducts();
+        }
+    }
+}
+
+
+
